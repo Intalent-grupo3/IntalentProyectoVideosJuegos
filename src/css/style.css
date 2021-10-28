@@ -1,3 +1,4 @@
+
 /*FOOTER*/
 footer{
     text-align: center;
@@ -30,3 +31,19 @@ footer .footericon{
 footer .footericon img{
     width:100%;
 }
+/* ----------quienes somos------------ */
+.q-somos {
+  padding: 60px 0 40px 80px;
+}
+
+.q-somos .text {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.q-somos img {
+  width: 100%;
+}
+

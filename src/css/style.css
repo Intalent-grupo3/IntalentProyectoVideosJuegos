@@ -143,3 +143,20 @@ footer .footericon img {
 .card-header{
     text-align: center;
 }
+.card-body .card-text{
+    color: black;
+}
+.vinculotarjetas{
+    display:block;
+    transition: transform .2s;
+
+}
+.card .imagentarjeta{
+    max-width:100%;
+}
+.card .imagentarjeta img{
+    max-width: 100%;
+}
+.vinculotarjetas:hover{
+   transform: scale(1.1);
+}

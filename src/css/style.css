@@ -1,44 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Oswald&display=swap');
-/*Roberto*/
-h2 {
-    font-family: 'Oswald', sans-serif;
-    color: honeydew;
-}
-p {
-    font-family: 'Open Sans', sans-serif;
-    color: honeydew;
-}
-a {
-    font-family: 'Oswald', sans-serif;
-}
-h3 {
-    font-family: 'Oswald', sans-serif;
-    color: honeydew;
-}
-.list-item {
-    font-family: 'Open Sans', sans-serif;
-}
-.card-footer {
-    font-family: 'Open Sans', sans-serif;
-}
-.card-title {
-    font-family: 'Oswald', sans-serif;
-}
-.nav .nav-item a {
-    color: honeydew;
-    font-size: 2em;
-}
-.nav {
-    background-color: black;
-    position: absolute;
-    left: 0px;
-    height: 40px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
+:root {
+    --color-yellow: #fbcc4c;
+    --color-purple: #4a1c3e;
+    --color-light: ;
+    --color-medium: ;
+    --color-dark: ;
+    --color-text-light: var(--color-light);
+    --color-text-dark: var(--color-dark);
 }
 
-body {
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Oswald&display=swap');
+/*Roberto*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.container-fluid {
     background-image: url(https://wallpaperaccess.com/full/264293.jpg);
     background-color: rgb(126, 126, 126);
     background-repeat: no-repeat;
@@ -46,9 +25,64 @@ body {
     background-attachment: local;
     background-position: center;
 }
+
+h1,
+h2,
+h3 {
+    font-family: 'Oswald', sans-serif;
+    color: honeydew;
+}
+
+p {
+    color: honeydew;
+}
+
+a {
+    font-family: 'Oswald', sans-serif;
+}
+
+img {
+    width: 100%;
+}
+
+.card-title {
+    font-family: 'Oswald', sans-serif;
+}
+
 /*Roberto*/
 
-/*FOOTER*/
+/* HEADER */
+.header {
+    background-color: var(--color-yellow);
+}
+
+.header .container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.navbar-brand {
+    width: 200px;
+}
+
+@media all and {
+}
+
+.nav {
+    left: 0px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.nav .nav-item a {
+    color: var(--color-purple);
+    font-size: 2em;
+}
+
+/* FOOTER */
 footer {
     text-align: center;
 }
@@ -119,17 +153,17 @@ footer .footericon img {
 .especialidadesCards {
     margin: 1rem;
 }
-.especialidadesCards p{
+.especialidadesCards p {
     margin: 0 2rem;
     text-align: center;
 }
 
-.especialidadesCards h3{
+.especialidadesCards h3 {
     text-align: center;
 }
-.especialidadesCards .card{
+.especialidadesCards .card {
     margin: 1rem;
 }
-.card-header{
+.card-header {
     text-align: center;
 }

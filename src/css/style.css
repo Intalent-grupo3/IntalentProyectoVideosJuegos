@@ -21,6 +21,10 @@
 .especialidadesCards{
     margin: 1rem;
 }
+
+.especialidadesCards h3{
+    text-align: center;
+}
 .especialidadesCards .card{
     margin: 1rem;
 }

@@ -107,3 +107,19 @@ footer .footericon img {
 .q-somos img {
     width: 100%;
 }
+
+/*especialidadesYelder */
+.especialidades {
+    margin: 1.5rem 3.5rem;
+    text-align: center;
+}
+.especialidades img {
+    margin: 1rem;
+}
+
+.especialidadesCards {
+    margin: 1rem;
+}
+.especialidadesCards .card {
+    margin: 1rem;
+}

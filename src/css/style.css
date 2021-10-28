@@ -1,1 +1,32 @@
-# Empty CSS file for your own CSS
+/*FOOTER*/
+footer{
+    text-align: center;
+}
+footer li{
+    list-style: none;
+    padding:10px;
+}
+footer a{
+    text-decoration: none;
+    color: black;
+}
+footer ul{
+    display: flex;
+    justify-content: center;
+    margin-left: 0;
+    padding-left:0;
+}
+footer i{
+    color: black;
+}
+footer p{
+    margin: 0 auto;
+}
+footer .footericon{
+    justify-content: center;
+    border-radius: 50%;
+    overflow: hidden;
+}
+footer .footericon img{
+    width:100%;
+}

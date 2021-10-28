@@ -1,32 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Oswald&display=swap');
+/*Roberto*/
+h2 {
+    font-family: 'Oswald', sans-serif;
+    color: honeydew;
+}
+p {
+    font-family: 'Open Sans', sans-serif;
+    color: honeydew;
+}
+a {
+    font-family: 'Oswald', sans-serif;
+}
+h3 {
+    font-family: 'Oswald', sans-serif;
+    color: honeydew;
+}
+.list-item {
+    font-family: 'Open Sans', sans-serif;
+}
+.card-footer {
+    font-family: 'Open Sans', sans-serif;
+}
+.card-title {
+    font-family: 'Oswald', sans-serif;
+}
+.nav .nav-item a {
+    color: honeydew;
+    font-size: 2em;
+}
+.nav {
+    background-color: black;
+    position: absolute;
+    left: 0px;
+    height: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+body {
+    background-image: url(https://wallpaperaccess.com/full/264293.jpg);
+    background-color: rgb(126, 126, 126);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: local;
+    background-position: center;
+}
+/*Roberto*/
+
 /*FOOTER*/
-footer{
+footer {
     text-align: center;
 }
-footer li{
+footer li {
     list-style: none;
-    padding:10px;
+    padding: 10px;
 }
-footer a{
+footer a {
     text-decoration: none;
     color: black;
 }
-footer ul{
+footer ul {
     display: flex;
     justify-content: center;
     margin-left: 0;
-    padding-left:0;
+    padding-left: 0;
 }
-footer i{
+footer i {
     color: black;
 }
-footer p{
+footer p {
     margin: 0 auto;
 }
-footer .footericon{
+footer .footericon {
     justify-content: center;
     border-radius: 50%;
     overflow: hidden;
 }
-footer .footericon img{
-    width:100%;
+footer .footericon img {
+    width: 100%;
+}
+
+/* ----------carouselYelder------------ */
+.carouselEnunciado {
+    text-align: center;
+}
+.carouselVideoGames {
+    margin: 1.5rem 1rem;
+}
+.carouselVideoGames {
+    padding: 2rem;
+}
+
+/* ----------quienes somos------------ */
+.q-somos {
+    padding: 60px 0 40px 80px;
+}
+
+.q-somos .text {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.q-somos img {
+    width: 100%;
+}
+
+/*especialidadesYelder */
+.especialidades {
+    margin: 1.5rem 3.5rem;
+    text-align: center;
+}
+.especialidades img {
+    margin: 1rem;
+}
+
+.especialidadesCards {
+    margin: 1rem;
+}
+.especialidadesCards .card {
+    margin: 1rem;
 }

@@ -1,1 +1,10 @@
-# Empty CSS file for your own CSS
+
+.carouselEnunciado{
+    text-align: center;
+}
+.carouselVideoGames{
+    margin: 1.5rem 1rem;
+}
+.carouselVideoGames{
+    padding: 2rem;
+}

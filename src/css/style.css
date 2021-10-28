@@ -76,6 +76,7 @@ footer .footericon {
     justify-content: center;
     border-radius: 50%;
     overflow: hidden;
+    width: 100px;
 }
 footer .footericon img {
     width: 100%;

@@ -110,7 +110,6 @@ footer .footericon img {
 
 /*especialidadesYelder */
 .especialidades {
-    margin: 1.5rem 3.5rem;
     text-align: center;
 }
 .especialidades img {
@@ -120,10 +119,17 @@ footer .footericon img {
 .especialidadesCards {
     margin: 1rem;
 }
+.especialidadesCards p{
+    margin: 0 2rem;
+    text-align: center;
+}
 
 .especialidadesCards h3{
     text-align: center;
 }
 .especialidadesCards .card{
     margin: 1rem;
+}
+.card-header{
+    text-align: center;
 }

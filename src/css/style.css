@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Oswald&display=swap');
 /*Roberto*/
 h2{font-family: 'Oswald', sans-serif;
@@ -23,3 +24,54 @@ body{
     overflow:hidden;
 }
 /*Roberto*/
+
+
+/*FOOTER*/
+footer{
+    text-align: center;
+}
+footer li{
+    list-style: none;
+    padding:10px;
+}
+footer a{
+    text-decoration: none;
+    color: black;
+}
+footer ul{
+    display: flex;
+    justify-content: center;
+    margin-left: 0;
+    padding-left:0;
+}
+footer i{
+    color: black;
+}
+footer p{
+    margin: 0 auto;
+}
+footer .footericon{
+    justify-content: center;
+    border-radius: 50%;
+    overflow: hidden;
+}
+footer .footericon img{
+    width:100%;
+}
+/* ----------quienes somos------------ */
+.q-somos {
+  padding: 60px 0 40px 80px;
+}
+
+.q-somos .text {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.q-somos img {
+  width: 100%;
+}
+
+

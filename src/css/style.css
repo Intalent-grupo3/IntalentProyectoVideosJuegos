@@ -12,7 +12,13 @@ h3{font-family: 'Oswald', sans-serif; color: honeydew;}
 .card-title{font-family: 'Oswald', sans-serif;}
 .nav .nav-item a{color: honeydew;
   font-size: 2em;  }
-.nav{background-color: black;}
+.nav{background-color: black;
+ position: absolute;
+    left: 0px;
+    height: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;}
 
 body{
    background-image: url(https://wallpaperaccess.com/full/264293.jpg); 

@@ -85,31 +85,41 @@ img {
 /* FOOTER */
 footer {
     text-align: center;
+    background-color: #fbcc4c;
+}
+footer .row{
+    background-color: #fbcc4c;
 }
 footer li {
     list-style: none;
-    padding: 10px;
+    padding-left: 20px;
 }
-footer a {
+footer .iconosredes a {
     text-decoration: none;
     color: black;
+    font-size: 3em;
 }
+
 footer ul {
     display: flex;
     justify-content: center;
     margin-left: 0;
     padding-left: 0;
+    padding:0;
+    margin-bottom: 10px;
 }
 footer i {
     color: black;
 }
 footer p {
     margin: 0 auto;
+    color:black;
 }
 footer .footericon {
-    justify-content: center;
+    margin:0 auto;
     border-radius: 50%;
     overflow: hidden;
+    width: 150px;
 }
 footer .footericon img {
     width: 100%;

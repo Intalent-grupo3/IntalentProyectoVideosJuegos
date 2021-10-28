@@ -64,6 +64,18 @@ footer .footericon{
 footer .footericon img{
     width:100%;
 }
+
+/* ----------carouselYelder------------ */
+.carouselEnunciado{
+    text-align: center;
+}
+.carouselVideoGames{
+    margin: 1.5rem 1rem;
+}
+.carouselVideoGames{
+    padding: 2rem;
+}
+
 /* ----------quienes somos------------ */
 .q-somos {
   padding: 60px 0 40px 80px;
@@ -79,5 +91,4 @@ footer .footericon img{
 .q-somos img {
   width: 100%;
 }
-
 

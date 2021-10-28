@@ -1,1 +1,25 @@
-# Empty CSS file for your own CSS
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Oswald&display=swap');
+/*Roberto*/
+h2{font-family: 'Oswald', sans-serif;
+color: honeydew;}
+p{font-family: 'Open Sans', sans-serif;
+color: honeydew;}
+a{font-family: 'Oswald', sans-serif;}
+h3{font-family: 'Oswald', sans-serif; color: honeydew;}
+.list-item{font-family: 'Open Sans', sans-serif;}
+.card-footer{font-family: 'Open Sans', sans-serif;}
+.card-title{font-family: 'Oswald', sans-serif;}
+.nav .nav-item a{color: honeydew;
+  font-size: 2em;  }
+.nav{background-color: black;}
+
+body{
+   background-image: url(https://wallpaperaccess.com/full/264293.jpg); 
+   background-color: rgb(126, 126, 126);
+   background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: local;
+    background-position: center;
+    overflow:hidden;
+}
+/*Roberto*/

@@ -42,6 +42,7 @@ h3 {
 a {
     font-family: var(--font-title);
     font-weight: 600;
+    text-decoration: none;
 }
 
 a:hover {

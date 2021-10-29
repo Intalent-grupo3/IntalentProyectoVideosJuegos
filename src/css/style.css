@@ -1,71 +1,165 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Oswald&display=swap');
-/*Roberto*/
-h2 {
-    font-family: 'Oswald', sans-serif;
-    color: honeydew;
-}
-p {
-    font-family: 'Open Sans', sans-serif;
-    color: honeydew;
-}
-a {
-    font-family: 'Oswald', sans-serif;
-}
-h3 {
-    font-family: 'Oswald', sans-serif;
-    color: honeydew;
-}
-.list-item {
-    font-family: 'Open Sans', sans-serif;
-}
-.card-footer {
-    font-family: 'Open Sans', sans-serif;
-}
-.card-title {
-    font-family: 'Oswald', sans-serif;
-}
-.nav .nav-item a {
-    color: honeydew;
-    font-size: 2em;
-}
-.nav {
-    background-color: black;
-    position: absolute;
-    left: 0px;
-    height: 40px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@400;600;800&display=swap');
+
+:root {
+    --color-yellow: #fbcc4c;
+    --color-purple: #4a1c3e;
+    --color-light: #cccccc;
+    --color-medium: #ffdbb3;
+    --color-dark: #222;
+    --color-text-light: var(--color-light);
+    --color-text-dark: var(--color-purple);
+    --font-title: 'Dosis', sans-serif;
 }
 
-body {
+/*Roberto*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+    color: var(--color-purple);
+}
+
+.container-fluid {
     background-image: url(https://wallpaperaccess.com/full/264293.jpg);
-    background-color: rgb(126, 126, 126);
+    background-color: var(--color-light);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: local;
     background-position: center;
-    padding: 0;
-    margin: 0;
 }
+
+h1,
+h2,
+h3 {
+    font-family: var(--font-title);
+    color: var(--color-text-light);
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+a {
+    font-family: var(--font-title);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+img {
+    width: 100%;
+}
+
+p {
+    color: var(--color-text-light);
+}
+
+.titulo {
+    color: var(--color-text-dark);
+    font-size: 4em;
+}
+
+.card-title {
+    font-family: var(--font-title);
+}
+
+.btn {
+    padding: 1rem;
+    width: fit-content;
+    color: var(--color-yellow);
+    border: 2px solid var(--color-yellow);
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 10px;
+}
+
+.btn:hover {
+    background-color: var(--color-yellow);
+    color: var(--color-purple);
+}
+
 /*Roberto*/
 
-/*FOOTER*/
+/* HEADER */
+.header {
+    background-color: var(--color-yellow);
+}
+
+.header .container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.navbar-brand {
+    width: 170px;
+}   
+
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav .nav-item a {
+    color: var(--color-purple);
+    font-size: 2em;
+    padding: 1rem 3rem 1rem;
+}
+
+.nav .nav-item a:hover {
+    color: var(--color-medium);
+}
+
+@media all and (max-width: 820px) {
+    .navbar-brand {
+        width: 100px;
+    }
+    .nav {
+        width: 100%;
+    }
+}
+
+/* FOOTER */
 footer {
     text-align: center;
-    background-color: #fbcc4c;
+    background-color: var(--color-yellow);
+    color: var(--color-purple);
 }
-footer .row{
-    background-color: #fbcc4c;
+footer .row {
+    background-color: var(--color-yellow);
 }
+
+footer .footericon {
+    color: var(--color-purple);
+    margin: 0 auto;
+    border-radius: 50%;
+    overflow: hidden;
+    width: 150px;
+}
+
 footer li {
     list-style: none;
     padding-left: 20px;
 }
+
+footer a {
+    color: var(--color-purple);
+}
+
+footer a:hover {
+    color: var(--color-text-light);
+}
+
 footer .iconosredes a {
     text-decoration: none;
-    color: black;
-    font-size: 3em;
+
+    font-size: 2.7em;
 }
 
 footer ul {
@@ -73,35 +167,58 @@ footer ul {
     justify-content: center;
     margin-left: 0;
     padding-left: 0;
-    padding:0;
+    padding: 0;
     margin-bottom: 10px;
 }
-footer i {
-    color: black;
-}
+
 footer p {
     margin: 0 auto;
-    color:black;
-}
-footer .footericon {
-    margin:0 auto;
-    border-radius: 50%;
-    overflow: hidden;
-    width: 150px;
-}
-footer .footericon img {
-    width: 100%;
+    color: var(--color-purple);
 }
 
 /* ----------carouselYelder------------ */
+.carouselVideoGames,
+.carouselBox {
+    margin: 0;
+    padding: 0;
+}
+
+.carouselVideoGames {
+    position: relative;
+}
+
 .carouselEnunciado {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    padding: 5em;
     text-align: center;
 }
-.carouselVideoGames {
-    margin: 1.5rem 1rem;
+
+.carouselEnunciado .titulo {
+    text-shadow: 5px 1px 0 var(--color-yellow);
 }
-.carouselVideoGames {
-    padding: 2rem;
+
+.carouselEnunciado p {
+    background-color: var(--color-purple);
+    color: var(--color-yellow);
+    font-weight: 600;
+    letter-spacing: 3px;
+    padding: 5px 12px;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+@media all and (max-width: 1200px) {
+    .carousel-item {
+        justify-content: center;
+    }
+
+    .carousel-item img {
+        width: initial !important;
+        height: 100%;
+    }
 }
 
 /* ----------quienes somos------------ */
@@ -128,40 +245,44 @@ footer .footericon img {
     margin: 1rem;
 }
 
-.especialidadesCards {
-    margin: 1rem;
-}
-.especialidadesCards p{
+
+.especialidadesCards p {
     margin: 0 2rem;
     text-align: center;
 }
 
-.especialidadesCards h3{
+.especialidadesCards h3 {
     text-align: center;
 }
-.especialidadesCards .card{
+.especialidadesCards .card {
     margin: 1rem;
 }
-.card-header{
+.card-header {
     text-align: center;
 }
 
 /*Producto Galeria*/
-.intro{
+.intro {
     margin: 0.5rem;
 }
-.intro h1{
+.intro p{
+    font-weight: 700;
+    font-size: 1.4rem;
     text-align: center;
-    color:#fbcc4c ;
+}
+.intro h1 {
+    text-align: center;
+    color: white;
     padding-bottom: 1rem;
 }
-.intro p{
+.intro p {
     padding: 0rem 3rem;
 }
 
-.galeria{
+.galeria {
+    display: flex;
     justify-content: center;
-    margin:0 2rem;
+    margin: 0 2rem;
     padding: 1rem;
 }
 .especialidadesCards .row{
@@ -174,29 +295,32 @@ footer .footericon img {
     padding-bottom: 2em;
 }
 .card {
-    background: #222;
-    border: 1px solid #fbcc4c;
-    color: rgba(250, 250, 250, 0.8);
+    background: var(--color-dark);
+    border: 1px solid var(--color-yellow);
+    color: var(--color-light);
     padding: 1rem;
-    margin: 2rem;
-    width: 90%;
-
-    
-    
-  }
+    margin: 1rem;
+}
 
   
 .card-header{
     background-color:#222;
-    padding: 0.75rem 0rem;
+    padding: 0.75rem 1.25rem;
+    color: var(--color-light)
 }   
 .card-text{
     font-weight: 700;
     text-align: center;
+    background-color: var(--color-dark);
+    
+}
+.card-body{
+    background: var(--color-dark);
 }
 .card-footer{
     background-color: #222;
     text-align: justify;
+    color: var(--color-light)
 }
 .vinculotarjetas{
     display:block;
@@ -206,12 +330,11 @@ footer .footericon img {
 .card .imagentarjeta{
     max-width:100%;
 }
-.card .imagentarjeta img{
+.card .imagentarjeta img {
     max-width: 100%;
 }
-.vinculotarjetas:hover{
-   transform: scale(1.1);
-
+.vinculotarjetas:hover {
+    transform: scale(1.1);
 }
 
 .vinculotarjetas:hover .card{

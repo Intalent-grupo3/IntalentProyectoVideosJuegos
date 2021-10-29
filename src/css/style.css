@@ -97,11 +97,7 @@ p {
 
 .navbar-brand {
     width: 170px;
-}
-
-h1 {
-    display: none;
-}
+}   
 
 .nav {
     display: flex;
@@ -249,9 +245,7 @@ footer p {
     margin: 1rem;
 }
 
-.especialidadesCards {
-    margin: 1rem;
-}
+
 .especialidadesCards p {
     margin: 0 2rem;
     text-align: center;
@@ -271,9 +265,14 @@ footer p {
 .intro {
     margin: 0.5rem;
 }
+.intro p{
+    font-weight: 700;
+    font-size: 1.4rem;
+    text-align: center;
+}
 .intro h1 {
     text-align: center;
-    color: var(--color-yellow);
+    color: white;
     padding-bottom: 1rem;
 }
 .intro p {
@@ -286,49 +285,58 @@ footer p {
     margin: 0 2rem;
     padding: 1rem;
 }
-
-.galeria .card {
+.especialidadesCards .row{
+    display: flex;
+    flex-wrap: wrap;
+    
+    
+}
+.encabezadotarjetas{
+    padding-bottom: 2em;
+}
+.card {
     background: var(--color-dark);
     border: 1px solid var(--color-yellow);
     color: var(--color-light);
     padding: 1rem;
-    margin: 2rem;
+    margin: 1rem;
 }
 
-.galeria .btn {
-    border: 5px solid;
-    border-image-slice: 1;
-    background: var(--gradient) !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: var(--color-purple) !important;
-    border-image-source: var(--gradient) !important;
-    text-decoration: none;
-    transition: all 0.4s ease;
-    color: var(--color-yellow);
+  
+.card-header{
+    background-color:#222;
+    padding: 0.75rem 1.25rem;
+    color: var(--color-light)
+}   
+.card-text{
+    font-weight: 700;
+    text-align: center;
+    background-color: var(--color-dark);
+    
+}
+.card-body{
+    background: var(--color-dark);
+}
+.card-footer{
+    background-color: #222;
+    text-align: justify;
+    color: var(--color-light)
+}
+.vinculotarjetas{
+    display:block;
+    transition: transform .2s;
 }
 
-.galeria .btn:hover,
-.btn:focus {
-    background: var(--gradient) !important;
-    -webkit-background-clip: none !important;
-    -webkit-text-fill-color: #fff !important;
-    border: 5px solid #fff !important;
-    box-shadow: #222 1px 0 10px;
-    text-decoration: underline;
-}
-.card-body .card-text {
-    color: black;
-}
-.vinculotarjetas {
-    display: block;
-    transition: transform 0.2s;
-}
-.card .imagentarjeta {
-    max-width: 100%;
+.card .imagentarjeta{
+    max-width:100%;
 }
 .card .imagentarjeta img {
     max-width: 100%;
 }
 .vinculotarjetas:hover {
     transform: scale(1.1);
+}
+
+.vinculotarjetas:hover .card{
+    border: 3px solid #fbcc4c;
 }

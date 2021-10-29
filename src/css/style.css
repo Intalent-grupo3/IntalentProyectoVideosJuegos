@@ -354,3 +354,12 @@ footer p {
 .vinculotarjetas:hover .card{
     border: 3px solid #fbcc4c;
 }
+.generos{
+    display: flex;
+    align-items: stretch;
+    justify-content: space-around;
+}
+.generos li{
+    text-decoration: none;
+    color: white;
+}

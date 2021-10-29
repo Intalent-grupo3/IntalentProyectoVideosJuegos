@@ -60,6 +60,7 @@ p {
 .titulo {
     color: var(--color-text-dark);
     font-size: 4em;
+    
 }
 
 .card-title {

@@ -192,3 +192,20 @@ footer .footericon img {
     box-shadow: #222 1px 0 10px;
     text-decoration: underline;
   }
+.card-body .card-text{
+    color: black;
+}
+.vinculotarjetas{
+    display:block;
+    transition: transform .2s;
+
+}
+.card .imagentarjeta{
+    max-width:100%;
+}
+.card .imagentarjeta img{
+    max-width: 100%;
+}
+.vinculotarjetas:hover{
+   transform: scale(1.1);
+}

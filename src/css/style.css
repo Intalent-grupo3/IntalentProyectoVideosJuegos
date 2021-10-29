@@ -143,6 +143,55 @@ footer .footericon img {
 .card-header{
     text-align: center;
 }
+
+/*Producto Galeria*/
+.intro{
+    margin: 0.5rem;
+}
+.intro h1{
+    text-align: center;
+    color:#fbcc4c ;
+    padding-bottom: 1rem;
+}
+.intro p{
+    padding: 0rem 3rem;
+}
+
+.galeria{
+    display: flex;
+    justify-content: center;
+    margin:0 2rem;
+    padding: 1rem;
+}
+
+.galeria .card {
+    background: #222;
+    border: 1px solid #fbcc4c;
+    color: rgba(250, 250, 250, 0.8);
+    padding: 1rem;
+    margin: 2rem;
+  }
+  
+  .galeria .btn {
+    border: 5px solid;
+    border-image-slice: 1;
+    background: var(--gradient) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: #4a1c3e !important;
+    border-image-source:  var(--gradient) !important; 
+    text-decoration: none;
+    transition: all .4s ease;
+    color: #fbcc4c;
+  }
+  
+  .galeria .btn:hover, .btn:focus {
+        background: var(--gradient) !important;
+    -webkit-background-clip: none !important;
+    -webkit-text-fill-color: #fff !important;
+    border: 5px solid #fff !important; 
+    box-shadow: #222 1px 0 10px;
+    text-decoration: underline;
+  }
 .card-body .card-text{
     color: black;
 }

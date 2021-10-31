@@ -148,6 +148,9 @@ p {
     .menu button{
         margin: 0 auto;
     }    
+    .menu .navbar{
+        padding-bottom: 1rem;
+    }
 }
 
 /* FOOTER */

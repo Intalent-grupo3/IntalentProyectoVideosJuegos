@@ -206,7 +206,7 @@ footer p {
     color: var(--color-purple);
 }
 footer .nav-link {
-   font-size: x-large;
+    font-size: x-large;
 }
 footer .nav-link:hover {
     color: var(--color-yellow);

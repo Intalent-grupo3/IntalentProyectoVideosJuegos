@@ -248,6 +248,10 @@ footer .nav-link:hover {
     padding: 0;
 }
 
+.carouselVideoGames h2{
+    display: none;
+}
+
 .carouselVideoGames {
     position: relative;
 }

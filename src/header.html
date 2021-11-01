@@ -3,8 +3,11 @@
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Proyectos</title>
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+        <title>Home</title>
         <meta
             name="description"
             content="Source code generated using layoutit.com"
@@ -26,9 +29,10 @@
         <link rel="stylesheet" href="./css/style.css" />
     </head>
 
-    <body>
+    <body data-spy="scroll" data-target="#opciones">
         <div class="container-fluid">
             <!-- HEADER -->
+            <!-- HEMOS TENIDO QUE QUITAR LOS SCRIPTS ORIGINALES, SI ALGO FALLA ES POR ESO Y HABRÍA QUE REVISARLO -->
             <div class="row header">
                 <div class="col-md-12 container">
                     <div class="menu">
@@ -85,32 +89,117 @@
                 </div>
             </div>
             <!-- END HEADER -->
-            <!-- INTRO -->
-            <section class="intro">
+            <section class="carouselVideoGames">
                 <div class="row">
-                    <div class="col-md-12">
-                        <h1>Nuestros Juegos</h1>
-                        <p>
-                            Aquí te presentamos todos nuestros títulos, creados
-                            por nuestro equipo con esfuerzo e ilusión para
-                            vosotros jugadores. Hay de todos los géneros, desde
-                            plataformas 2D hasta multijugadores rápidos, pasando
-                            por tipo Sandbox. ¡Esperamos que encuentres alguno
-                            de tu agrado y que puedas disfrutar tanto jugándolo
-                            como nosotros haciéndolo!
-                        </p>
+                    <div class="col-md-12 carouselBox">
+                        <div class="carousel slide" id="carousel-272789">
+                            <ol class="carousel-indicators">
+                                <li
+                                    data-slide-to="0"
+                                    data-target="#carousel-272789"
+                                ></li>
+                                <li
+                                    data-slide-to="1"
+                                    data-target="#carousel-272789"
+                                    class="active"
+                                ></li>
+                                <li
+                                    data-slide-to="2"
+                                    data-target="#carousel-272789"
+                                ></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="carousel-item">
+                                    <img
+                                        class="img-fluid"
+                                        alt="Carousel Bootstrap First"
+                                        src="https://res.cloudinary.com/dyesgnzy5/image/upload/v1635498095/H2x1_NSwitchDS_Cuphead_qai87o.jpg"
+                                    />
+                                </div>
+                                <div class="carousel-item active">
+                                    <img
+                                        class="img-fluid"
+                                        alt="Carousel Bootstrap Second"
+                                        src="https://res.cloudinary.com/dyesgnzy5/image/upload/v1635498300/H2x1_NSwitchDS_Terraria_eqjti1.jpg"
+                                    />
+                                </div>
+                                <div class="carousel-item">
+                                    <img
+                                        class="img-fluid"
+                                        alt="Carousel Bootstrap Third"
+                                        src="https://res.cloudinary.com/dyesgnzy5/image/upload/v1635433597/among-us_rxwxnw.jpg"
+                                    />
+                                </div>
+                            </div>
+                            <a
+                                class="carousel-control-prev"
+                                href="#carousel-272789"
+                                data-slide="prev"
+                                ><span
+                                    class="carousel-control-prev-icon"
+                                ></span>
+                                <span class="sr-only">Previous</span></a
+                            >
+                            <a
+                                class="carousel-control-next"
+                                href="#carousel-272789"
+                                data-slide="next"
+                                ><span
+                                    class="carousel-control-next-icon"
+                                ></span>
+                                <span class="sr-only">Next</span></a
+                            >
+                        </div>
                     </div>
                 </div>
             </section>
-            <!--END INTRO -->
-            <!--GALERIA  -->
-            <section class="galeria">
+            <!--END CAROUSEL -->
+            <!-- QUIENES SOMOS -->
+            <section class="q-somos">
                 <div class="row">
-                    <!-- CARD -->
-                    <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="col-md-6">
+                        <div class="text">
+                            <h2 class="titulo-seccion">Quiénes somos</h2>
+                            <p>
+                                Morenus Gaming fue creada en 2021 cuando
+                                comenzamos el desarrollo de aplicaciones web.
+                                Nuestra primera app superó las 25 millones de
+                                descargas y consiguió aparecer en el top 10 de
+                                descargas en la República de Titirurú.
+                            </p>
+                            <p>
+                                Actualmente estamos especializados en el
+                                desarrollo de videojuegos multijugador y para
+                                móviles.
+                            </p>
+                            <a class="btn" href="#">Conocenos</a>
+                        </div>
+                    </div>
+                    <div class="imagen col-md-6">
+                        <img
+                            alt="Bootstrap Image Preview"
+                            src="https://res.cloudinary.com/dyesgnzy5/image/upload/v1635504101/FotoGrupoBuena_kdeswp.png"
+                        />
+                    </div>
+                </div>
+            </section>
+            <!--END QUIENES SOMOS -->
+            <!-- CARDS -->
+            <section class="especialidadesCards">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>Nuestros juegos</h3>
+                        <p class="encabezadotarjetas">
+                            Estos son algunos de nuestros últimos y más queridos
+                            juegos
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-12" id="prueba">
                         <a
                             class="vinculotarjetas"
-                            href="./Producto-terraria.html"
+                            href="./Producto.terraria.html"
                         >
                             <div class="card">
                                 <div class="card-header">
@@ -140,47 +229,10 @@
                             </div>
                         </a>
                     </div>
-                    <!--END CARD -->
-                    <!-- CARD -->
                     <div class="col-lg-4 col-md-6 col-sm-12">
                         <a
                             class="vinculotarjetas"
-                            href="./Producto-cuphead.html"
-                        >
-                            <div class="card">
-                                <div class="card-header">
-                                    <h3>Cuphead</h3>
-                                    <figure class="imagentarjeta">
-                                        <img
-                                            src="https://res.cloudinary.com/dyesgnzy5/image/upload/c_scale,w_400/v1635440974/0cd3145f36fbced9006cf6881cfb20372c044170_dixokb.jpg"
-                                            alt="Logo de Cuphead"
-                                            title="Logo de Cuphead"
-                                        />
-                                    </figure>
-                                </div>
-                                <div class="card-body">
-                                    <p class="card-text">
-                                        Nuestro último lanzamiento, para
-                                        disfrutar en solitario
-                                    </p>
-                                </div>
-                                <div class="card-footer">
-                                    El bosque de Nibel se está marchitando. Tras
-                                    una terrible tormenta que pone en marcha una
-                                    serie de acontecimientos devastadores, Ori
-                                    emprenderá un viaje para armarse de valentía
-                                    y enfrentarse a un enemigo espeluznante, y
-                                    así salvar el bosque de Nibel.
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <!--END CARD -->
-                    <!-- CARD -->
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <a
-                            class="vinculotarjetas"
-                            href="./Producto-amongus.html"
+                            href="./Producto.amongus.html"
                         >
                             <div class="card">
                                 <div class="card-header">
@@ -211,121 +263,44 @@
                             </div>
                         </a>
                     </div>
-                    <!--END CARD -->
-                    <!-- CARD -->
+
                     <div class="col-lg-4 col-md-6 col-sm-12">
                         <a
                             class="vinculotarjetas"
-                            href="./Producto-hollowknight.html"
+                            href="./Producto.cuphead.html"
                         >
                             <div class="card">
                                 <div class="card-header">
-                                    <h3>Hollow Knight</h3>
+                                    <h3>Among Us</h3>
                                     <figure class="imagentarjeta">
                                         <img
-                                            src="https://res.cloudinary.com/dyesgnzy5/image/upload/c_scale,w_400/v1635433653/hollow-knight_zfnk48.jpg"
-                                            alt="Logo de Hollow Knight"
-                                            title="Logo de Hollow Knight"
+                                            src="https://res.cloudinary.com/dyesgnzy5/image/upload/c_scale,w_400/v1635440974/0cd3145f36fbced9006cf6881cfb20372c044170_dixokb.jpg"
+                                            alt="Logo de Among Us"
+                                            title="Logo de Among Us"
                                         />
                                     </figure>
                                 </div>
                                 <div class="card-body">
                                     <p class="card-text">
-                                        Una aventura en solitario en un mundo
-                                        extraño
+                                        Nuestro último lanzamiento, para
+                                        disfrutar en solitario
                                     </p>
                                 </div>
                                 <div class="card-footer">
-                                    Bajo la deteriorada ciudad de Petrópolis
-                                    yace un antiguo reino en ruinas. A muchos
-                                    les atrae la vida bajo la superficie y van
-                                    en busca de riquezas, gloria o respuestas a
-                                    viejos enigmas. Hollow Knight es una
-                                    aventura de acción clásica en 2D ambientada
-                                    en un vasto mundo interconectado. Explora
-                                    cavernas tortuosas, ciudades antiguas y
-                                    páramos mortales.
+                                    El bosque de Nibel se está marchitando. Tras
+                                    una terrible tormenta que pone en marcha una
+                                    serie de acontecimientos devastadores, Ori
+                                    emprenderá un viaje para armarse de valentía
+                                    y enfrentarse a un enemigo espeluznante, y
+                                    así salvar el bosque de Nibel.
                                 </div>
                             </div>
                         </a>
                     </div>
-                    <!--END CARD -->
-                    <!-- CARD -->
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <a
-                            class="vinculotarjetas"
-                            href="./Producto-fallguys.html"
-                        >
-                            <div class="card">
-                                <div class="card-header">
-                                    <h3>Fall Guys</h3>
-                                    <figure class="imagentarjeta">
-                                        <img
-                                            src="https://res.cloudinary.com/dyesgnzy5/image/upload/c_scale,w_400/v1635433648/fall-guys_nlc9xh.jpg"
-                                            alt="Logo de Fall Guys"
-                                            title="Logo de Fall Guys"
-                                        />
-                                    </figure>
-                                </div>
-                                <div class="card-body">
-                                    <p class="card-text">
-                                        El juego de moda en aventuras
-                                        multijugador
-                                    </p>
-                                </div>
-                                <div class="card-footer">
-                                    Fall Guys: Ultimate Knockout enfrenta a
-                                    hordas de contendientes online en un alocado
-                                    enfrentamiento que se desarrolla ronda tras
-                                    ronda entre un caos creciente hasta que solo
-                                    queda un único vencedor. Supera obstáculos
-                                    estrafalarios, ábrete paso entre
-                                    competidores revoltosos y vence a las
-                                    inflexibles leyes de la física en tu
-                                    accidentado camino a la grandeza.
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <!--END CARD -->
-                    <!-- CARD -->
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <a
-                            class="vinculotarjetas"
-                            href="./Producto-brawlstars.html"
-                        >
-                            <div class="card">
-                                <div class="card-header">
-                                    <h3>Brawl Stars</h3>
-                                    <figure class="imagentarjeta">
-                                        <img
-                                            src="https://res.cloudinary.com/dyesgnzy5/image/upload/c_scale,w_400/v1635433632/brawl-stars_ekqmxa.jpg"
-                                            alt="Logo de Brawl Stars"
-                                            title="Logo de Brawl Stars"
-                                        />
-                                    </figure>
-                                </div>
-                                <div class="card-body">
-                                    <p class="card-text">
-                                        El juego para los que prefieren el móvil
-                                    </p>
-                                </div>
-                                <div class="card-footer">
-                                    Brawl Stars es un juego de batallas en
-                                    tiempo real, en el que dos equipos de tres
-                                    personajes cada uno tendrán que verse las
-                                    caras en un escenario lleno de obstáculos y
-                                    elementos con los que podremos interaccionar
-                                    . Nuestro objetivo: darle una buena lección
-                                    al equipo contrario.
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <!--END CARD -->
                 </div>
             </section>
-            <!--END GALERIA -->
+            <!--END CARDS -->
+            <!-- FOOTER -->
             <footer>
                 <div class="row">
                     <div class="col-md-12">
@@ -367,8 +342,8 @@
                     </div>
                 </div>
             </footer>
+            <!-- END FOOTER -->
         </div>
-
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>

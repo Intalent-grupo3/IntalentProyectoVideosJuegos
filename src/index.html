@@ -19,7 +19,11 @@
             href="https://use.fontawesome.com/releases/v5.15.4/css/v4-shims.css"
         />
         <link href="css/bootstrap.min.css" rel="stylesheet" />
-        <link href="css/style.css" rel="stylesheet" />
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        />
+        <link rel="stylesheet" href="./css/style.css" />
     </head>
 
     <body>
@@ -27,28 +31,57 @@
             <!-- HEADER -->
             <div class="row header">
                 <div class="col-md-12 container">
-                    <a class="navbar-brand" href="#">
-                        <img
-                            src="./images/logo.PNG"
-                            alt="Logo Morenus Gaming"
-                        />
-                    </a>
-                    <div class="barraEnunciado">
-                        <h1 class="titulo">Morenus Gaming</h1>
-                        <p>Mira que juegazos que tenemos montados.</p>
+                    <div class="menu">
+                        <nav class="navbar navbar-expand-lg navbar-light">
+                            <a class="navbar-brand" href="./index.html">
+                                <img
+                                    src="./images/logo-transparente.svg"
+                                    alt="Logo Morenus Gaming"
+                                />
+                            </a>
+                            <button
+                                class="navbar-toggler"
+                                type="button"
+                                data-toggle="collapse"
+                                data-target="#opciones"
+                            >
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="opciones">
+                                <ul class="nav navbar-bar">
+                                    <li class="nav-item">
+                                        <a
+                                            class="nav-link active"
+                                            href="index.html"
+                                        >
+                                            Home
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a
+                                            class="nav-link"
+                                            href="proyects.html"
+                                        >
+                                            Proyectos
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="equipo.html">
+                                            Equipo
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a
+                                            class="nav-link"
+                                            href="contacto.html"
+                                        >
+                                            Contacto
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
                     </div>
-                    <ul class="nav">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="index.html"
-                                >Home</a
-                            >
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="proyects.html"
-                                >Proyectos</a
-                            >
-                        </li>
-                    </ul>
                 </div>
             </div>
             <!-- END HEADER -->
@@ -306,14 +339,15 @@
                             <li><a href="#"> proyectos </a></li>
                         </ul>
                         <p><i class="far fa-copyright"></i>Copyright</p>
+                        <p>créditos</p>
                     </div>
                 </div>
             </footer>
             <!-- END FOOTER -->
         </div>
 
-        <script src="js/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/scripts.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     </body>
 </html>

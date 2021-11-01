@@ -5,7 +5,7 @@
     --color-yellow: #fbcc4c;
     --color-purple: #4a1c3e;
     --color-light: #cccccc;
-    --color-medium: #ffdbb3;
+    --color-medium: #252525;
     --color-dark: #222;
     --color-text-light: var(--color-light);
     --color-text-dark: var(--color-purple);
@@ -55,6 +55,7 @@ img {
 
 p {
     color: var(--color-text-light);
+    font-size: 16pt;
 }
 
 .titulo {
@@ -101,16 +102,16 @@ p {
     width: 130px;
 }
 
-.menu button{
+.menu button {
     background-color: var(--color-yellow);
 }
-.menu nav{
+.menu nav {
     background-color: var(--color-yellow);
 }
- .menu .navbar{
+.menu .navbar {
     background-color: var(--color-yellow) !important;
     padding: 0;
- }
+}
 .nav {
     display: flex;
     flex-wrap: wrap;
@@ -131,24 +132,24 @@ p {
     color: var(--color-yellow);
     background-color: var(--color-purple);
 }
-#opciones{
+#opciones {
     justify-content: flex-end;
 }
 @media all and (max-width: 991px) {
-    .navbar-brand{
+    .navbar-brand {
         text-align: center;
     }
-    #opciones{
+    #opciones {
         text-align: center;
     }
     .nav .nav-item {
         width: 100%;
         text-align: center;
     }
-    .menu button{
+    .menu button {
         margin: 0 auto;
-    }    
-    .menu .navbar{
+    }
+    .menu .navbar {
         padding-bottom: 1rem;
     }
 }
@@ -254,31 +255,82 @@ footer p {
 
 /* ----------quienes somos------------ */
 .q-somos {
-    padding: 60px 80px 40px 80px;
+    padding: 3em 6em;
 }
 
-.q-somos .text {
-    height: 100%;
+.q-somos .qs-intro {
+    width: 100%;
+    padding: 2.5em;
+    text-align: center;
+    background-color: var(--color-yellow);
+}
+.q-somos .qs-intro .titulo {
+    text-shadow: 5px 1px 0 var(--color-yellow);
+    color: var(--color-purple);
+    font-size: 3em;
+}
+
+.q-somos .qs-intro p {
+    background-color: var(--color-purple);
+    color: var(--color-yellow);
+    font-weight: 600;
+    letter-spacing: 3px;
+    padding: 5px 12px;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.q-somos .qs-content {
+    background-color: var(--color-purple);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    padding: 2em;
 }
-.q-somos .row {
-    margin: 0;
+
+.qs-content .titulo-seccion {
+    margin-bottom: 1em;
 }
+
+.qs-content .btn {
+    margin-top: 1em;
+}
+
 .q-somos img {
-    width: 100%;
     background: var(--color-dark);
     border: 2px solid var(--color-yellow);
-    color: var(--color-light);
     padding: 1rem;
     margin: 1rem;
+}
+
+@media all and (max-width: 960px) {
+    .q-somos .row {
+        flex-direction: column;
+    }
+    .qs-text,
+    .q-somos .imagen {
+        max-width: 100%;
+    }
+    .q-somos img {
+        margin: 1em 0;
+    }
+}
+
+@media all and (max-width: 840px) {
+    .q-somos {
+        padding: 2em 1em;
+    }
 }
 
 /*especialidadesYelder */
 .especialidades {
     text-align: center;
 }
+
+.especialidadesCards .row {
+    margin: 0;
+}
+
 .especialidades img {
     margin: 1rem;
 }

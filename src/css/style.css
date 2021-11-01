@@ -92,13 +92,17 @@ p {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .navbar-brand {
     margin: 0;
     padding: 10px;
     width: 130px;
+}
+
+.menu{
+    width: 100%;
 }
 
 .menu button{
@@ -114,7 +118,6 @@ p {
 .nav {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     align-items: center;
     height: 100%;
 }

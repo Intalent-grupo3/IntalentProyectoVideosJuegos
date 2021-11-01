@@ -132,6 +132,7 @@ p {
     color: var(--color-yellow);
     background-color: var(--color-purple);
 }
+
 #opciones {
     justify-content: flex-end;
 }
@@ -204,7 +205,13 @@ footer p {
     margin: 0 auto;
     color: var(--color-purple);
 }
-
+footer .nav-link {
+   font-size: x-large;
+}
+footer .nav-link:hover {
+    color: var(--color-yellow);
+    background-color: var(--color-purple);
+}
 /* ----------carouselYelder------------ */
 
 .barraEnunciado {

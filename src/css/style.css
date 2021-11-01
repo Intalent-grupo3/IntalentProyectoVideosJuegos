@@ -272,6 +272,11 @@ footer p {
 .especialidades {
     text-align: center;
 }
+
+.especialidadesCards .row {
+    margin: 0;
+}
+
 .especialidades img {
     margin: 1rem;
 }

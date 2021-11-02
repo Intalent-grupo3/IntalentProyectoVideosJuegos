@@ -631,7 +631,7 @@ footer .nav-link:hover {
 }
 
 .btn-primary {
-  color: #fff;
+  color: var(--color-yellow);
   background-color: var(--color-yellow);
   border-color: var(--color-yellow);
 }
@@ -690,25 +690,22 @@ section .section-title {
 }
 
 .frontside .card {
-  background-color: var(--color-yellow) !important;
+  border-color: var(--color-yellow) !important;
 }
 .backside .card {
   padding-top: 0;
-  background-color: var(--color-yellow) !important;
+  border-color: var(--color-yellow) !important;
 }
 .backside {
   position: absolute;
   top: 0;
   left: 0;
-  background-color: var(--color-yellow);
+  border-color: var(--color-yellow);
   -webkit-transform: rotateY(-180deg);
   -moz-transform: rotateY(-180deg);
   -o-transform: rotateY(-180deg);
   -ms-transform: rotateY(-180deg);
   transform: rotateY(-180deg);
-  -webkit-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
-  -moz-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
-  box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
 }
 
 .frontside,
@@ -738,6 +735,25 @@ section .section-title {
   font-size: 1.5rem;
 }
 
+.backside .card .fa-facebook,
+.fa-twitter,
+.fa-skype,
+.fa-google {
+  color: var(--color-yellow);
+}
+.backside .card .fa-facebook:hover {
+  color: var(--color-purple);
+}
+.backside .card .fa-twitter:hover {
+  color: var(--color-purple);
+}
+.backside .card .fa-skype:hover {
+  color: var(--color-purple);
+}
+.backside .card .fa-google:hover {
+  color: var(--color-purple);
+}
+
 .backside .card ul {
   margin-top: 1.5rem;
 }
@@ -746,8 +762,11 @@ section .section-title {
   margin-top: 1.5rem;
 }
 
-.frontside .card .card-title,
 .backside .card .card-title {
+  margin-top: 5rem;
+  color: var(--color-yellow) !important;
+}
+.frontside .card .card-title {
   margin-top: 3rem;
   color: var(--color-yellow) !important;
 }
@@ -755,6 +774,5 @@ section .section-title {
 .frontside .card .card-body img {
   margin-top: 4rem;
   width: 10rem;
-  height: 10rem;
   border-radius: 50%;
 }

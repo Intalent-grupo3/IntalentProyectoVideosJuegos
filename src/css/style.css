@@ -838,7 +838,9 @@ section .section-title {
     display: flex;
     flex-wrap: wrap;
 }
-
+.news .section-header{
+    margin-bottom: 2em;
+}
 .news .card {
     display: flex;
     flex-direction: column;

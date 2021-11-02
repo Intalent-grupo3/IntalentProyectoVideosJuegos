@@ -89,7 +89,7 @@ p {
 .es .español{
 background-color: var(--color-purple);
 }
-
+.en .ingles{background-color: var(--color-purple);}
 .header {
     background-color: var(--color-yellow);
 }

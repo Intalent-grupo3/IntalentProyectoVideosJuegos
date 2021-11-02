@@ -103,16 +103,16 @@ p {
     justify-content: space-between;
 }
 .header .idioma {
-    height: 94.08px;
+  height: 89.75px;;
 }
 
 .header .nav-item img {
     max-width: 100%;
 }
 .navbar-brand {
-    margin: 0;
-    padding: 10px;
-    width: 130px;
+  margin: 0;
+  padding: 5px;
+  width: 130px;
 }
 
 .menu {
@@ -137,11 +137,11 @@ p {
 }
 
 .nav .nav-link {
-    color: var(--color-purple);
-    font-size: 1.2em;
-    font-weight: 700;
-    text-transform: uppercase;
-    padding: 1.7em 1.7rem;
+  color: var(--color-purple);
+  font-size: 1.15em;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 1.7em 1.7rem;
 }
 
 .nav .nav-link:hover {
@@ -153,29 +153,29 @@ p {
     justify-content: flex-end;
 }
 @media all and (max-width: 992px) {
-    .navbar-brand {
-        text-align: center;
-    }
-    #opciones {
-        text-align: center;
-    }
-    .nav .nav-item {
-        width: 100%;
-        text-align: center;
-    }
-    .menu button {
-        margin: 0 auto;
-    }
-    .menu .navbar {
-        padding-bottom: 1rem;
-    }
-    .header .idioma {
-        height: 94.08px;
-    }
-    .header .idioma img {
-        height: 33px;
-        width: 50px;
-    }
+  .navbar-brand {
+    text-align: center;
+  }
+  #opciones {
+    text-align: center;
+  }
+  .nav .nav-item {
+    width: 100%;
+    text-align: center;
+  }
+  .menu button {
+    margin: 0 auto;
+  }
+  .menu .navbar {
+    padding-bottom: 1rem;
+  }
+  .header .idioma {
+    height: 89.75px;
+  }
+  .header .idioma img {
+    height: 33px;
+    width: 50px;
+  }
 }
 
 /* FOOTER */

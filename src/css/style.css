@@ -139,7 +139,7 @@ p {
     font-size: 1.2em;
     font-weight: 700;
     text-transform: uppercase;
-    padding: 1.7em 3rem;
+    padding: 1.7em 1.7rem;
 }
 
 .nav .nav-link:hover {
@@ -150,7 +150,7 @@ p {
 #opciones {
     justify-content: flex-end;
 }
-@media all and (max-width: 991px) {
+@media all and (max-width: 992px) {
     .navbar-brand {
         text-align: center;
     }
@@ -175,6 +175,7 @@ p {
         width: 50px;
     }
 }
+
 
 /* FOOTER */
 footer {
@@ -216,6 +217,7 @@ footer .iconosredes a {
 footer ul {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     margin-left: 0;
     padding-left: 0;
     padding: 0;
@@ -232,6 +234,16 @@ footer .nav-link {
 footer .nav-link:hover {
     color: var(--color-yellow);
     background-color: var(--color-purple);
+}
+
+@media all and (max-width: 541px){
+    footer .iconosredes{
+        font-size: 0.7rem;
+    }
+    footer .menufooter li{
+        width: 50%;
+        padding-left: 0;
+    }
 }
 /* ----------carouselYelder------------ */
 
@@ -384,6 +396,7 @@ footer .nav-link:hover {
     text-align: center;
 }
 
+
 /*Producto Galeria*/
 
 .intro {
@@ -422,7 +435,7 @@ footer .nav-link:hover {
     color: var(--color-light);
     padding: 1rem;
     margin: 1rem;
-    height: 600px;
+    height: 660px;
 }
 
 .card-header {
@@ -434,6 +447,7 @@ footer .nav-link:hover {
     font-weight: 700;
     text-align: center;
     background-color: var(--color-dark);
+    
 }
 .card-body {
     background: var(--color-dark);
@@ -469,6 +483,17 @@ footer .nav-link:hover {
 .generos li {
     text-decoration: none;
     color: white;
+}
+@media all and (max-width: 768px){
+    .galeria .card{
+        height: fit-content !important;
+    }
+}
+
+@media all and (max-width: 822px){
+    .galeria .card{
+        height: 670px;
+    }
 }
 
 /* PRODUCT */

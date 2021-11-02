@@ -89,9 +89,11 @@ p {
 .es .español {
     background-color: var(--color-purple);
 }
+
 .en .ingles {
     background-color: var(--color-purple);
 }
+
 .header {
     background-color: var(--color-yellow);
 }
@@ -102,17 +104,20 @@ p {
     align-items: center;
     justify-content: space-between;
 }
+
 .header .idioma {
-  height: 89.75px;;
+    height: 89.75px;
+    ;
 }
 
 .header .nav-item img {
     max-width: 100%;
 }
+
 .navbar-brand {
-  margin: 0;
-  padding: 5px;
-  width: 130px;
+    margin: 0;
+    padding: 5px;
+    width: 130px;
 }
 
 .menu {
@@ -122,13 +127,16 @@ p {
 .menu button {
     background-color: var(--color-yellow);
 }
+
 .menu nav {
     background-color: var(--color-yellow);
 }
+
 .menu .navbar {
     background-color: var(--color-yellow) !important;
     padding: 0;
 }
+
 .nav {
     display: flex;
     flex-wrap: wrap;
@@ -137,11 +145,11 @@ p {
 }
 
 .nav .nav-link {
-  color: var(--color-purple);
-  font-size: 1.15em;
-  font-weight: 700;
-  text-transform: uppercase;
-  padding: 1.7em 1.7rem;
+    color: var(--color-purple);
+    font-size: 1.15em;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 1.7em 1.7rem;
 }
 
 .nav .nav-link:hover {
@@ -152,30 +160,37 @@ p {
 #opciones {
     justify-content: flex-end;
 }
+
 @media all and (max-width: 992px) {
-  .navbar-brand {
-    text-align: center;
-  }
-  #opciones {
-    text-align: center;
-  }
-  .nav .nav-item {
-    width: 100%;
-    text-align: center;
-  }
-  .menu button {
-    margin: 0 auto;
-  }
-  .menu .navbar {
-    padding-bottom: 1rem;
-  }
-  .header .idioma {
-    height: 89.75px;
-  }
-  .header .idioma img {
-    height: 33px;
-    width: 50px;
-  }
+    .navbar-brand {
+        text-align: center;
+    }
+
+    #opciones {
+        text-align: center;
+    }
+
+    .nav .nav-item {
+        width: 100%;
+        text-align: center;
+    }
+
+    .menu button {
+        margin: 0 auto;
+    }
+
+    .menu .navbar {
+        padding-bottom: 1rem;
+    }
+
+    .header .idioma {
+        height: 89.75px;
+    }
+
+    .header .idioma img {
+        height: 33px;
+        width: 50px;
+    }
 }
 
 /* FOOTER */
@@ -184,6 +199,7 @@ footer {
     background-color: var(--color-yellow);
     color: var(--color-purple);
 }
+
 footer .row {
     background-color: var(--color-yellow);
 }
@@ -213,9 +229,10 @@ footer .iconosredes a {
     text-decoration: none;
 
     font-size: 2.7em;
-    
+
 }
-footer .iconosredes i{
+
+footer .iconosredes i {
     color: var(--color-purple);
 }
 
@@ -233,9 +250,11 @@ footer p {
     margin: 0 auto;
     color: var(--color-purple);
 }
+
 footer .nav-link {
     font-size: x-large;
 }
+
 footer .nav-link:hover {
     color: var(--color-yellow);
     background-color: var(--color-purple);
@@ -245,11 +264,13 @@ footer .nav-link:hover {
     footer .iconosredes {
         font-size: 0.7rem;
     }
+
     footer .menufooter li {
         width: 50%;
         padding-left: 0;
     }
 }
+
 /* ----------carouselYelder------------ */
 
 .barraEnunciado {
@@ -257,10 +278,12 @@ footer .nav-link:hover {
     padding: 1em;
     text-align: center;
 }
+
 .barraEnunciado .titulo {
     text-shadow: 5px 1px 0 var(--color-yellow);
     font-size: 3em;
 }
+
 @media all and (max-width: 1200px) {
     .barraEnunciado {
         width: 100%;
@@ -313,6 +336,7 @@ footer .nav-link:hover {
     text-align: center;
     background-color: var(--color-yellow);
 }
+
 .q-somos .qs-intro .titulo {
     text-shadow: 5px 1px 0 var(--color-yellow);
     color: var(--color-purple);
@@ -356,10 +380,12 @@ footer .nav-link:hover {
     .q-somos .row {
         flex-direction: column;
     }
+
     .qs-text,
     .q-somos .imagen {
         max-width: 100%;
     }
+
     .q-somos img {
         margin: 1em 0;
     }
@@ -392,11 +418,13 @@ footer .nav-link:hover {
 .especialidadesCards h3 {
     text-align: center;
 }
+
 .especialidadesCards .card,
 .galeria .card {
     margin: 1rem;
     margin-bottom: 3rem;
 }
+
 .card-header {
     text-align: center;
 }
@@ -406,16 +434,19 @@ footer .nav-link:hover {
 .intro {
     margin: 0.5rem;
 }
+
 .intro p {
     font-weight: 700;
     font-size: 1.4rem;
     text-align: center;
 }
+
 .intro h1 {
     text-align: center;
     color: white;
     padding-bottom: 1rem;
 }
+
 .intro p {
     padding: 0rem 3rem;
 }
@@ -426,13 +457,16 @@ footer .nav-link:hover {
     margin: 0 2rem;
     padding: 1rem;
 }
+
 .especialidadesCards .row {
     display: flex;
     flex-wrap: wrap;
 }
+
 .encabezadotarjetas {
     padding-bottom: 2em;
 }
+
 .card {
     background: var(--color-dark);
     border: 1px solid var(--color-yellow);
@@ -447,19 +481,23 @@ footer .nav-link:hover {
     padding: 0.75rem 1.25rem;
     color: var(--color-light);
 }
+
 .card-text {
     font-weight: 700;
     text-align: center;
     background-color: var(--color-dark);
 }
+
 .card-body {
     background: var(--color-dark);
 }
+
 .card-footer {
     background-color: #222;
     text-align: justify;
     color: var(--color-light);
 }
+
 .vinculotarjetas {
     display: block;
     transition: transform 0.2s;
@@ -468,9 +506,11 @@ footer .nav-link:hover {
 .card .imagentarjeta {
     max-width: 100%;
 }
+
 .card .imagentarjeta img {
     max-width: 100%;
 }
+
 .vinculotarjetas:hover {
     transform: scale(1.1);
 }
@@ -478,15 +518,18 @@ footer .nav-link:hover {
 .vinculotarjetas:hover .card {
     border: 3px solid #fbcc4c;
 }
+
 .generos {
     display: flex;
     align-items: stretch;
     justify-content: space-around;
 }
+
 .generos li {
     text-decoration: none;
     color: white;
 }
+
 @media all and (max-width: 768px) {
     .galeria .card {
         height: fit-content !important;
@@ -694,11 +737,13 @@ section .section-title {
 }
 
 .frontside .card {
-    border:3px solid var(--color-yellow) !important;
+    border: 3px solid var(--color-yellow) !important;
 }
+
 .backside .card {
     padding-top: 0;
 }
+
 .backside {
     position: absolute;
     top: 0;
@@ -714,23 +759,28 @@ section .section-title {
     -moz-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
     box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
 }
+
 .backside .card .fa-facebook,
 .fa-twitter,
 .fa-skype,
 .fa-google {
-color: var(--color-yellow);
+    color: var(--color-yellow);
 }
+
 .backside .card .fa-facebook:hover {
-color: var(--color-purple);
+    color: var(--color-purple);
 }
+
 .backside .card .fa-twitter:hover {
-color: var(--color-purple);
+    color: var(--color-purple);
 }
+
 .backside .card .fa-skype:hover {
-color: var(--color-purple);
+    color: var(--color-purple);
 }
+
 .backside .card .fa-google:hover {
-color: var(--color-purple);
+    color: var(--color-purple);
 }
 
 .frontside,

@@ -213,6 +213,10 @@ footer .iconosredes a {
     text-decoration: none;
 
     font-size: 2.7em;
+    
+}
+footer .iconosredes i{
+    color: var(--color-purple);
 }
 
 footer ul {

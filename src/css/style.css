@@ -768,9 +768,18 @@ section .section-title {
 }
 
 .news .card {
-    height: 630px;
     display: flex;
     flex-direction: column;
+}
+
+@media all and (max-width: 1200px) {
+    .news .col-lg-4 {
+        padding: 0;
+    }
+
+    .galeria {
+        margin: 0;
+    }
 }
 
 .news .card-header {

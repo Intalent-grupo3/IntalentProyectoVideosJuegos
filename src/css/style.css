@@ -103,7 +103,7 @@ p {
   justify-content: space-between;
 }
 .header .idioma {
-  height: 94.08px;
+  height: 89.75px;;
 }
 
 .header .nav-item img {
@@ -111,7 +111,7 @@ p {
 }
 .navbar-brand {
   margin: 0;
-  padding: 10px;
+  padding: 5px;
   width: 130px;
 }
 
@@ -138,7 +138,7 @@ p {
 
 .nav .nav-link {
   color: var(--color-purple);
-  font-size: 1.2em;
+  font-size: 1.15em;
   font-weight: 700;
   text-transform: uppercase;
   padding: 1.7em 1.7rem;
@@ -170,7 +170,7 @@ p {
     padding-bottom: 1rem;
   }
   .header .idioma {
-    height: 94.08px;
+    height: 89.75px;
   }
   .header .idioma img {
     height: 33px;

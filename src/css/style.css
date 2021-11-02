@@ -176,7 +176,6 @@ p {
     }
 }
 
-
 /* FOOTER */
 footer {
     text-align: center;
@@ -236,11 +235,11 @@ footer .nav-link:hover {
     background-color: var(--color-purple);
 }
 
-@media all and (max-width: 541px){
-    footer .iconosredes{
+@media all and (max-width: 541px) {
+    footer .iconosredes {
         font-size: 0.7rem;
     }
-    footer .menufooter li{
+    footer .menufooter li {
         width: 50%;
         padding-left: 0;
     }
@@ -396,7 +395,6 @@ footer .nav-link:hover {
     text-align: center;
 }
 
-
 /*Producto Galeria*/
 
 .intro {
@@ -447,7 +445,6 @@ footer .nav-link:hover {
     font-weight: 700;
     text-align: center;
     background-color: var(--color-dark);
-    
 }
 .card-body {
     background: var(--color-dark);
@@ -484,14 +481,14 @@ footer .nav-link:hover {
     text-decoration: none;
     color: white;
 }
-@media all and (max-width: 768px){
-    .galeria .card{
+@media all and (max-width: 768px) {
+    .galeria .card {
         height: fit-content !important;
     }
 }
 
-@media all and (max-width: 822px){
-    .galeria .card{
+@media all and (max-width: 822px) {
+    .galeria .card {
         height: 670px;
     }
 }
@@ -620,4 +617,63 @@ footer .nav-link:hover {
 .map-container iframe {
     width: 100%;
     height: 100%;
+}
+
+/* NEWS */
+
+.news {
+    margin-top: 1em;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.news .card {
+    height: 630px;
+    display: flex;
+    flex-direction: column;
+}
+
+.news .card-header {
+    padding: 0;
+}
+
+.news .tag {
+    display: inline-block;
+    color: var(--color-light);
+    background-color: var(--color-purple);
+    padding: 0.2em 0.4em;
+    text-transform: uppercase;
+    font-family: var(--font-title);
+    text-align: left;
+}
+
+.news .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.news .card-text {
+    text-align: left;
+}
+
+.pagination {
+    display: inline-block;
+    margin: 0 auto;
+}
+
+.pagination a {
+    color: var(--color-yellow);
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.pagination a.active {
+    background-color: var(--color-yellow);
+    color: var(--color-purple);
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
 }

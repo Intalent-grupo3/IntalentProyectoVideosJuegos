@@ -85,6 +85,11 @@ p {
 /*Roberto*/
 
 /* HEADER */
+
+.es .español{
+background-color: var(--color-purple);
+}
+
 .header {
     background-color: var(--color-yellow);
 }
@@ -95,7 +100,14 @@ p {
     align-items: center;
     justify-content: space-between;
 }
+.header .idioma{
+    height: 94.08px;
+    
+}
 
+.header .nav-item img{
+    max-width: 100%;
+}
 .navbar-brand {
     margin: 0;
     padding: 10px;
@@ -155,6 +167,14 @@ p {
     }
     .menu .navbar {
         padding-bottom: 1rem;
+    }
+    .header .idioma{
+        height: 94.08px;
+        
+    }
+    .header .idioma img{
+        height: 33px;
+        width: 50px;
     }
 }
 

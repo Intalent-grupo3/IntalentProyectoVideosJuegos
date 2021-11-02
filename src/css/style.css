@@ -86,8 +86,8 @@ p {
 
 /* HEADER */
 
-.es .español{
-background-color: var(--color-purple);
+.es .español {
+    background-color: var(--color-purple);
 }
 
 .header {
@@ -100,12 +100,11 @@ background-color: var(--color-purple);
     align-items: center;
     justify-content: space-between;
 }
-.header .idioma{
+.header .idioma {
     height: 94.08px;
-    
 }
 
-.header .nav-item img{
+.header .nav-item img {
     max-width: 100%;
 }
 .navbar-brand {
@@ -168,11 +167,10 @@ background-color: var(--color-purple);
     .menu .navbar {
         padding-bottom: 1rem;
     }
-    .header .idioma{
+    .header .idioma {
         height: 94.08px;
-        
     }
-    .header .idioma img{
+    .header .idioma img {
         height: 33px;
         width: 50px;
     }
@@ -515,9 +513,12 @@ footer .nav-link:hover {
 .producto .generos {
     margin-top: 1em;
     background-color: var(--color-purple);
-    list-style: square;
-    padding: 1em 0;
+    list-style: none;
+    padding: 1em;
     width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 .producto .generos li {
@@ -525,11 +526,13 @@ footer .nav-link:hover {
     color: var(--color-yellow);
     font-weight: 700;
     font-size: 1.5em;
+    padding: 0.5em 1em;
 }
 
 @media all and (max-width: 970px) {
     .producto {
         flex-direction: column;
+        padding: 1em 0;
     }
 
     .producto-content,

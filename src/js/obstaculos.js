@@ -6,7 +6,7 @@ function startGame() {
     obstacle = new component(50, 50, 'green', 400, 200);
 }
 
-var gameArea = {
+let gameArea = {
     canvas: document.querySelector('#juego2'),
     start: function () {
         this.canvas.width = 640;
@@ -40,12 +40,7 @@ function updateGameArea() {
     gameArea.frameNo += 1;
     if (gameArea.frameNo == 1 || everyinterval(200)) {
         x = gameArea.canvas.width;
-        y =
-            gameArea.canvas.height -
-            70 -
-            Math.random() * gameArea.canvas.height +
-            70;
-        console.log(y);
+        y = Math.random() * (gameArea.canvas.height - 50);
         obstacles.push(new component(50, 50, 'green', x, y));
     }
     for (i = 0; i < obstacles.length; i += 1) {

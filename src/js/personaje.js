@@ -5,6 +5,7 @@ function startGame() {
     personaje = new component(50, 50, 'green', 20, 220);
 }
 
+
 var gameArea = {
     canvas: document.querySelector('#juego2'),
     start: function () {
@@ -19,6 +20,7 @@ var gameArea = {
         window.addEventListener("keyup",function(e){
             gameArea.keys[e.key] = (e.type=="keydown");
         })
+        
     },
     clear: function () {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -47,9 +49,7 @@ function updateGameArea() {
     gameArea.clear();
     personaje.speedX=0;
     personaje.speedY=0;
-    if (gameArea.keys && gameArea.keys["ArrowLeft"] || gameArea.keys && gameArea.keys["a"] ) {personaje.speedX = -1.5;
-        console.log(personaje.speedX); }
-    
+    if (gameArea.keys && gameArea.keys["ArrowLeft"] || gameArea.keys && gameArea.keys["a"] ) {personaje.speedX = -1.5; }
     if (gameArea.keys && gameArea.keys["ArrowRight"] || gameArea.keys && gameArea.keys["d"] ) {personaje.speedX = 1.5; }
     if (gameArea.keys && gameArea.keys["ArrowUp"] || gameArea.keys && gameArea.keys["w"] ) {personaje.speedY = -1.5; }
     if (gameArea.keys && gameArea.keys["ArrowDown"] || gameArea.keys && gameArea.keys["s"] ) {personaje.speedY = 1.5; }

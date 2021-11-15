@@ -10,3 +10,18 @@ async function getPalabra() {
 }
 
 getPalabra()
+
+function temporizador() {
+    var segundos = 30;
+  setInterval(function() {
+      
+    document.getElementById("temporizador").innerHTML = segundos;
+    segundos--;
+    if (segundos <= 0) {
+        document.getElementById("temporizador").innerHTML = "TIEMPO COMPLETADO";
+
+    }
+    
+  }, 1000);
+}
+temporizador()

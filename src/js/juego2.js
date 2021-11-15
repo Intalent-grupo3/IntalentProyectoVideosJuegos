@@ -54,6 +54,18 @@ function component(width, height, color, x, y) {
     this.newPos = function () {
         this.x += this.speedX;
         this.y += this.speedY;
+        if (this.x > 590) {
+            this.x = 590;
+        }
+        if (this.x < 0) {
+            this.x = 0;
+        }
+        if (this.y > 440) {
+            this.y = 440;
+        }
+        if (this.y < 0) {
+            this.y = 0;
+        }
     };
     // -------------------------------------------------------------------------Colision
     this.collision = function (obstacle) {

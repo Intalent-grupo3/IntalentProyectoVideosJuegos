@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego Keyboard</title>
+</head>
+
+<body>
+    <header class="">
+        <h1> Juego de Keyboard</h1>
+    </header>
+    <div class="opciones de juego">
+        <!-- Introducción al juego -->
+        <div class="row mt-5">
+            <div class="container col-md-8">
+                <div class="instrucciones">
+                    <h5>Instrucciones🤔</h5>
+                    <p>Escribe las palabras que te indican lo más rápido posible, mientras más palabras consigas, tu
+                        puntuación irá aumentando
+                        hasta la estratosfera.
+                    </p>
+                </div>
+                <div class="menu-dificultad">
+                    <h5>Puedes escoger tu nivel de dificultad</h5>
+                    <button id="easy">Fácil modo Lechón 🐷🌿</button>
+                    <button id="medium">Medio modo kung fu Panda 🐼🎋</button>
+                    <button id="hard">Dificil modo Danger 😱🔥</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="container text-center">
+            <!-- input Palabra -->
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <p class="intro">Escribe la palabra dentro <span class="text-success" id="segundos"><br></span>
+                        Segundos:
+                    </p>
+                    <h2 class="display-2 mb-3" id="palabra-actual"></h2>
+                    <h4 class="mt-2" id="message"></h4>
+                    <input type="text" class="form-control form-control-lg" placeholder="Escribe..." id="palabra-input"
+                        autofocus>
+
+
+                    <!-- Tiempo -->
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            <h3>Tiempo que falta: <span id="tiempo">0</span></h3>
+                        </div>
+                        <div class="col-md-6">
+                            <h3>Puntuacion: <span id="score">0</span></h3>
+                        </div>
+                        <div class="col-md-12">
+                            <h4>Puntuacion Maxima: <span id="high-score">0</span></h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+
+        </footer>
+    </div>
+
+
+</body>
+
+</html>

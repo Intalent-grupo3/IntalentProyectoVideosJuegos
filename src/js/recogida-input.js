@@ -19,6 +19,17 @@ const facilBtn = document.querySelector('#easy');
 const medioBtn = document.querySelector('#medium');
 const dificilBtn = document.querySelector('#hard');
 
+async function getPalabra() {
+    palabraActual;
+    fetch('https://palabras-aleatorias-public-api.herokuapp.com/random')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("palabra-enunciado").innerHTML = data.body.Word;
+            palabraActual = data.body.Word;
+        });
+}
+
+
 function seleccionarNivel(e) {
     if (e.target === facilBtn) {
         nivelActual = niveles.facil;
@@ -27,19 +38,20 @@ function seleccionarNivel(e) {
     } else if (e.target === dificilBtn) {
         currentLevel = niveles.dificil;
     }
+    iniciarJuego();
 }
 
-function palabrasCorrectas() {
+function iniciarJuego() {
+    //Se agregan los segundos en el display
+    segundos.innerHTML = nivelActual;
+    //Se cargan las palabras
+    getPalabra().palabraActual;
+    console.log(palabraActual);
 
-    if (palabraInput.value === palabraActual.innerHTML) {
-        mensaje.innerHTML = 'Excelente, sigue con otra palabra 😀';
-        return true;
-    } else {
-        mensaje.innerHTML = 'Mal muy mal Lechón 🙄';
-        return false;
-    }
+    palabraInput.addEventListener('input', empezarJuego);
+
 }
-
+iniciarJuego();
 
 function empezarJuego() {
     palabraInput.value = palabraInput.value.toLowerCase();
@@ -65,3 +77,18 @@ function empezarJuego() {
     puntuacionDisplay.innerHTML = puntuacion;
     puntuacionMaxima.innerHTML = maximaPuntuacion;
 }
+
+
+function palabrasCorrectas() {
+    getPalabra()
+    if (palabraInput.value === palabraActual.innerHTML) {
+        mensaje.innerHTML = 'Excelente, sigue con otra palabra 😀';
+        return true;
+    } else {
+        mensaje.innerHTML = 'Mal muy mal Lechón 🙄';
+        return false;
+    }
+}
+
+
+

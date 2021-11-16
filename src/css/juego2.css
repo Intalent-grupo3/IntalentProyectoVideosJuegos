@@ -46,6 +46,7 @@
     margin: 0 auto;
     width: 100%;
     background-color: var(--color-yellow);
+    border: 2px solid var(--color-yellow);
     padding: 1em 0;
     font-family: var(--font-title);
     font-size: 1.2em;
@@ -53,6 +54,12 @@
     text-transform: uppercase;
     font-weight: 700;
     color: var(--color-purple);
+}
+
+.container #menu #botoninicio:hover {
+    background-color: var(--color-purple);
+    color: var(--color-yellow);
+    cursor: pointer;
 }
 
 .container #cronometro {

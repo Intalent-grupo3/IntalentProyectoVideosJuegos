@@ -14,6 +14,7 @@ function startGame() {
     personaje = new component(50, 50, 'red', 20, 220);
     resetcronometro();
     iniciarcronometro();
+    document.querySelector("#menu").style.display="none";
 }
 
 let gameArea = {
@@ -42,6 +43,8 @@ let gameArea = {
     end: function () {
         clearInterval(this.interval);
         pararcronometro();
+        document.querySelector("#botoninicio").value="reiniciar";
+        document.querySelector("#menu").style.display="block";
     },
 };
 // --------------------------------------------------------------------------Declaración de componente
@@ -220,4 +223,4 @@ function cronometro(){
 }
 
 
-startGame();
+document.querySelector("#botoninicio").addEventListener("click",startGame);

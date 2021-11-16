@@ -31,6 +31,7 @@ function startGame() {
     resetcronometro();
     iniciarcronometro();
     document.querySelector('#menu').style.display = 'none';
+    document.querySelector('#imagenBox').style.display = 'none';
 }
 
 let gameArea = {

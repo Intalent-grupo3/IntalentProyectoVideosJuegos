@@ -4,7 +4,7 @@ let personaje;
 let fondo;
 let puntos = 0;
 let hora;
-let puntuacion ;
+let puntuacion;
 
 // -----------------------------------------------------------------------Inicio del juego
 function startGame() {
@@ -226,12 +226,12 @@ function pararcronometro() {
 function resetcronometro() {
     clearInterval(hora);
     puntos = 0;
-    document.querySelector('#puntos').innerHTML = 'Puntuación:' + puntos;
+    document.querySelector('#cronoText').innerHTML = 'Puntos: ';
+    document.querySelector('#puntos').innerHTML = puntos;
 }
 function cronometro() {
-
     puntos++;
-    document.querySelector('#puntos').innerHTML = 'Puntuación:' + puntos;
+    document.querySelector('#puntos').innerHTML = puntos;
 }
 
 document.querySelector('#botoninicio').addEventListener('click', startGame);

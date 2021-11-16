@@ -58,7 +58,6 @@
 .container #cronometro {
     position: absolute;
     width: 100%;
-
     text-align: center;
     text-transform: uppercase;
 }
@@ -67,4 +66,10 @@
     font-family: var(--font-title);
     font-weight: 700;
     color: var(--color-yellow);
+}
+
+.container #cronometro #puntos {
+    display: inline-block;
+    width: 60px;
+    text-align: center;
 }

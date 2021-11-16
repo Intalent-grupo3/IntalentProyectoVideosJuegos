@@ -5,11 +5,8 @@ let fondo;
 let puntos = 0;
 let hora;
 let puntuacion;
-let leaderscore = [0, 0, 0, 0, 0];
-let leaderplayer = [0, 0, 0, 0, 0];
-
-
-
+let leaderscore = ['', '', '', '', ''];
+let leaderplayer = ['', '', '', '', ''];
 
 // -----------------------------------------------------------------------Inicio del juego
 function startGame() {
@@ -34,6 +31,7 @@ function startGame() {
     iniciarcronometro();
     document.querySelector('#menu').style.display = 'none';
     document.querySelector('#imagenBox').style.display = 'none';
+    leaderboard.removeChild(document.querySelector('#leadList'));
 }
 
 let gameArea = {
@@ -66,7 +64,6 @@ let gameArea = {
         checkleaderboard();
         document.querySelector('#botoninicio').value = 'reiniciar';
         document.querySelector('#menu').style.display = 'block';
-
     },
 };
 // --------------------------------------------------------------------------Declaración de componente
@@ -229,7 +226,6 @@ function iniciarcronometro() {
 function pararcronometro() {
     clearInterval(hora);
     puntuacion = puntos;
-
 }
 
 function resetcronometro() {
@@ -254,8 +250,8 @@ function checkleaderboard() {
         leaderscore = JSON.parse(localStorage.getItem('puntuaciones'));
         console.log(leaderscore);
     } else {
-        leaderscore = [0, 0, 0, 0, 0];
-        leaderplayer = [0, 0, 0, 0, 0];
+        leaderscore = ['', '', '', '', ''];
+        leaderplayer = ['', '', '', '', ''];
     }
     console.log(leaderscore);
     for (let i = 0; i < 5; i++) {
@@ -267,50 +263,61 @@ function checkleaderboard() {
     if (checking == 1) {
         nameWinner();
     } else {
-        
         displayLeaderboard();
     }
 }
 
 let leaderboard = document.querySelector('#leaderboard');
 
-
-
 function nameWinner() {
+    document.querySelector('#botoninicio').style.display = 'none';
     let winnerInput = document.createElement('INPUT');
     winnerInput.setAttribute('type', 'text');
     winnerInput.setAttribute('id', 'winnerInput');
     let winnerSubmit = document.createElement('INPUT');
     winnerSubmit.setAttribute('type', 'submit');
     winnerSubmit.setAttribute('id', 'winnerSubmit');
+    winnerSubmit.setAttribute('value', 'Incluye tu nombre');
     leaderboard.appendChild(winnerInput);
     leaderboard.appendChild(winnerSubmit);
-    winnerSubmit.addEventListener('click', updatearleaderboard());
+    winnerSubmit.addEventListener('click', updatearleaderboard);
+    console.log('entra en crea input');
 }
 
 function displayLeaderboard() {
-    leaderboard.innerHTML="";
+    document.querySelector('#botoninicio').style.display = 'block';
+    console.log('entra en displayLeaderboard');
+    let winnerInput = document.querySelector('#winnerInput');
+    let winnerSubmit = document.querySelector('#winnerSubmit');
+    if (winnerInput && winnerSubmit) {
+        console.log('borra inputs');
+        leaderboard.removeChild(winnerInput);
+        leaderboard.removeChild(winnerSubmit);
+    }
 
     let leadList = document.createElement('ol');
     leadList.setAttribute('id', 'leadList');
-    for (let i = 0; 1 < 5; i++) {
-        let leadPlayer = document.createElement('li');
-        let rowName = document.createElement('span');
-        let spanName = document.createTextNode(leaderplayer[i]);
-        rowName.setAttribute('id', 'rowName');
-        rowName.appendChild(spanName);
-        let rowScore = document.createElement('span');
-        let spanScore = document.createTextNode(leaderscore[i]);
-        rowScore.setAttribute('id', 'rowScore');
-        rowScore.appendChild(spanScore);
-        leadPlayer.appendChild(rowName);
-        leadPlayer.appendChild(rowScore);
-        leadList.appendChild(leadPlayer);
+    for (let i = 0; i < 5; i++) {
+        if (leaderscore[i] != '') {
+            let leadPlayer = document.createElement('li');
+            let rowName = document.createElement('span');
+            let spanName = document.createTextNode(leaderplayer[i]);
+            rowName.setAttribute('id', 'rowName');
+            rowName.appendChild(spanName);
+            let rowScore = document.createElement('span');
+            let spanScore = document.createTextNode(leaderscore[i]);
+            rowScore.setAttribute('id', 'rowScore');
+            rowScore.appendChild(spanScore);
+            leadPlayer.appendChild(rowName);
+            leadPlayer.appendChild(rowScore);
+            leadList.appendChild(leadPlayer);
+        }
     }
+    leaderboard.appendChild(leadList);
 }
 
 function updatearleaderboard() {
-    let playername; //Aquí va el value del input del name del jugador 
+    let playername = document.querySelector('#winnerInput').value; //Aquí va el value del input del name del jugador
     let newlead = 0;
     let holderplayerin;
     let holderplayerout;
@@ -330,14 +337,12 @@ function updatearleaderboard() {
             holderscoreout = holderscorein;
             holderscorein = leaderscore[i];
             leaderscore[i] = holderscoreout;
-            
         }
     }
     localStorage.setItem('puntuaciones', JSON.stringify(leaderscore));
     localStorage.setItem('jugadores', JSON.stringify(leaderplayer));
     showleaderboard();
     displayLeaderboard();
-
 }
 
 function showleaderboard() {

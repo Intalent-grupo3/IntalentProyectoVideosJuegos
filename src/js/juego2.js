@@ -1,11 +1,27 @@
 // ----------------------------------------------------------------------VARIABLES GLOBALES
 let obstacles = [];
 let personaje;
+let fondo;
 
 // -----------------------------------------------------------------------Inicio del juego
 function startGame() {
     gameArea.start();
-    personaje = new component(50, 50, 'red', 20, 220);
+    personaje = new component(
+        50,
+        50,
+        './images/juego2/rocket.svg',
+        20,
+        220,
+        'player'
+    );
+    fondo = new component(
+        1800,
+        490,
+        './images/juego2/ba.webp',
+        1,
+        1,
+        'background'
+    );
 }
 
 let gameArea = {
@@ -36,35 +52,57 @@ let gameArea = {
     },
 };
 // --------------------------------------------------------------------------Declaración de componente
-function component(width, height, color, x, y) {
+function component(width, height, color, x, y, type) {
     this.width = width;
     this.height = height;
     this.x = x;
     this.y = y;
+    this.type = type;
+    if (type == 'player' || type == 'obstacle' || type == 'background') {
+        this.image = new Image();
+        this.image.src = color;
+    }
     ctx = gameArea.context;
-    ctx.fillStyle = color;
-    ctx.fillRect(this.x, this.y, this.width, this.height);
     // ------------------------------------------------------------------------Repintado de componente
     this.update = function () {
-        ctx = gameArea.context;
-        ctx.fillStyle = color;
-        ctx.fillRect(this.x, this.y, this.width, this.height);
+        if (type == 'player' || type == 'obstacle' || type == 'background') {
+            ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
+            if (type == 'background') {
+                ctx.drawImage(
+                    this.image,
+                    this.x + this.width,
+                    this.y,
+                    this.width,
+                    this.height
+                );
+            }
+        } else {
+            ctx.fillStyle = color;
+            ctx.fillRect(this.x, this.y, this.width, this.height);
+        }
     };
     // -------------------------------------------------------------------------Posicion del personaje
     this.newPos = function () {
         this.x += this.speedX;
         this.y += this.speedY;
-        if (this.x > 590) {
-            this.x = 590;
+        if (this.type == 'player') {
+            if (this.x > 590) {
+                this.x = 590;
+            }
+            if (this.x < 0) {
+                this.x = 0;
+            }
+            if (this.y > 440) {
+                this.y = 440;
+            }
+            if (this.y < 0) {
+                this.y = 0;
+            }
         }
-        if (this.x < 0) {
-            this.x = 0;
-        }
-        if (this.y > 440) {
-            this.y = 440;
-        }
-        if (this.y < 0) {
-            this.y = 0;
+        if (this.type == 'background') {
+            if (this.x == -this.width) {
+                this.x = 0;
+            }
         }
     };
     // -------------------------------------------------------------------------Colision
@@ -93,6 +131,8 @@ function component(width, height, color, x, y) {
 // -------------------------------------------------------------------------Nuevo frame
 function updateGameArea() {
     gameArea.clear();
+    fondo.x += -0.2;
+    fondo.update();
     gameArea.frameNo += 1;
     // ---------------------------------------------------------------------Comprovación de colision
     for (i = 0; i < obstacles.length; i += 1) {
@@ -104,8 +144,20 @@ function updateGameArea() {
     // ---------------------------------------------------------------------Generacion de obstaculos
     if (gameArea.frameNo == 1 || everyinterval(200)) {
         x = gameArea.canvas.width;
+        imageN = Math.round(Math.random() * 2 + 1);
+        console.log(imageN);
         y = Math.random() * (gameArea.canvas.height - 50);
-        obstacles.push(new component(50, 50, 'green', x, y));
+        obstacles.push(
+            new component(
+                50,
+                50,
+                `./images/juego2/obstacle${imageN}.png`,
+                // `./images/juego2/obstacle3.png`,
+                x,
+                y,
+                'obstacle'
+            )
+        );
     }
 
     function everyinterval(n) {
@@ -127,7 +179,6 @@ function updateGameArea() {
         (gameArea.keys && gameArea.keys['a'])
     ) {
         personaje.speedX = -1.5;
-        console.log(personaje.speedX);
     }
 
     if (
@@ -148,6 +199,7 @@ function updateGameArea() {
     ) {
         personaje.speedY = 1.5;
     }
+
     personaje.newPos();
     personaje.update();
 }

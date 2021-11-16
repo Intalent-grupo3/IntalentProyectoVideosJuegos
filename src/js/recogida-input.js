@@ -104,7 +104,7 @@ function empezarJuego() {
 function palabrasCorrectas() {
 
     if (palabraInput.value === palabraActual) {
-        mensaje.innerHTML = 'Excelente, sigue con otra palabra 😀';
+        mensaje.innerHTML = '😀';
         return true;
     } else {
         mensaje.innerHTML = '🙄';

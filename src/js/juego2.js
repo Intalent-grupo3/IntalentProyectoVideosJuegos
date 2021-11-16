@@ -1,11 +1,19 @@
 // ----------------------------------------------------------------------VARIABLES GLOBALES
 let obstacles = [];
 let personaje;
+let centesimas=0;
+let segundos=0;
+let minutos=0;
+let horas=0;
+let hora;
+let puntuacion=[];
 
 // -----------------------------------------------------------------------Inicio del juego
 function startGame() {
     gameArea.start();
     personaje = new component(50, 50, 'red', 20, 220);
+    resetcronometro();
+    iniciarcronometro();
 }
 
 let gameArea = {
@@ -33,6 +41,7 @@ let gameArea = {
     // ---------------------------------------------------------------------FIN (resetea el interval)
     end: function () {
         clearInterval(this.interval);
+        pararcronometro();
     },
 };
 // --------------------------------------------------------------------------Declaración de componente
@@ -126,8 +135,7 @@ function updateGameArea() {
         (gameArea.keys && gameArea.keys['ArrowLeft']) ||
         (gameArea.keys && gameArea.keys['a'])
     ) {
-        personaje.speedX = -1.5;
-        console.log(personaje.speedX);
+        personaje.speedX = -1.5;;
     }
 
     if (
@@ -151,5 +159,66 @@ function updateGameArea() {
     personaje.newPos();
     personaje.update();
 }
+
+//---------------------------------------------------------------Cronómetro puntuación
+
+function iniciarcronometro(){
+    hora=setInterval(cronometro,10);
+}
+function pararcronometro(){
+    clearInterval(hora);
+    puntuacion=[horas,minutos,segundos,centesimas];
+    console.log(puntuacion);
+
+}
+function resetcronometro(){
+    clearInterval(hora);
+    horas=0;
+    minutos=0;
+    segundos=0;
+    centesimas=0;
+    document.querySelector("#centesimas").innerHTML=":"+centesimas;
+    document.querySelector("#segundos").innerHTML=":"+segundos;
+    document.querySelector("#minutos").innerHTML=":"+minutos;
+    document.querySelector("#horas").innerHTML=horas;
+}
+function cronometro(){ 
+    function timerCondition(t, type) {
+		if (t < 10) {
+			document.querySelector(`#${type}`).innerHTML = ":0" + t;
+            
+		} else {
+			document.querySelector(`#${type}`).innerHTML = ":"+t;
+		}
+        
+	}
+    function timerCondition2(t, type) {
+		if (t < 10) {
+			document.querySelector(`#${type}`).innerHTML = "0" + t;
+		} else {
+			document.querySelector(`#${type}`).innerHTML = t;
+		}
+	}
+    centesimas++;
+    timerCondition(centesimas,"centesimas");
+    if(centesimas==100){
+        centesimas=0;    
+        segundos++;
+        timerCondition(segundos,"segundos");
+        if(segundos==60){
+            segundos=0
+            minutos++;
+            timerCondition(minutos,"minutos");
+            if (minutos==60){
+                minutos=0;
+                horas++;
+                timerCondition2(horas,"horas")
+            }
+        }
+    }
+    
+
+}
+
 
 startGame();

@@ -1,9 +1,36 @@
-.juego2 {
+*{
+    margin:0;
+    padding:0;
+}
+.container {
+    height: 490px;
+    width:640px;
+    position: relative;
+    margin: 0 auto;
+}
+.container .juego2 {
     background-color: gray;
     padding-left: 0;
     padding-right: 0;
     margin-left: auto;
     margin-right: auto;
     display: block;
+    height: 490px;
+    width:640px;
+}
+.container #menu{
+    position:absolute;
+    width:70px;
+    top:50%;
+    left:calc(50% - 35px);
+
+
+}
+.container #menu #botoninicio{
+    margin: 0 auto;
+    width:100%;
+}
+.container #cronometro{
+    position:absolute;
 }
 

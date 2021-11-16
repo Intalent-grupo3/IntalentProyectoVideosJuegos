@@ -161,7 +161,12 @@ function updateGameArea() {
 }
 
 //---------------------------------------------------------------Cronómetro puntuación
-
+let centesimas=0;
+let segundos=0;
+let minutos=0;
+let horas=0;
+let hora;
+let puntuacion=[];
 function iniciarcronometro(){
     hora=setInterval(cronometro,10);
 }

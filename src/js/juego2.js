@@ -32,7 +32,6 @@ function startGame() {
     iniciarcronometro();
     document.querySelector('#menu').style.display = 'none';
     document.querySelector('#imagenBox').style.display = 'none';
-    document.querySelector("#winner").style.display = "none";
 }
 
 let gameArea = {
@@ -246,11 +245,13 @@ function cronometro() {
 //--------------------------------------------------------------------Leaderboard
 function checkleaderboard() {
     console.log(puntuacion);
+    console.log(leaderscore);
     let checking=0;
-    if (localStorage){
-        leaderplayer = JSON.parse(localStorage.getItem('jugadores'));
-        leaderscore = JSON.parse(localStorage.getItem('puntuaciones'));
-    }
+     if (window.localStorage.length){
+         leaderplayer = JSON.parse(localStorage.getItem('jugadores'));
+         leaderscore = JSON.parse(localStorage.getItem('puntuaciones'));
+         console.log(leaderscore);
+     }
     for (let i = 0; i < 5; i++) {
         if (leaderscore[i] < puntuacion) {
             //sacar el menú de meter nombre y enviar highscore

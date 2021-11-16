@@ -90,7 +90,7 @@ function empezarJuego() {
 function palabrasCorrectas() {
     //Funcion de comparar las palabras lanzadas por el api con las escritas por el cliente
     if (palabraInput.value === palabraActual) {
-        mensaje.innerHTML = 'Excelente, sigue con otra palabra 😀';
+        mensaje.innerHTML = '😀';
         return true;
     } else {
         mensaje.innerHTML = '🙄';

@@ -59,6 +59,7 @@ let gameArea = {
     end: function () {
         clearInterval(this.interval);
         pararcronometro();
+        obstacles = [];
         document.querySelector('#botoninicio').value = 'reiniciar';
         document.querySelector('#menu').style.display = 'block';
     },

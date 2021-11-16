@@ -9,7 +9,7 @@ function startGame() {
 var gameArea = {
     canvas: document.querySelector('#juego2'),
     start: function () {
-        this.canvas.width = 640;
+        this.canvas.width = 680;
         this.canvas.height = 490;
         this.context = this.canvas.getContext('2d');
         this.interval = setInterval(updateGameArea,10);

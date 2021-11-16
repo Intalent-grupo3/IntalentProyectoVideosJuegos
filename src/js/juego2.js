@@ -2,12 +2,9 @@
 let obstacles = [];
 let personaje;
 let fondo;
-let centesimas = 0;
-let segundos = 0;
-let minutos = 0;
-let horas = 0;
+let puntos = 0;
 let hora;
-let puntuacion = [];
+let puntuacion ;
 
 // -----------------------------------------------------------------------Inicio del juego
 function startGame() {
@@ -159,7 +156,6 @@ function updateGameArea() {
     if (gameArea.frameNo == 1 || everyinterval(200)) {
         x = gameArea.canvas.width;
         imageN = Math.round(Math.random() * 2 + 1);
-        console.log(imageN);
         y = Math.random() * (gameArea.canvas.height - 50);
         obstacles.push(
             new component(
@@ -220,56 +216,22 @@ function updateGameArea() {
 
 //---------------------------------------------------------------Cronómetro puntuación
 function iniciarcronometro() {
-    hora = setInterval(cronometro, 10);
+    hora = setInterval(cronometro, 50);
 }
 function pararcronometro() {
     clearInterval(hora);
-    puntuacion = [horas, minutos, segundos, centesimas];
+    puntuacion = puntos;
     console.log(puntuacion);
 }
 function resetcronometro() {
     clearInterval(hora);
-    horas = 0;
-    minutos = 0;
-    segundos = 0;
-    centesimas = 0;
-    document.querySelector('#centesimas').innerHTML = ':' + centesimas;
-    document.querySelector('#segundos').innerHTML = ':' + segundos;
-    document.querySelector('#minutos').innerHTML = ':' + minutos;
-    document.querySelector('#horas').innerHTML = horas;
+    puntos = 0;
+    document.querySelector('#puntos').innerHTML = 'Puntuación:' + puntos;
 }
 function cronometro() {
-    function timerCondition(t, type) {
-        if (t < 10) {
-            document.querySelector(`#${type}`).innerHTML = ':0' + t;
-        } else {
-            document.querySelector(`#${type}`).innerHTML = ':' + t;
-        }
-    }
-    function timerCondition2(t, type) {
-        if (t < 10) {
-            document.querySelector(`#${type}`).innerHTML = '0' + t;
-        } else {
-            document.querySelector(`#${type}`).innerHTML = t;
-        }
-    }
-    centesimas++;
-    timerCondition(centesimas, 'centesimas');
-    if (centesimas == 100) {
-        centesimas = 0;
-        segundos++;
-        timerCondition(segundos, 'segundos');
-        if (segundos == 60) {
-            segundos = 0;
-            minutos++;
-            timerCondition(minutos, 'minutos');
-            if (minutos == 60) {
-                minutos = 0;
-                horas++;
-                timerCondition2(horas, 'horas');
-            }
-        }
-    }
+
+    puntos++;
+    document.querySelector('#puntos').innerHTML = 'Puntuación:' + puntos;
 }
 
 document.querySelector('#botoninicio').addEventListener('click', startGame);

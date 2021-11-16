@@ -1,0 +1,71 @@
+.containerJuego {
+  display: grid;
+  grid-template-columns: 0.5fr 2fr 0.5fr;
+  grid-template-rows: 0.5fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "Temporizador . Vidas"
+    ". Enunciado ."
+    ". Input .";
+  background-color: #222;
+  margin-left: 25rem;
+  margin-right: 25rem;
+  margin-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.Enunciado {
+
+  justify-self: center;
+  align-self: center;
+  grid-area: Enunciado;
+  background-color: var(--color-yellow);
+  text-transform: uppercase;
+  font-family: var(--font-title);
+  font-size: 4em;
+  padding-left: 0.35em;
+  padding-right: 0.35em;
+  border-radius: 10%;
+}
+
+.Vidas {
+
+  justify-self: center;
+  align-self: center;
+  grid-area: Vidas;
+  background-color: var(--color-yellow);
+}
+
+.Temporizador {
+
+  justify-self: center;
+  align-self: center;
+  grid-area: Temporizador;
+  background-color: var(--color-yellow);
+  font-family: var(--font-title);
+  font-size: 2em;
+  padding: 0.35em;
+  margin-top: 0.5em;
+  margin-left: 0.5em;
+
+}
+
+.Input {
+
+  justify-self: center;
+  align-self: center;
+  grid-area: Input;
+  white-space: nowrap;
+ 
+ 
+}
+#score {
+  background-color: var(--color-yellow);
+}
+.intro{
+  background-color: var(--color-yellow);
+}
+h4{
+  background-color: var(--color-yellow);
+}

@@ -4,7 +4,12 @@ let personaje;
 let fondo;
 let puntos = 0;
 let hora;
-let puntuacion ;
+let puntuacion;
+let leaderscore = [0,0,0,0,0];
+let leaderplayer=[0,0,0,0,0];
+
+
+
 
 // -----------------------------------------------------------------------Inicio del juego
 function startGame() {
@@ -29,6 +34,7 @@ function startGame() {
     iniciarcronometro();
     document.querySelector('#menu').style.display = 'none';
     document.querySelector('#imagenBox').style.display = 'none';
+    document.querySelector("#winner").style.display = "none";
 }
 
 let gameArea = {
@@ -58,8 +64,10 @@ let gameArea = {
         clearInterval(this.interval);
         pararcronometro();
         obstacles = [];
+        checkleaderboard();
         document.querySelector('#botoninicio').value = 'reiniciar';
         document.querySelector('#menu').style.display = 'block';
+
     },
 };
 // --------------------------------------------------------------------------Declaración de componente
@@ -218,20 +226,81 @@ function updateGameArea() {
 function iniciarcronometro() {
     hora = setInterval(cronometro, 50);
 }
+
 function pararcronometro() {
     clearInterval(hora);
     puntuacion = puntos;
-    console.log(puntuacion);
+
 }
+
 function resetcronometro() {
     clearInterval(hora);
     puntos = 0;
     document.querySelector('#puntos').innerHTML = 'Puntuación:' + puntos;
 }
+
 function cronometro() {
 
     puntos++;
     document.querySelector('#puntos').innerHTML = 'Puntuación:' + puntos;
 }
 
+//--------------------------------------------------------------------Leaderboard
+function checkleaderboard() {
+    console.log(puntuacion);
+    let checking=0;
+    if (localStorage){
+        leaderplayer = JSON.parse(localStorage.getItem('jugadores'));
+        leaderscore = JSON.parse(localStorage.getItem('puntuaciones'));
+    }
+    for (let i = 0; i < 5; i++) {
+        if (leaderscore[i] < puntuacion) {
+            //sacar el menú de meter nombre y enviar highscore
+            checking=1;
+        } 
+    }
+    if(checking==1){
+        updatearleaderboard();
+    }else{
+        showleaderboard();
+    }
+}
+
+function updatearleaderboard() {
+    let playername; //Aquí va el value del input del name del jugador 
+    let newlead = 0;
+    let holderplayerin;
+    let holderplayerout;
+    let holderscorein;
+    let holderscoreout;
+    for (let i = 0; i < 5; i++) {
+        if (leaderscore[i] < puntuacion && newlead == 0) {
+            newlead = 1;
+            holderplayerin = playername;
+            holderscorein = puntuacion;
+        }
+        if (newlead == 1) {
+            holderplayerout = holderplayerin;
+            holderplayerin = leaderplayer[i];
+            leaderplayer[i] = holderplayerout;
+
+            holderscoreout = holderscorein;
+            holderscorein = leaderscore[i];
+            leaderscore[i] = holderscoreout;
+            console.log("holderscoreout "+holderscoreout+"; holderscorein "+holderscorein+"; leaderscore "+leaderscore[i])
+        }
+    }
+    localStorage.setItem('puntuaciones', JSON.stringify(leaderscore));
+    localStorage.setItem('jugadores', JSON.stringify(leaderplayer));
+    showleaderboard();
+
+}
+
+function showleaderboard() {
+    leaderplayer = JSON.parse(localStorage.getItem('jugadores'));
+    leaderscore = JSON.parse(localStorage.getItem('puntuaciones'));
+    console.log(leaderscore);
+    //poner que te saque los elementos de la leaderboard ordenados
+}
 document.querySelector('#botoninicio').addEventListener('click', startGame);
+//document.querySelector("#submitjugador").addEventListener("click", actualizarleaderboard)

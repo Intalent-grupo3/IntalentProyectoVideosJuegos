@@ -54,8 +54,10 @@
     font-weight: 700;
     color: var(--color-purple);
 }
+
 .container #leaderboard{
-    display:none;
+    position:absolute;
+    top: 10%;
 }
 
 .container #cronometro {

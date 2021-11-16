@@ -5,8 +5,8 @@ let fondo;
 let puntos = 0;
 let hora;
 let puntuacion;
-let leaderscore = [0,0,0,0,0];
-let leaderplayer=[0,0,0,0,0];
+let leaderscore = [0, 0, 0, 0, 0];
+let leaderplayer = [0, 0, 0, 0, 0];
 
 
 
@@ -248,22 +248,64 @@ function cronometro() {
 function checkleaderboard() {
     console.log(puntuacion);
     console.log(leaderscore);
-    let checking=0;
-     if (window.localStorage.length){
-         leaderplayer = JSON.parse(localStorage.getItem('jugadores'));
-         leaderscore = JSON.parse(localStorage.getItem('puntuaciones'));
-         console.log(leaderscore);
-     }
+    let checking = 0;
+    if (window.localStorage.length) {
+        leaderplayer = JSON.parse(localStorage.getItem('jugadores'));
+        leaderscore = JSON.parse(localStorage.getItem('puntuaciones'));
+        console.log(leaderscore);
+    } else {
+        leaderscore = [0, 0, 0, 0, 0];
+        leaderplayer = [0, 0, 0, 0, 0];
+    }
+    console.log(leaderscore);
     for (let i = 0; i < 5; i++) {
         if (leaderscore[i] < puntuacion) {
             //sacar el menú de meter nombre y enviar highscore
-            checking=1;
-        } 
+            checking = 1;
+        }
     }
-    if(checking==1){
-        updatearleaderboard();
-    }else{
-        showleaderboard();
+    if (checking == 1) {
+        nameWinner();
+    } else {
+        
+        displayLeaderboard();
+    }
+}
+
+let leaderboard = document.querySelector('#leaderboard');
+
+
+
+function nameWinner() {
+    let winnerInput = document.createElement('INPUT');
+    winnerInput.setAttribute('type', 'text');
+    winnerInput.setAttribute('id', 'winnerInput');
+    let winnerSubmit = document.createElement('INPUT');
+    winnerSubmit.setAttribute('type', 'submit');
+    winnerSubmit.setAttribute('id', 'winnerSubmit');
+    leaderboard.appendChild(winnerInput);
+    leaderboard.appendChild(winnerSubmit);
+    winnerSubmit.addEventListener('click', updatearleaderboard());
+}
+
+function displayLeaderboard() {
+    leaderboard.innerHTML="";
+
+    let leadList = document.createElement('ol');
+    leadList.setAttribute('id', 'leadList');
+    for (let i = 0; 1 < 5; i++) {
+        let leadPlayer = document.createElement('li');
+        let rowName = document.createElement('span');
+        let spanName = document.createTextNode(leaderplayer[i]);
+        rowName.setAttribute('id', 'rowName');
+        rowName.appendChild(spanName);
+        let rowScore = document.createElement('span');
+        let spanScore = document.createTextNode(leaderscore[i]);
+        rowScore.setAttribute('id', 'rowScore');
+        rowScore.appendChild(spanScore);
+        leadPlayer.appendChild(rowName);
+        leadPlayer.appendChild(rowScore);
+        leadList.appendChild(leadPlayer);
     }
 }
 
@@ -288,12 +330,13 @@ function updatearleaderboard() {
             holderscoreout = holderscorein;
             holderscorein = leaderscore[i];
             leaderscore[i] = holderscoreout;
-            console.log("holderscoreout "+holderscoreout+"; holderscorein "+holderscorein+"; leaderscore "+leaderscore[i])
+            
         }
     }
     localStorage.setItem('puntuaciones', JSON.stringify(leaderscore));
     localStorage.setItem('jugadores', JSON.stringify(leaderplayer));
     showleaderboard();
+    displayLeaderboard();
 
 }
 

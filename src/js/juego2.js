@@ -5,12 +5,16 @@ let fondo;
 let puntos = 0;
 let hora;
 let puntuacion;
-let leaderscore = [0,0,0,0,0];
-let leaderplayer=[0,0,0,0,0];
+let leaderscore = [0, 0, 0, 0, 0];
+let leaderplayer = [0, 0, 0, 0, 0];
+let velocidad;
+let dist;
 
 
 // -----------------------------------------------------------------------Inicio del juego
 function startGame() {
+    velocidad=10;
+    dist=1.5;
     gameArea.start();
     personaje = new component(
         50,
@@ -42,7 +46,7 @@ let gameArea = {
         this.canvas.height = 490;
         this.context = this.canvas.getContext('2d');
         this.frameNo = 0;
-        this.interval = setInterval(updateGameArea, 10);
+        this.interval = setInterval(updateGameArea, velocidad);
         // ---------------------------------------------------------------Evento de teclado
         window.addEventListener('keydown', function (e) {
             gameArea.keys = gameArea.keys || [];
@@ -101,6 +105,19 @@ function component(width, height, color, x, y, type) {
     this.newPos = function () {
         this.x += this.speedX;
         this.y += this.speedY;
+        
+        if (puntos>=400){
+            velocidad=6;
+            dist=1.6;
+        }
+        if (puntos>=800){
+            velocidad=3;
+            dist=1,7;
+        }
+        if (puntos>=12600){
+            velocidad=1.5;
+            dist=1.8;
+        }
         if (this.type == 'player') {
             if (this.x > 590) {
                 this.x = 590;
@@ -150,7 +167,7 @@ function updateGameArea() {
     fondo.x += -0.2;
     fondo.update();
     gameArea.frameNo += 1;
-    // ---------------------------------------------------------------------Comprovación de colision
+    // ---------------------------------------------------------------------Comprobación de colision
     for (i = 0; i < obstacles.length; i += 1) {
         if (personaje.collision(obstacles[i])) {
             gameArea.end();
@@ -158,7 +175,7 @@ function updateGameArea() {
         }
     }
     // ---------------------------------------------------------------------Generacion de obstaculos
-    if (gameArea.frameNo == 1 || everyinterval(200)) {
+    if (gameArea.frameNo == 1 || everyinterval(velocidad*20)) {
         x = gameArea.canvas.width;
         imageN = Math.round(Math.random() * 2 + 1);
         y = Math.random() * (gameArea.canvas.height - 50);
@@ -193,26 +210,26 @@ function updateGameArea() {
         (gameArea.keys && gameArea.keys['ArrowLeft']) ||
         (gameArea.keys && gameArea.keys['a'])
     ) {
-        personaje.speedX = -1.5;
+        personaje.speedX = -dist;
     }
 
     if (
         (gameArea.keys && gameArea.keys['ArrowRight']) ||
         (gameArea.keys && gameArea.keys['d'])
     ) {
-        personaje.speedX = 1.5;
+        personaje.speedX = dist;
     }
     if (
         (gameArea.keys && gameArea.keys['ArrowUp']) ||
         (gameArea.keys && gameArea.keys['w'])
     ) {
-        personaje.speedY = -1.5;
+        personaje.speedY = -dist;
     }
     if (
         (gameArea.keys && gameArea.keys['ArrowDown']) ||
         (gameArea.keys && gameArea.keys['s'])
     ) {
-        personaje.speedY = 1.5;
+        personaje.speedY = dist;
     }
 
     personaje.newPos();
@@ -222,6 +239,8 @@ function updateGameArea() {
 //---------------------------------------------------------------Cronómetro puntuación
 function iniciarcronometro() {
     hora = setInterval(cronometro, 50);
+    
+
 }
 
 function pararcronometro() {
@@ -246,22 +265,64 @@ function cronometro() {
 function checkleaderboard() {
     console.log(puntuacion);
     console.log(leaderscore);
-    let checking=0;
-     if (window.localStorage.length){
-         leaderplayer = JSON.parse(localStorage.getItem('jugadores'));
-         leaderscore = JSON.parse(localStorage.getItem('puntuaciones'));
-         console.log(leaderscore);
-     }
+    let checking = 0;
+    if (window.localStorage.length) {
+        leaderplayer = JSON.parse(localStorage.getItem('jugadores'));
+        leaderscore = JSON.parse(localStorage.getItem('puntuaciones'));
+        console.log(leaderscore);
+    } else {
+        leaderscore = [0, 0, 0, 0, 0];
+        leaderplayer = [0, 0, 0, 0, 0];
+    }
+    console.log(leaderscore);
     for (let i = 0; i < 5; i++) {
         if (leaderscore[i] < puntuacion) {
             //sacar el menú de meter nombre y enviar highscore
-            checking=1;
-        } 
+            checking = 1;
+        }
     }
-    if(checking==1){
-        updatearleaderboard();
-    }else{
-        showleaderboard();
+    if (checking == 1) {
+        nameWinner();
+    } else {
+        
+        displayLeaderboard();
+    }
+}
+
+let leaderboard = document.querySelector('#leaderboard');
+
+
+
+function nameWinner() {
+    let winnerInput = document.createElement('INPUT');
+    winnerInput.setAttribute('type', 'text');
+    winnerInput.setAttribute('id', 'winnerInput');
+    let winnerSubmit = document.createElement('INPUT');
+    winnerSubmit.setAttribute('type', 'submit');
+    winnerSubmit.setAttribute('id', 'winnerSubmit');
+    leaderboard.appendChild(winnerInput);
+    leaderboard.appendChild(winnerSubmit);
+    winnerSubmit.addEventListener('click', updatearleaderboard());
+}
+
+function displayLeaderboard() {
+    leaderboard.innerHTML="";
+
+    let leadList = document.createElement('ol');
+    leadList.setAttribute('id', 'leadList');
+    for (let i = 0; i < 5; i++) {
+        let leadPlayer = document.createElement('li');
+        let rowName = document.createElement('span');
+        let spanName = document.createTextNode(leaderplayer[i]);
+        rowName.setAttribute('id', 'rowName');
+        rowName.appendChild(spanName);
+        let rowScore = document.createElement('span');
+        let spanScore = document.createTextNode(leaderscore[i]);
+        rowScore.setAttribute('id', 'rowScore');
+        rowScore.appendChild(spanScore);
+        leadPlayer.appendChild(rowName);
+        leadPlayer.appendChild(rowScore);
+        leadList.appendChild(leadPlayer);
     }
 }
 
@@ -286,12 +347,13 @@ function updatearleaderboard() {
             holderscoreout = holderscorein;
             holderscorein = leaderscore[i];
             leaderscore[i] = holderscoreout;
-            console.log("holderscoreout "+holderscoreout+"; holderscorein "+holderscorein+"; leaderscore "+leaderscore[i])
+            
         }
     }
     localStorage.setItem('puntuaciones', JSON.stringify(leaderscore));
     localStorage.setItem('jugadores', JSON.stringify(leaderplayer));
     showleaderboard();
+    displayLeaderboard();
 
 }
 

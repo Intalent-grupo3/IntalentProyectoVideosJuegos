@@ -3,6 +3,9 @@
 */
 const funciones = require("./testspersonaje")
 
+test ("El buff de velocidad funciona",()=>{expect(funciones.speedModifier(3,0)).toBe(4.5)});
+test ("El buff de score funciona",()=>{expect(funciones.scoreModifier(4,0)).toBe(0.25)});
+test("El buff de score funciona",()=>{expect(funciones.sizeModifier(4,0)).toBe(200,200)});
 
 test ("El componente tiene 50px de ancho", ()=>{expect(funciones.startGame().width).toBe(50)});
 test ("El componente tiene 50px de alto", ()=>{expect(funciones.startGame().height).toBe(50)});

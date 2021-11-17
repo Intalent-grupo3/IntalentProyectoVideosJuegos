@@ -1,5 +1,6 @@
 let personaje;
 
+
 function startGame() {
     personaje = new component(50, 50, 'green', 20, 220);
     return personaje;
@@ -39,6 +40,76 @@ function updateGameArea(x,y) {
     if (y==1 ) {personaje.speedY = 1.5; }
      return personaje.newPos();
 }
+//-------------------------------------------------------Funciones powerups
+//Buffer y debuffer velocidad
+function speedModifier(speedModifier,prueba) {
+    //si es buffer le pasamos un valor >1 y si es debuffer <1
+    let dist=1.5;
+    let registrodist = dist;
+    dist = dist + speedModifier;
+    if (prueba==0){
+        return dist;
+    }
+    if( prueba==1){
+    setTimeout(resetSpeed, 1000,registrodist);
+    return dist;
+    }
+}
+
+function resetSpeed(distoriginal) {
+    dist = distoriginal;
+    
+
+}
+
+//Buffer y debuffer puntuación
+function scoreModifier(scoreModifier,prueba) {
+    //si es buffer le pasamos un valor >1 y si es debuffer <1
+    let score=1
+    score = score / scoreModifier;
+    if (prueba==0){
+        return score;
+    }
+    if( prueba==1){
+    setTimeout(resetScore, 1000);
+    return score;
+    }
+}
+
+function resetScore() {
+    score = 1;
+}
+
+//Buffer y debuffer tamaño
+function sizeModifier(sizeModifier,prueba) {
+    //si es buffer le pasamos un valor <1 y si es debuffer >1
+    sizeChange=1;
+    personaje.width=50;
+    personaje.height=50;
+    sizeChange = sizeChange * sizeModifier;
+    personaje.width = personaje.width * sizeChange;
+    personaje.height = personaje.height * sizeChange;
+    if (prueba==0){
+        return personaje.width,personaje.height;
+    }
+    if( prueba==1){
+    setTimeout(resetSize, 1000);
+    return personaje.width,personaje.height;
+    }
+}
+
+function resetSize() {
+    sizeChange = 1;
+    personaje.width = 50;
+    personaje.height = 50;
+
+}
+
+
+
 module.exports={updateGameArea,
- startGame}
+ startGame,
+sizeModifier,
+scoreModifier,
+speedModifier}
 startGame();

@@ -5,15 +5,30 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Space Attack</title>
+        <link rel="stylesheet" href="css/style.css" />
         <link rel="stylesheet" href="css/juego2.css" />
     </head>
+
     <body>
-        <canvas class="juego2" id="juego2">
-        </canvas>
-        <p id="cronometro">
-            <span id="horas"></span><span id="minutos"></span>
-            <span id="segundos"></span><span id="centesimas"></span>
-        </p>
+        <div id="container" class="container">
+            <p id="cronometro">
+                <span id="cronoText"></span><span id="puntos"></span>
+            </p>
+            <div id="imagenBox">
+                <div class="imagen">
+                    <img
+                        src="./images/juego2/teclas.png"
+                        alt="Para jugar usa las teclas de WASD o las teclas de flecha"
+                    />
+                </div>
+            </div>
+            <div id="leaderboard" class="leaderboard">
+            </div>
+            <menu id="menu" class="menu">
+                <input type="button" value="Iniciar" id="botoninicio" />
+            </menu>
+            <canvas class="juego2" id="juego2"> </canvas>
+        </div>
     </body>
     <script src="js/juego2.js"></script>
 </html>

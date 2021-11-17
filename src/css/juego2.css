@@ -1,3 +1,142 @@
-.juego2 {
-    background-color: gray;
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Oswald&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@400;600;800&display=swap');
+@import url('./style.css');
+
+.container-canva {
+    height: 490px;
+    width: 640px;
+    position: relative;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+}
+
+.container-canva .juego2 {
+    background-image: url('../images/juego2/ba.webp');
+    background-size: cover;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    height: 490px;
+    width: 640px;
+}
+
+.container-canva #menu {
+    position: absolute;
+    width: 150px;
+    bottom: 15%;
+    left: calc(50% - 75px);
+}
+.container-canva #imagenBox {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.container-canva #imagenBox .imagen {
+    width: 50%;
+    margin: 0% auto;
+}
+
+.container-canva #menu #botoninicio,
+.container-canva #leaderboard #winnerSubmit {
+    color: var(--color-purple);
+    background-color: var(--color-yellow);
+    border: 2px solid var(--color-yellow);
+}
+
+.container-canva #menu #botoninicio:hover,
+.container-canva #leaderboard #winnerSubmit:hover {
+    background-color: var(--color-yellow);
+    color: var(--color-purple);
+}
+
+.container-canva #menu #botoninicio {
+    margin: 0 auto;
+    width: 100%;
+
+    padding: 1em 0;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-family: var(--font-title);
+    font-size: 1.2em;
+}
+
+.container-canva #leaderboard {
+    position: absolute;
+    top: 30%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.container-canva #leaderboard #winnerInput,
+.container-canva #leaderboard #winnerSubmit {
+    display: block;
+    width: 50%;
+    padding: 0.8em;
+    margin: 0.8em auto;
+    font-family: var(--font-title);
+    font-weight: 700;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.container-canva #leaderboard #leadList {
+    color: var(--color-yellow);
+    width: 50%;
+    margin: 0 auto;
+    font-size: 1.2em;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: var(--font-title);
+}
+
+.container-canva #leaderboard #leadList li {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin: 0.2em;
+}
+
+.container-canva #leaderboard #leadList span {
+    font-family: var(--font-title);
+}
+
+#leadList #rowName {
+    padding-left: 2em;
+}
+
+#leadList #rowScore {
+    padding-right: 2em;
+}
+
+.container-canva #leaderboard #leadList li:first-child {
+    font-size: 1.3em;
+    background-color: var(--color-purple);
+    padding: 0.3em;
+}
+
+.container-canva #cronometro {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.container-canva #cronometro span {
+    font-family: var(--font-title);
+    font-weight: 700;
+    color: var(--color-yellow);
+}
+
+.container-canva #cronometro #puntos {
+    display: inline-block;
+    width: 60px;
+    text-align: center;
+}
+.texto-juego {
+    margin: 2em;
 }

@@ -18,7 +18,6 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Open Sans', sans-serif;
-    color: var(--color-purple);
 }
 
 .container-fluid {
@@ -28,6 +27,7 @@
     background-size: cover;
     background-attachment: local;
     background-position: center;
+    color: var(--color-purple);
 }
 
 h1,
@@ -107,7 +107,6 @@ p {
 
 .header .idioma {
     height: 89.75px;
-    ;
 }
 
 .header .nav-item img {
@@ -229,7 +228,6 @@ footer .iconosredes a {
     text-decoration: none;
 
     font-size: 2.7em;
-
 }
 
 footer .iconosredes i {
@@ -838,7 +836,7 @@ section .section-title {
     display: flex;
     flex-wrap: wrap;
 }
-.news .section-header{
+.news .section-header {
     margin-bottom: 2em;
 }
 .news .card {

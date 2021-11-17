@@ -1,99 +1,157 @@
+body{
+    background-image: url(https://wallpaperaccess.com/full/264293.jpg);
+}
+
+p {
+    color:var(--color-purple);
+}
+
 .containerJuego {
-  display: grid;
-  grid-template-columns: 0.5fr 2fr 0.5fr;
-  grid-template-rows: 0.5fr 1fr 1fr;
-  gap: 0px 0px;
-  grid-auto-flow: row;
-  grid-template-areas:
-    "Temporizador . Vidas"
-    ". Enunciado ."
-    ". Input .";
-  background-color: #222;
-  margin-left: 25rem;
-  margin-right: 25rem;
-  margin-top: 5rem;
-  padding-bottom: 5rem;
-  position: absolute;
+    display: grid;
+    grid-template-columns: 0.5fr 2fr 0.5fr;
+    grid-template-rows: 0.5fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+        'Temporizador . Vidas'
+        '. Enunciado .'
+        '. Input .';
+    background-color: #222;
+    border: 2px solid var(--color-yellow);
+}
+
+.containerJuego p{
+    color: var(--color-yellow);
 }
 
 .Enunciado {
-
-  justify-self: center;
-  align-self: center;
-  grid-area: Enunciado;
-  background-color: var(--color-yellow);
-  text-transform: uppercase;
-  font-family: var(--font-title);
-  font-size: 4em;
-  padding-left: 0.35em;
-  padding-right: 0.35em;
-  border-radius: 10%;
+    justify-self: center;
+    align-self: center;
+    grid-area: Enunciado;
+    background-color: var(--color-yellow);
+    text-transform: uppercase;
+    font-family: var(--font-title);
+    font-size: 4em;
+    padding-left: 0.35em;
+    padding-right: 0.35em;
+    border-radius: 10%;
 }
 
 .Vidas {
-
-  justify-self: center;
-  align-self: center;
-  grid-area: Vidas;
-  background-color: var(--color-yellow);
-  font-family: var(--font-title);
-  font-size: 2em;
-  font-weight: bold;
-  padding: 0.35em;
-  margin-top: 0.5em;
-  margin-left: 0.5em;
-  margin-right: 0.5em;
+    justify-self: center;
+    align-self: center;
+    grid-area: Vidas;
+    background-color: var(--color-yellow);
+    font-family: var(--font-title);
+    font-size: 2em;
+    font-weight: bold;
+    padding: 0.35em;
+    margin-top: 0.5em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    color: var(--color-purple);
 }
 
 .Temporizador {
-
-  justify-self: center;
-  align-self: center;
-  grid-area: Temporizador;
-  background-color: var(--color-yellow);
-  font-family: var(--font-title);
-  font-size: 2em;
-  font-weight: bold;
-  padding: 0.35em;
-  margin-top: 0.5em;
-  margin-left: 0.5em;
-  margin-right: 0.5em;
-
-
+    justify-self: center;
+    align-self: center;
+    grid-area: Temporizador;
+    background-color: var(--color-yellow);
+    font-family: var(--font-title);
+    font-size: 2em;
+    font-weight: bold;
+    padding: 0.35em;
+    margin-top: 0.5em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
 }
 
 .Input {
-
-  justify-self: center;
-  align-self: center;
-  grid-area: Input;
-  white-space: nowrap;
- 
- 
+    justify-self: center;
+    align-self: center;
+    grid-area: Input;
+    white-space: nowrap;
 }
 .score {
-  background-color: var(--color-yellow);
-  margin-top: 0.5em;
-  margin-left: 0.5em;
-  margin-right: 0.5em;
+    background-color: var(--color-yellow);
+    margin-top: 0.5em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    margin-bottom: 0.3em;
+    font-size: 2.5rem;
+    text-align: center;
+    font-weight: bold;
+    color: var(--color-purple);
 }
-.instrucciones{
-  background-color: var(--color-yellow);
-  margin-top: 0.5em;
-  margin-left: 0.5em;
-  margin-right: 0.5em;
-  padding: 2rem; 
-  
+.instrucciones {
+    background-color: var(--color-yellow);
+    margin-top: 0.5em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    padding: 2rem;
+}
+.menu-dificultad {
+    background-color: var(--color-yellow);
+    margin-top: 0.5em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    padding: 2rem;
+}
+h4 {
+    background-color: var(--color-yellow);
+}
+header h1{
+    text-align: center;
+    color: var(--color-yellow);
+}
+.instrucciones h2{
+    text-align: center;
+    color: var(--color-purple);
+}
+.menu-dificultad h3{
+    text-align: center;
+    color: var(--color-purple);
+    padding-bottom: 0.5rem;
+}
+.menu-dificultad {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+}
 
+.menu-dificultad .nivel{
+    background-color: var(--color-purple);
+    font-size: 1.2rem;
+    color:var(--color-yellow);
+    margin: 0.3rem 2.4rem;
+    border-radius: 1rem;
 }
-.menu-dificultad{
-  background-color: var(--color-yellow);
-  margin-top: 0.5em;
-  margin-left: 0.5em;
-  margin-right: 0.5em;
-  padding: 2rem; 
+#leaderboard{
+    background-color: var(--color-yellow);
+    border: 2px solid var(--color-purple);
+    width: 100%;
+    height: 98%;
+    padding: bottom 0;;
+}
+#leaderboard h3{
+    color: var(--color-purple);
+    text-align: center;
+}
+#leaderboard #leadList{
+    margin: auto;
+    color: var(--color-yellow);
+    font-size: 1rem;
+    font-weight: bold;
+}
+#leaderboard #leadList #rowScore{
+    margin-left: 50%;
+    color:var(--color-purple)
+}
 
+#leaderboard #leadList li{
+    border: 2px solid var(--color-purple);
 }
-h4{
-  background-color: var(--color-yellow);
+#leaderboard #leadList #id{
+    color: white;
 }

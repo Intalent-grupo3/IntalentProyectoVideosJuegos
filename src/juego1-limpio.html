@@ -2,9 +2,9 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Juego Keyboard</title>
     <link rel="icon" type="image/svg" href="images/favicon.svg" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
@@ -16,54 +16,191 @@
 </head>
 
 <body>
-    <header class="">
-        <h1> Juego de Keyboard</h1>
+    <header>
+        <div class="row header">
+            <div class="col-md-12 container">
+                <div class="menu">
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                        <a class="navbar-brand" href="./index.html">
+                            <img src="./images/logo-transparente.svg" alt="Logo Morenus Gaming" />
+                        </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#opciones">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="opciones">
+                            <ul class="nav navbar-bar">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="index.html">
+                                        Home
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="proyects.html">
+                                        Proyectos
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="equipo.html">
+                                        Equipo
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="contacto.html">
+                                        Contacto
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="news.html">
+                                        Noticias
+                                    </a>
+                                </li>
+                                <li class="nav-item español">
+                                    <a class="nav-link idioma" href="news.html">
+                                        <figure>
+                                            <img src="https://res.cloudinary.com/dyesgnzy5/image/upload/c_scale,w_50/v1635841463/60-espana-sin-escudo_400px_e3g9wb.jpg"
+                                                alt="Español" title="Cambiar idioma a español" />
+                                        </figure>
+                                    </a>
+                                </li>
+                                <li class="nav-item ingles">
+                                    <a class="nav-link idioma" href="en_news.html">
+                                        <figure>
+                                            <img src="https://res.cloudinary.com/dyesgnzy5/image/upload/c_scale,w_50/v1635841485/1200px-Flag_of_the_United_Kingdom__283-5_29.svg_b8x8gu.png"
+                                                alt="Inglés" title="Cambiar idioma a ingles" />
+                                        </figure>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <h1>Juego de Keyboard</h1>
     </header>
-    <div class=intro>
-        <div class="row mt-5">
+    <div class="intro">
+        <div class="row mt-3">
             <div class="container col-md-8">
                 <div class="instrucciones">
                     <h2>Instrucciones🤔</h2>
-                    <p>Escribe las palabras que te indican lo más rápido posible, mientras más palabras consigas, tu
-                        puntuación irá aumentando
-                        hasta la estratosfera.
+                    <p>
+                        Escribe las palabras que te indican lo más rápido
+                        posible, mientras más palabras consigas, tu
+                        puntuación irá aumentando hasta la estratosfera.
                     </p>
                 </div>
                 <div class="menu-dificultad">
                     <h3>Puedes escoger tu nivel de dificultad</h3>
-                    <button id="easy">Fácil modo Lechón 🐷🌿</button>
-                    <button id="medium">Medio modo kung fu Panda 🐼🎋</button>
-                    <button id="hard">Dificil modo Danger 😱🔥</button>
+                    <button class="nivel" id="easy">
+                        Fácil modo Lechón 🐷🌿
+                    </button>
+                    <button class="nivel" id="medium">
+                        Medio modo kung fu Panda 🐼🎋
+                    </button>
+                    <button class="nivel" id="hard">
+                        Dificil modo Danger 😱🔥
+                    </button>
                 </div>
             </div>
         </div>
     </div>
-    <div class="containerJuego">
-        <div class="Enunciado">
-            <div><span id="palabra-enunciado"></span></div>
-        </div>
-        <div class="Vidas">
-            <div><p>4</p><span id="icono-vidas"></span></div>
-        </div>
-        <div class="Temporizador">
-            <span id="temporizador"></span>
-        </div>
-        <div class="Input">
-            <p class="intro">Escribe la palabra dentro del campo. Dispones de <span class="text-success" id="segundos"><br></span> segundos.</p>
-            <p id="palabra-actual"></p>
-            <p id="message"></p>
-            <input type="text" class="form-control form-control-lg" placeholder="Escribe..." id="palabra-input" autofocus>
-        </div>
-        <div id="score" class="score">
-            <div class="col-md-6">
-                <p>Puntuación: <span id="score"></span></p>
-            </div>
-            <div class="col-md-6">
-                <p>Puntuación Máxima: <span id="high-score"></span></p>
+
+    <div class="row">
+        <div class="container col-md-8">
+            <div class="containerJuego">
+                <div class="Enunciado">
+                    <div><span id="palabra-enunciado">------</span></div>
+                </div>
+                <div class="Vidas">
+                    <div>
+                        <p>4</p>
+                        <span id="icono-vidas"></span>
+                    </div>
+                </div>
+                <div class="Temporizador">
+                    <span id="temporizador"></span>
+                </div>
+                <div class="Input">
+                    <p class="intro">
+                        Escribe la palabra dentro del campo. Dispones de
+                        <span class="text-success" id="segundos"><br /></span>
+                        segundos.
+                    </p>
+                    <p id="palabra-actual"></p>
+                    <p id="message"></p>
+                    <input type="text" class="form-control form-control-lg" placeholder="Escribe..." id="palabra-input"
+                        autofocus />
+                </div>
+                <div id="score" class="score"></div>
             </div>
         </div>
     </div>
-    <script src="./js/recogida-input.js"></script>
+    <div class="row mt-3">
+        <div class="container row-col-md-3">
+            <div id="leaderboard">
+                <h3>Leaderboard</h3>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="row">
+            <div class="col-md-12">
+                <figure class="footericon">
+                    <img src="https://res.cloudinary.com/dyesgnzy5/image/upload/c_fit,w_200/v1635431420/logo_drxbkl.png"
+                        alt="Morenus Gaming logo" title="Morenus Gaming logo" />
+                </figure>
+                <ul class="iconosredes">
+                    <li>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fab fa-steam-symbol"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </li>
+                </ul>
+                <ul class="menufooter">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">
+                            Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="proyects.html">
+                            Proyectos
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="equipo.html">
+                            Equipo
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contacto.html">
+                            Contacto
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="news.html">
+                            Noticias
+                        </a>
+                    </li>
+                </ul>
+                <p><i class="far fa-copyright"></i>Copyright</p>
+            </div>
+        </div>
+    </footer>
+    <script src="./js/juego1-2.0.js"></script>
 </body>
 
 </html>

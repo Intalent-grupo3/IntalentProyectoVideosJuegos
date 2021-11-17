@@ -34,8 +34,8 @@
     height: 100%;
 }
 .container-canva #imagenBox .imagen {
-    width: 70%;
-    margin: 20% auto;
+    width: 50%;
+    margin: 0% auto;
 }
 
 .container-canva #menu #botoninicio,
@@ -137,6 +137,6 @@
     width: 60px;
     text-align: center;
 }
-.texto-juego{
+.texto-juego {
     margin: 2em;
 }

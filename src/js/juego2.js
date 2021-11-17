@@ -1,5 +1,6 @@
 // ----------------------------------------------------------------------VARIABLES GLOBALES
 let obstacles = [];
+let buffers = [];
 let personaje;
 let fondo;
 let puntos = 0;
@@ -12,8 +13,8 @@ let dist;
 
 // -----------------------------------------------------------------------Inicio del juego
 function startGame() {
-    velocidad=10;
-    dist=1.5;
+    velocidad = 10;
+    dist = 1.5;
     gameArea.start();
     personaje = new component(
         50,
@@ -67,6 +68,7 @@ let gameArea = {
         clearInterval(this.interval);
         pararcronometro();
         obstacles = [];
+        buffers = [];
         checkleaderboard();
         document.querySelector('#botoninicio').value = 'reiniciar';
         document.querySelector('#menu').style.display = 'block';
@@ -106,18 +108,18 @@ function component(width, height, color, x, y, type) {
     this.newPos = function () {
         this.x += this.speedX;
         this.y += this.speedY;
-        
-        if (puntos>=400){
-            velocidad=6;
-            dist=1.6;
+
+        if (puntos >= 400) {
+            velocidad = 6;
+            dist = 1.6;
         }
-        if (puntos>=800){
-            velocidad=3;
-            dist=1,7;
+        if (puntos >= 800) {
+            velocidad = 3;
+            (dist = 1), 7;
         }
-        if (puntos>=12600){
-            velocidad=1.5;
-            dist=1.8;
+        if (puntos >= 12600) {
+            velocidad = 1.5;
+            dist = 1.8;
         }
         if (this.type == 'player') {
             if (this.x > 590) {
@@ -176,7 +178,7 @@ function updateGameArea() {
         }
     }
     // ---------------------------------------------------------------------Generacion de obstaculos
-    if (gameArea.frameNo == 1 || everyinterval(velocidad*20)) {
+    if (gameArea.frameNo == 1 || everyinterval(velocidad * 20)) {
         x = gameArea.canvas.width;
         imageN = Math.round(Math.random() * 2 + 1);
         y = Math.random() * (gameArea.canvas.height - 50);
@@ -235,13 +237,48 @@ function updateGameArea() {
 
     personaje.newPos();
     personaje.update();
+
+    //----------------------------------------------------------------------Generación buffers
+
+    if (!buffers[0]) {
+        setTimeout(bufferCreation, 2000);
+    } else {
+        bufferCreation();
+    }
+
+    function bufferCreation() {
+        if (gameArea.frameNo == 1 || everyinterval(850)) {
+            x = gameArea.canvas.width;
+            y = Math.random() * (gameArea.canvas.height - 50);
+            buffers.push(
+                new component(
+                    50,
+                    50,
+                    `./images/juego2/buffer.svg`,
+                    x,
+                    y,
+                    'obstacle'
+                )
+            );
+        }
+    }
+
+    for (i = 0; i < buffers.length; i += 1) {
+        buffers[i].x += -1;
+        buffers[i].update();
+    }
+
+    for (i = 0; i < buffers.length; i += 1) {
+        if (personaje.collision(buffers[i])) {
+            buff();
+            return;
+        }
+    }
 }
 
 //---------------------------------------------------------------Cronómetro puntuación
 function iniciarcronometro() {
     hora = setInterval(cronometro, 50);
-    
-
 }
 
 function pararcronometro() {

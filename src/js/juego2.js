@@ -229,29 +229,17 @@ function updateGameArea() {
     // ---------------------------------------------------------------------Movimiento de personaje
     personaje.speedX = 0;
     personaje.speedY = 0;
-    if (
-        (gameArea.keys && gameArea.keys['ArrowLeft']) ||
-        (gameArea.keys && gameArea.keys['a'])
-    ) {
+    if (gameArea.keys && gameArea.keys['a']) {
         personaje.speedX = -dist - dificultad;
     }
 
-    if (
-        (gameArea.keys && gameArea.keys['ArrowRight']) ||
-        (gameArea.keys && gameArea.keys['d'])
-    ) {
+    if (gameArea.keys && gameArea.keys['d']) {
         personaje.speedX = dist + dificultad;
     }
-    if (
-        (gameArea.keys && gameArea.keys['ArrowUp']) ||
-        (gameArea.keys && gameArea.keys['w'])
-    ) {
+    if (gameArea.keys && gameArea.keys['w']) {
         personaje.speedY = -dist - dificultad;
     }
-    if (
-        (gameArea.keys && gameArea.keys['ArrowDown']) ||
-        (gameArea.keys && gameArea.keys['s'])
-    ) {
+    if (gameArea.keys && gameArea.keys['s']) {
         personaje.speedY = dist + dificultad;
     }
 

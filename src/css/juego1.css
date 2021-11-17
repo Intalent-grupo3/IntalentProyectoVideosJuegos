@@ -1,99 +1,92 @@
+p {
+    color: black;
+}
+
 .containerJuego {
-  display: grid;
-  grid-template-columns: 0.5fr 2fr 0.5fr;
-  grid-template-rows: 0.5fr 1fr 1fr;
-  gap: 0px 0px;
-  grid-auto-flow: row;
-  grid-template-areas:
-    "Temporizador . Vidas"
-    ". Enunciado ."
-    ". Input .";
-  background-color: #222;
-  margin-left: 25rem;
-  margin-right: 25rem;
-  margin-top: 5rem;
-  padding-bottom: 5rem;
-  position: absolute;
+    display: grid;
+    grid-template-columns: 0.5fr 2fr 0.5fr;
+    grid-template-rows: 0.5fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+        'Temporizador . Vidas'
+        '. Enunciado .'
+        '. Input .';
+    background-color: #222;
+    margin-left: 25rem;
+    margin-right: 25rem;
+    margin-top: 5rem;
+    padding-bottom: 5rem;
+    position: absolute;
 }
 
 .Enunciado {
-
-  justify-self: center;
-  align-self: center;
-  grid-area: Enunciado;
-  background-color: var(--color-yellow);
-  text-transform: uppercase;
-  font-family: var(--font-title);
-  font-size: 4em;
-  padding-left: 0.35em;
-  padding-right: 0.35em;
-  border-radius: 10%;
+    justify-self: center;
+    align-self: center;
+    grid-area: Enunciado;
+    background-color: var(--color-yellow);
+    text-transform: uppercase;
+    font-family: var(--font-title);
+    font-size: 4em;
+    padding-left: 0.35em;
+    padding-right: 0.35em;
+    border-radius: 10%;
 }
 
 .Vidas {
-
-  justify-self: center;
-  align-self: center;
-  grid-area: Vidas;
-  background-color: var(--color-yellow);
-  font-family: var(--font-title);
-  font-size: 2em;
-  font-weight: bold;
-  padding: 0.35em;
-  margin-top: 0.5em;
-  margin-left: 0.5em;
-  margin-right: 0.5em;
+    justify-self: center;
+    align-self: center;
+    grid-area: Vidas;
+    background-color: var(--color-yellow);
+    font-family: var(--font-title);
+    font-size: 2em;
+    font-weight: bold;
+    padding: 0.35em;
+    margin-top: 0.5em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
 }
 
 .Temporizador {
-
-  justify-self: center;
-  align-self: center;
-  grid-area: Temporizador;
-  background-color: var(--color-yellow);
-  font-family: var(--font-title);
-  font-size: 2em;
-  font-weight: bold;
-  padding: 0.35em;
-  margin-top: 0.5em;
-  margin-left: 0.5em;
-  margin-right: 0.5em;
-
-
+    justify-self: center;
+    align-self: center;
+    grid-area: Temporizador;
+    background-color: var(--color-yellow);
+    font-family: var(--font-title);
+    font-size: 2em;
+    font-weight: bold;
+    padding: 0.35em;
+    margin-top: 0.5em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
 }
 
 .Input {
-
-  justify-self: center;
-  align-self: center;
-  grid-area: Input;
-  white-space: nowrap;
- 
- 
+    justify-self: center;
+    align-self: center;
+    grid-area: Input;
+    white-space: nowrap;
 }
 .score {
-  background-color: var(--color-yellow);
-  margin-top: 0.5em;
-  margin-left: 0.5em;
-  margin-right: 0.5em;
+    background-color: var(--color-yellow);
+    margin-top: 0.5em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
 }
-.instrucciones{
-  background-color: var(--color-yellow);
-  margin-top: 0.5em;
-  margin-left: 0.5em;
-  margin-right: 0.5em;
-  padding: 2rem; 
-  
-
+.instrucciones {
+    background-color: var(--color-yellow);
+    margin-top: 0.5em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    padding: 2rem;
 }
-.menu-dificultad{
-  background-color: var(--color-yellow);
-  margin-top: 0.5em;
-  margin-left: 0.5em;
-  margin-right: 0.5em;
-  padding: 2rem; 
-
+.menu-dificultad {
+    background-color: var(--color-yellow);
+    margin-top: 0.5em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    padding: 2rem;
 }
-h4{
-  background-color: var(--color-yellow);
+h4 {
+    background-color: var(--color-yellow);
 }

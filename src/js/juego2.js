@@ -7,9 +7,13 @@ let hora;
 let puntuacion;
 let leaderscore = ['', '', '', '', ''];
 let leaderplayer = ['', '', '', '', ''];
+let velocidad;
+let dist;
 
 // -----------------------------------------------------------------------Inicio del juego
 function startGame() {
+    velocidad = 10;
+    dist = 1.5;
     gameArea.start();
     personaje = new component(
         50,
@@ -44,7 +48,7 @@ let gameArea = {
         this.canvas.height = 490;
         this.context = this.canvas.getContext('2d');
         this.frameNo = 0;
-        this.interval = setInterval(updateGameArea, 10);
+        this.interval = setInterval(updateGameArea, velocidad);
         // ---------------------------------------------------------------Evento de teclado
         window.addEventListener('keydown', function (e) {
             gameArea.keys = gameArea.keys || [];
@@ -102,6 +106,19 @@ function component(width, height, color, x, y, type) {
     this.newPos = function () {
         this.x += this.speedX;
         this.y += this.speedY;
+
+        if (puntos >= 400) {
+            velocidad = 6;
+            dist = 1.6;
+        }
+        if (puntos >= 800) {
+            velocidad = 3;
+            (dist = 1), 7;
+        }
+        if (puntos >= 12600) {
+            velocidad = 1.5;
+            dist = 1.8;
+        }
         if (this.type == 'player') {
             if (this.x > 590) {
                 this.x = 590;
@@ -151,7 +168,7 @@ function updateGameArea() {
     fondo.x += -0.2;
     fondo.update();
     gameArea.frameNo += 1;
-    // ---------------------------------------------------------------------Comprovación de colision
+    // ---------------------------------------------------------------------Comprobación de colision
     for (i = 0; i < obstacles.length; i += 1) {
         if (personaje.collision(obstacles[i])) {
             gameArea.end();
@@ -159,7 +176,7 @@ function updateGameArea() {
         }
     }
     // ---------------------------------------------------------------------Generacion de obstaculos
-    if (gameArea.frameNo == 1 || everyinterval(200)) {
+    if (gameArea.frameNo == 1 || everyinterval(velocidad * 20)) {
         x = gameArea.canvas.width;
         imageN = Math.round(Math.random() * 2 + 1);
         y = Math.random() * (gameArea.canvas.height - 50);
@@ -194,26 +211,26 @@ function updateGameArea() {
         (gameArea.keys && gameArea.keys['ArrowLeft']) ||
         (gameArea.keys && gameArea.keys['a'])
     ) {
-        personaje.speedX = -1.5;
+        personaje.speedX = -dist;
     }
 
     if (
         (gameArea.keys && gameArea.keys['ArrowRight']) ||
         (gameArea.keys && gameArea.keys['d'])
     ) {
-        personaje.speedX = 1.5;
+        personaje.speedX = dist;
     }
     if (
         (gameArea.keys && gameArea.keys['ArrowUp']) ||
         (gameArea.keys && gameArea.keys['w'])
     ) {
-        personaje.speedY = -1.5;
+        personaje.speedY = -dist;
     }
     if (
         (gameArea.keys && gameArea.keys['ArrowDown']) ||
         (gameArea.keys && gameArea.keys['s'])
     ) {
-        personaje.speedY = 1.5;
+        personaje.speedY = dist;
     }
 
     personaje.newPos();

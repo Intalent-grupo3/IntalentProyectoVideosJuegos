@@ -301,47 +301,51 @@ function updateGameArea() {
                     }
                     break;
                 }
-                case 1:
-                    if (personaje.collision(buffers[i])) { //buff puntuación
-                        if (score == 1) {
-                            scoreModifier(4);
-                            //console.log("scoremodifier " + score);
-                        }
-                        break;
+            case 1:
+                if (personaje.collision(buffers[i])) {
+                    //buff puntuación
+                    if (score == 1) {
+                        scoreModifier(4);
+                        //console.log("scoremodifier " + score);
                     }
-                 case 2:
-                        if (personaje.collision(buffers[i])) { //buff tamaño
-                            if (sizeChange == 1) {
-                                sizeModifier(1 / 1.5);
-                                //console.log("sizemodifier " + sizeChange);
-                            }
-                            break;
-                        }
-                        case 3:
-                            if (personaje.collision(buffers[i])) { //debuff velocidad
-                                if (dist == 1.5) {
-                                    speedModifier(-1 / 2.5);
-                                    //console.log("speedmodifier "+ dist)
-                                }
-                                break;
-                            }
-                            case 4:
-                                if (personaje.collision(buffers[i])) { //debuff puntuación
-                                    if (score == 1) {
-                                        scoreModifier(0.5);
-                                        //console.log("scoremodifier " + score);
-                                    }
-                                    break;
-                                }
-                                case 5:
-                                    if (personaje.collision(buffers[i])) { //debuff tamaño
-                                        if (sizeChange == 1) {
-                                            sizeModifier(1.5);
-                                            // console.log("sizemodifier " + sizeChange);
-                                        }
-                                        break;
-                                    }
-
+                    break;
+                }
+            case 2:
+                if (personaje.collision(buffers[i])) {
+                    //buff tamaño
+                    if (sizeChange == 1) {
+                        sizeModifier(1 / 1.5);
+                        //console.log("sizemodifier " + sizeChange);
+                    }
+                    break;
+                }
+            case 3:
+                if (personaje.collision(buffers[i])) {
+                    //debuff velocidad
+                    if (dist == 1.5) {
+                        speedModifier(-1 / 2.5);
+                        //console.log("speedmodifier "+ dist)
+                    }
+                    break;
+                }
+            case 4:
+                if (personaje.collision(buffers[i])) {
+                    //debuff puntuación
+                    if (score == 1) {
+                        scoreModifier(0.5);
+                        //console.log("scoremodifier " + score);
+                    }
+                    break;
+                }
+            case 5:
+                if (personaje.collision(buffers[i])) {
+                    //debuff tamaño
+                    if (sizeChange == 1) {
+                        sizeModifier(1.5);
+                        // console.log("sizemodifier " + sizeChange);
+                    }
+                    break;
+                }
         }
     }
     //console.log("velocidad "+dist+"; multiplicador "+score+"; tamaño"+sizeChange);

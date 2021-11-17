@@ -1,24 +1,20 @@
-
-/*Puntos para no olvidar mañana xD
-Se cargan bien las palabras del api y al jugar funciona bien el match y va aumentando la puntuacion
-pero cuando se termina el tiempo, se puede seguir jugando, también falta lo de seleccionar la dificultad
-ya que cuando se selecciona genera una palabra nueva pero no se cambia el tiempo y sigue corriendo el tiempo de la otra dificultad.*/
-
+window.addEventListener('load', iniciarJuego);
 
 let puntuacion = 0;
 let seguirJugando;
 let maximaPuntuacion;
 const niveles = {
-    facil: 30,
-    medio: 20,
-    dificil: 10
+    facil: 15,
+    medio: 10,
+    dificil: 5
 }
-let nivelActual = niveles.facil;
+let nivelActual;
+
 
 const palabraInput = document.querySelector('#palabra-input');
 let palabraActual = document.querySelector('#palabra-actual');
 const mensaje = document.querySelector('#message');
-const segundos = document.querySelector('#segundos');
+const segundos = document.querySelector('#temporizador');
 const puntuacionDisplay = document.querySelector('#score');
 const tiempoDisplay = document.querySelector('#time');
 const puntuacionMaxima = document.querySelector('#high-score');
@@ -41,30 +37,48 @@ function seleccionarNivel(e) {
     if (e.target === facilBtn) {
         nivelActual = niveles.facil;
     } else if (e.target === medioBtn) {
-        currentLevel = niveles.medio;
+        nivelActual = niveles.medio;
     } else if (e.target === dificilBtn) {
-        currentLevel = niveles.dificil;
+        nivelActual = niveles.dificil;
     }
     iniciarJuego();
 }
 
+function nivel() {
+    if (nivelActual === niveles.facil) {
+
+        segundos.innerHTML = nivelActual;
+        statusJugador()
+        temporizador(15)
+    }
+    else if (nivelActual === niveles.medio) {
+        segundos.innerHTML = nivelActual;
+        statusJugador()
+        temporizador(10)
+    } else if (nivelActual === niveles.dificil) {
+        segundos.innerHTML = nivelActual;
+        statusJugador()
+        temporizador(5)
+    }
+}
+
+//Funcion para inicializar el juego
 function iniciarJuego() {
     //Se agregan los segundos en el display
-    segundos.innerHTML = nivelActual;
+    nivel();
     //Se cargan las palabras
     getPalabra();
     palabraInput.addEventListener('input', empezarJuego);
-    setInterval(statusJugador, 50);
     maximaPuntuacion = localStorage.getItem('maximapuntuacion');
     puntuacionDisplay.innerHTML = maximaPuntuacion;
-
 }
 iniciarJuego();
 
+//Funcion para empezar el juego
 function empezarJuego() {
     palabraInput.value = palabraInput.value.toLowerCase();
     if (palabrasCorrectas()) {
-        seguirJugando = true;
+        //tiempo = nivelActual;
         getPalabra(palabraActual);
         palabraInput.value = '';
         puntuacion++;
@@ -86,9 +100,9 @@ function empezarJuego() {
     puntuacionMaxima.innerHTML = maximaPuntuacion;
 }
 
-
+//Funcion de comparar las palabras lanzadas por el api con las escritas por el cliente
 function palabrasCorrectas() {
-    //Funcion de comparar las palabras lanzadas por el api con las escritas por el cliente
+
     if (palabraInput.value === palabraActual) {
         mensaje.innerHTML = '😀';
         return true;
@@ -98,28 +112,33 @@ function palabrasCorrectas() {
     }
 }
 
-function temporizador() {
-    var segundos = 30;
-    setInterval(function () {
-
-        document.getElementById("temporizador").innerHTML = segundos;
-        segundos--;
-        if (segundos <= 0) {
-            document.getElementById("temporizador").innerHTML = "TIEMPO COMPLETADO";
-
-        }
-
-    }, 1000);
+//Funcion para el cronometro del juego 
+let tiempo;
+function temporizador(a) {
+    tiempo = a;
+    setInterval(tiempoActual, 1000);
 }
-temporizador()
 
-function statusJugador() {
-    if (!seguirJugando && segundos === 0) {
-        message.innerHTML = 'Haz perdido! 😞😞😞';
-        score = -1;
+function tiempoActual() {
+    document.getElementById("temporizador").innerHTML = tiempo;
+    tiempo--;
+    if (tiempo <= 0) {
+        clearInterval(tiempoActual);
+        document.getElementById("temporizador").innerHTML = "TIEMPO COMPLETADO";
+        statusJugador();
     }
 }
+
+//Funcion para parar cuando el cronometro llega a 0
+function statusJugador() {
+    if (!seguirJugando && tiempo === 0) {
+        message.innerHTML = 'Se te acabo tu tiempo! 😞😞😞';
+        puntuacion = -1;
+    }
+}
+
 
 facilBtn.addEventListener('click', seleccionarNivel);
 medioBtn.addEventListener('click', seleccionarNivel);
 dificilBtn.addEventListener('click', seleccionarNivel);
+

@@ -5,10 +5,12 @@ async function getPalabra() {
         .then(data => {
             document.getElementById("palabra-enunciado").innerHTML = data.body.Word;
             palabra = data.body.Word;
-            console.log(palabra)
+            console.log(palabra);
+         
         });
+        return palabra;
 }
-
+module.exports= getPalabra();
 getPalabra()
 
 function temporizador() {

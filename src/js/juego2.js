@@ -323,7 +323,7 @@ function updateGameArea() {
                 if (personaje.collision(buffers[i])) {
                     //debuff velocidad
                     if (dist == 1.5) {
-                        speedModifier(-1 / 2.5);
+                        speedModifier(-0.75);
                         //console.log("speedmodifier "+ dist)
                     }
                     break;

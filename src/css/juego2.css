@@ -42,17 +42,85 @@
     margin: 20% auto;
 }
 
+.container #menu #botoninicio,
+.container #leaderboard #winnerSubmit {
+    color: var(--color-purple);
+    background-color: var(--color-yellow);
+    border: 2px solid var(--color-yellow);
+}
+
+.container #menu #botoninicio:hover,
+.container #leaderboard #winnerSubmit:hover {
+    background-color: var(--color-yellow);
+    color: var(--color-purple);
+}
+
 .container #menu #botoninicio {
     margin: 0 auto;
     width: 100%;
-    background-color: var(--color-yellow);
+
     padding: 1em 0;
-    font-family: var(--font-title);
-    font-size: 1.2em;
     text-align: center;
     text-transform: uppercase;
     font-weight: 700;
-    color: var(--color-purple);
+    font-family: var(--font-title);
+    font-size: 1.2em;
+}
+
+.container #leaderboard {
+    position: absolute;
+    top: 30%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.container #leaderboard #winnerInput,
+.container #leaderboard #winnerSubmit {
+    display: block;
+    width: 50%;
+    padding: 0.8em;
+    margin: 0.8em auto;
+    font-family: var(--font-title);
+    font-weight: 700;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.container #leaderboard #leadList {
+    color: var(--color-yellow);
+    width: 50%;
+    margin: 0 auto;
+    font-size: 1.2em;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: var(--font-title);
+}
+
+.container #leaderboard #leadList li {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin: 0.2em;
+}
+
+.container #leaderboard #leadList span {
+    font-family: var(--font-title);
+}
+
+#leadList #rowName {
+    padding-left: 2em;
+}
+
+#leadList #rowScore {
+    padding-right: 2em;
+}
+
+.container #leaderboard #leadList li:first-child {
+    font-size: 1.3em;
+    background-color: var(--color-purple);
+    padding: 0.3em;
 }
 
 .container #cronometro {

@@ -5,9 +5,17 @@ let fondo;
 let puntos = 0;
 let hora;
 let puntuacion;
+let leaderscore = ['', '', '', '', ''];
+let leaderplayer = ['', '', '', '', ''];
+let velocidad;
+let dist;
+let registrodist;
+let score=1;
 
 // -----------------------------------------------------------------------Inicio del juego
 function startGame() {
+    velocidad=10;
+    dist=1.5;
     gameArea.start();
     personaje = new component(
         50,
@@ -29,6 +37,9 @@ function startGame() {
     iniciarcronometro();
     document.querySelector('#menu').style.display = 'none';
     document.querySelector('#imagenBox').style.display = 'none';
+    if (document.querySelector('#leadList')) {
+        leaderboard.removeChild(document.querySelector('#leadList'));
+    }
 }
 
 let gameArea = {
@@ -39,7 +50,7 @@ let gameArea = {
         this.canvas.height = 490;
         this.context = this.canvas.getContext('2d');
         this.frameNo = 0;
-        this.interval = setInterval(updateGameArea, 10);
+        this.interval = setInterval(updateGameArea, velocidad);
         // ---------------------------------------------------------------Evento de teclado
         window.addEventListener('keydown', function (e) {
             gameArea.keys = gameArea.keys || [];
@@ -58,6 +69,7 @@ let gameArea = {
         clearInterval(this.interval);
         pararcronometro();
         obstacles = [];
+        checkleaderboard();
         document.querySelector('#botoninicio').value = 'reiniciar';
         document.querySelector('#menu').style.display = 'block';
     },
@@ -96,6 +108,24 @@ function component(width, height, color, x, y, type) {
     this.newPos = function () {
         this.x += this.speedX;
         this.y += this.speedY;
+        //--------------------------------------------------Modificación doficultad juego con el avance
+        if (puntos>=400){
+            velocidad=6;
+            dist=1.6;
+        }
+        if (puntos>=800){
+            velocidad=4.5;
+            dist=1,7;
+        }
+        if (puntos>=1200){
+            velocidad=3;
+            dist=1.8;
+        }
+        if (puntos>=1600){
+            velocidad=1.5;
+            dist=1.9;
+        }
+        //------------------------------------------------------------------------------
         if (this.type == 'player') {
             if (this.x > 590) {
                 this.x = 590;
@@ -145,7 +175,7 @@ function updateGameArea() {
     fondo.x += -0.2;
     fondo.update();
     gameArea.frameNo += 1;
-    // ---------------------------------------------------------------------Comprovación de colision
+    // ---------------------------------------------------------------------Comprobación de colision
     for (i = 0; i < obstacles.length; i += 1) {
         if (personaje.collision(obstacles[i])) {
             gameArea.end();
@@ -153,7 +183,7 @@ function updateGameArea() {
         }
     }
     // ---------------------------------------------------------------------Generacion de obstaculos
-    if (gameArea.frameNo == 1 || everyinterval(200)) {
+    if (gameArea.frameNo == 1 || everyinterval(velocidad*20)) {
         x = gameArea.canvas.width;
         imageN = Math.round(Math.random() * 2 + 1);
         y = Math.random() * (gameArea.canvas.height - 50);
@@ -188,26 +218,26 @@ function updateGameArea() {
         (gameArea.keys && gameArea.keys['ArrowLeft']) ||
         (gameArea.keys && gameArea.keys['a'])
     ) {
-        personaje.speedX = -1.5;
+        personaje.speedX = -dist;
     }
 
     if (
         (gameArea.keys && gameArea.keys['ArrowRight']) ||
         (gameArea.keys && gameArea.keys['d'])
     ) {
-        personaje.speedX = 1.5;
+        personaje.speedX = dist;
     }
     if (
         (gameArea.keys && gameArea.keys['ArrowUp']) ||
         (gameArea.keys && gameArea.keys['w'])
     ) {
-        personaje.speedY = -1.5;
+        personaje.speedY = -dist;
     }
     if (
         (gameArea.keys && gameArea.keys['ArrowDown']) ||
         (gameArea.keys && gameArea.keys['s'])
     ) {
-        personaje.speedY = 1.5;
+        personaje.speedY = dist;
     }
 
     personaje.newPos();
@@ -216,22 +246,157 @@ function updateGameArea() {
 
 //---------------------------------------------------------------Cronómetro puntuación
 function iniciarcronometro() {
-    hora = setInterval(cronometro, 50);
+    hora = setInterval(cronometro, (50*score));
+    
+
 }
+
 function pararcronometro() {
     clearInterval(hora);
     puntuacion = puntos;
-    console.log(puntuacion);
 }
+
 function resetcronometro() {
     clearInterval(hora);
     puntos = 0;
     document.querySelector('#cronoText').innerHTML = 'Puntos: ';
     document.querySelector('#puntos').innerHTML = puntos;
 }
+
 function cronometro() {
     puntos++;
     document.querySelector('#puntos').innerHTML = puntos;
 }
 
+//--------------------------------------------------------------------Leaderboard
+function checkleaderboard() {
+    console.log(puntuacion);
+    console.log(leaderscore);
+    let checking = 0;
+    if (window.localStorage.length) {
+        leaderplayer = JSON.parse(localStorage.getItem('jugadores'));
+        leaderscore = JSON.parse(localStorage.getItem('puntuaciones'));
+    } else {
+        leaderscore = ['', '', '', '', ''];
+        leaderplayer = ['', '', '', '', ''];
+    }
+    console.log(leaderscore);
+    for (let i = 0; i < 5; i++) {
+        if (leaderscore[i] < puntuacion) {
+            checking = 1;
+        }
+    }
+    if (checking == 1) {
+        nameWinner();
+    } else {
+        displayLeaderboard();
+    }
+}
+
+let leaderboard = document.querySelector('#leaderboard');
+
+function nameWinner() {
+    document.querySelector('#botoninicio').style.display = 'none';
+    let winnerInput = document.createElement('INPUT');
+    winnerInput.setAttribute('type', 'text');
+    winnerInput.setAttribute('id', 'winnerInput');
+    let winnerSubmit = document.createElement('INPUT');
+    winnerSubmit.setAttribute('type', 'submit');
+    winnerSubmit.setAttribute('id', 'winnerSubmit');
+    winnerSubmit.setAttribute('value', 'Incluye tu nombre');
+    leaderboard.appendChild(winnerInput);
+    leaderboard.appendChild(winnerSubmit);
+    winnerSubmit.addEventListener('click', updatearleaderboard);
+    console.log('entra en crea input');
+}
+
+function displayLeaderboard() {
+    document.querySelector('#botoninicio').style.display = 'block';
+    console.log('entra en displayLeaderboard');
+    let winnerInput = document.querySelector('#winnerInput');
+    let winnerSubmit = document.querySelector('#winnerSubmit');
+    if (winnerInput && winnerSubmit) {
+        console.log('borra inputs');
+        leaderboard.removeChild(winnerInput);
+        leaderboard.removeChild(winnerSubmit);
+    }
+
+    let leadList = document.createElement('ol');
+    leadList.setAttribute('id', 'leadList');
+    for (let i = 0; i < 5; i++) {
+        if (leaderscore[i] != '') {
+            let leadPlayer = document.createElement('li');
+            let rowName = document.createElement('span');
+            let spanName = document.createTextNode(leaderplayer[i]);
+            rowName.setAttribute('id', 'rowName');
+            rowName.appendChild(spanName);
+            let rowScore = document.createElement('span');
+            let spanScore = document.createTextNode(leaderscore[i]);
+            rowScore.setAttribute('id', 'rowScore');
+            rowScore.appendChild(spanScore);
+            leadPlayer.appendChild(rowName);
+            leadPlayer.appendChild(rowScore);
+            leadList.appendChild(leadPlayer);
+        }
+    }
+    leaderboard.appendChild(leadList);
+}
+
+function updatearleaderboard() {
+    let playername = document.querySelector('#winnerInput').value; 
+    let newlead = 0;
+    let holderplayerin;
+    let holderplayerout;
+    let holderscorein;
+    let holderscoreout;
+    for (let i = 0; i < 5; i++) {
+        if (leaderscore[i] < puntuacion && newlead == 0) {
+            newlead = 1;
+            holderplayerin = playername;
+            holderscorein = puntuacion;
+        }
+        if (newlead == 1) {
+            holderplayerout = holderplayerin;
+            holderplayerin = leaderplayer[i];
+            leaderplayer[i] = holderplayerout;
+
+            holderscoreout = holderscorein;
+            holderscorein = leaderscore[i];
+            leaderscore[i] = holderscoreout;
+        }
+    }
+    localStorage.setItem('puntuaciones', JSON.stringify(leaderscore));
+    localStorage.setItem('jugadores', JSON.stringify(leaderplayer));
+    showleaderboard();
+    displayLeaderboard();
+}
+
+function showleaderboard() {
+    leaderplayer = JSON.parse(localStorage.getItem('jugadores'));
+    leaderscore = JSON.parse(localStorage.getItem('puntuaciones'));
+}
+
+//-------------------------------------------------------Funciones powerups
+//Buffer y debuffer velocidad
+function speedModifier(speedModifier){ //si es buffer le pasamos un valor >1 y si es debuffer <1
+    registrodist=dist;
+    dist=(dist*speedModifier);
+    setTimeout(resetSpeed,2000,registrodist);
+
+}
+function resetSpeed(distoriginal){
+    dist=distoriginal;
+}
+
+//Buffer y debuffer puntuación
+function scoreModifier(scoreModifier){ //si es buffer le pasamos un valor >1 y si es debuffer <1
+    score=(score/scoreModifier);
+    setTimeout(resetScore,2000);
+
+}
+function resetScore(){
+    score=1;
+}
+
 document.querySelector('#botoninicio').addEventListener('click', startGame);
+

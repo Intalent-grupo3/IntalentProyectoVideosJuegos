@@ -31,7 +31,9 @@ function startGame() {
     iniciarcronometro();
     document.querySelector('#menu').style.display = 'none';
     document.querySelector('#imagenBox').style.display = 'none';
-    leaderboard.removeChild(document.querySelector('#leadList'));
+    if (document.querySelector('#leadList')) {
+        leaderboard.removeChild(document.querySelector('#leadList'));
+    }
 }
 
 let gameArea = {

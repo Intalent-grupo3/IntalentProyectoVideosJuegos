@@ -1,63 +1,74 @@
 // ----------------------------------------------------------------------VARIABLES GLOBALES
 let obstacles = [];
+let buffers = [];
 let personaje;
 let fondo;
 let puntos = 0;
 let hora;
 let puntuacion;
-let leaderscore = ['', '', '', '', ''];
-let leaderplayer = ['', '', '', '', ''];
+let leaderscore = ["", "", "", "", ""];
+let leaderplayer = ["", "", "", "", ""];
 let velocidad;
 let dist;
 let registrodist;
-let score=1;
-
+let score;
+let sizeChange;
+let playerWidth;
+let playerHeigth;
+let dificultad;
+let bufferCond = 0;
 // -----------------------------------------------------------------------Inicio del juego
 function startGame() {
-    velocidad=10;
-    dist=1.5;
+    velocidad = 10;
+    dist = 1.5;
+    sizeChange = 1;
+    score = 1;
+    playerHeigth = 50;
+    playerWidth = 50;
+    dificultad = 0;
     gameArea.start();
     personaje = new component(
-        50,
-        50,
-        './images/juego2/rocket.svg',
+        playerWidth,
+        playerHeigth,
+        "./images/juego2/rocket.svg",
         20,
         220,
-        'player'
+        "player"
     );
     fondo = new component(
         1800,
         490,
-        './images/juego2/ba.webp',
+        "./images/juego2/ba.webp",
         1,
         1,
-        'background'
+        "background"
     );
     resetcronometro();
     iniciarcronometro();
-    document.querySelector('#menu').style.display = 'none';
-    document.querySelector('#imagenBox').style.display = 'none';
-    if (document.querySelector('#leadList')) {
-        leaderboard.removeChild(document.querySelector('#leadList'));
+    document.querySelector("#menu").style.display = "none";
+    document.querySelector("#imagenBox").style.display = "none";
+    if (document.querySelector("#leadList")) {
+        leaderboard.removeChild(document.querySelector("#leadList"));
     }
 }
 
 let gameArea = {
-    canvas: document.querySelector('#juego2'),
+    canvas: document.querySelector("#juego2"),
     // -------------------------------------------------------------------Estructura del lienzo
     start: function () {
+        console.log(buffers);
         this.canvas.width = 640;
         this.canvas.height = 490;
-        this.context = this.canvas.getContext('2d');
+        this.context = this.canvas.getContext("2d");
         this.frameNo = 0;
         this.interval = setInterval(updateGameArea, velocidad);
         // ---------------------------------------------------------------Evento de teclado
-        window.addEventListener('keydown', function (e) {
+        window.addEventListener("keydown", function (e) {
             gameArea.keys = gameArea.keys || [];
-            gameArea.keys[e.key] = e.type == 'keydown';
+            gameArea.keys[e.key] = e.type == "keydown";
         });
-        window.addEventListener('keyup', function (e) {
-            gameArea.keys[e.key] = e.type == 'keydown';
+        window.addEventListener("keyup", function (e) {
+            gameArea.keys[e.key] = e.type == "keydown";
         });
     },
     // --------------------------------------------------------------------Clear (deja el canvas en blanco)
@@ -66,31 +77,35 @@ let gameArea = {
     },
     // ---------------------------------------------------------------------FIN (resetea el interval)
     end: function () {
+        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
         clearInterval(this.interval);
         pararcronometro();
         obstacles = [];
+        buffers = [];
+        bufferCond = 0;
         checkleaderboard();
-        document.querySelector('#botoninicio').value = 'reiniciar';
-        document.querySelector('#menu').style.display = 'block';
+        document.querySelector("#botoninicio").value = "reiniciar";
+        document.querySelector("#menu").style.display = "block";
     },
 };
 // --------------------------------------------------------------------------Declaración de componente
-function component(width, height, color, x, y, type) {
+function component(width, height, color, x, y, type, bufferNum) {
     this.width = width;
     this.height = height;
     this.x = x;
     this.y = y;
     this.type = type;
-    if (type == 'player' || type == 'obstacle' || type == 'background') {
+    this.bufferNum = bufferNum;
+    if (type == "player" || type == "obstacle" || type == "background") {
         this.image = new Image();
         this.image.src = color;
     }
     ctx = gameArea.context;
     // ------------------------------------------------------------------------Repintado de componente
     this.update = function () {
-        if (type == 'player' || type == 'obstacle' || type == 'background') {
+        if (type == "player" || type == "obstacle" || type == "background") {
             ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
-            if (type == 'background') {
+            if (type == "background") {
                 ctx.drawImage(
                     this.image,
                     this.x + this.width,
@@ -103,30 +118,31 @@ function component(width, height, color, x, y, type) {
             ctx.fillStyle = color;
             ctx.fillRect(this.x, this.y, this.width, this.height);
         }
+
     };
     // -------------------------------------------------------------------------Posicion del personaje
     this.newPos = function () {
         this.x += this.speedX;
         this.y += this.speedY;
         //--------------------------------------------------Modificación doficultad juego con el avance
-        if (puntos>=400){
-            velocidad=6;
-            dist=1.6;
+        if (puntos >= 400) {
+            velocidad = 6;
+            dificultad = 0.1;
         }
-        if (puntos>=800){
-            velocidad=4.5;
-            dist=1,7;
+        if (puntos >= 800) {
+            velocidad = 4.5;
+            (dist = 1), 7;
         }
-        if (puntos>=1200){
-            velocidad=3;
-            dist=1.8;
+        if (puntos >= 1200) {
+            velocidad = 3;
+            dist = 1.8;
         }
-        if (puntos>=1600){
-            velocidad=1.5;
-            dist=1.9;
+        if (puntos >= 1600) {
+            velocidad = 1.5;
+            dist = 1.9;
         }
         //------------------------------------------------------------------------------
-        if (this.type == 'player') {
+        if (this.type == "player") {
             if (this.x > 590) {
                 this.x = 590;
             }
@@ -140,7 +156,7 @@ function component(width, height, color, x, y, type) {
                 this.y = 0;
             }
         }
-        if (this.type == 'background') {
+        if (this.type == "background") {
             if (this.x == -this.width) {
                 this.x = 0;
             }
@@ -183,19 +199,19 @@ function updateGameArea() {
         }
     }
     // ---------------------------------------------------------------------Generacion de obstaculos
-    if (gameArea.frameNo == 1 || everyinterval(velocidad*20)) {
+    if (gameArea.frameNo == 1 || everyinterval(velocidad * 20)) {
         x = gameArea.canvas.width;
-        imageN = Math.round(Math.random() * 2 + 1);
+        imageN = Math.round(Math.random() * 2);
         y = Math.random() * (gameArea.canvas.height - 50);
         obstacles.push(
             new component(
                 50,
                 50,
-                `./images/juego2/obstacle${imageN}.png`,
+                `./images/juego2/obstacle${imageN}.svg`,
                 // `./images/juego2/obstacle3.png`,
                 x,
                 y,
-                'obstacle'
+                "obstacle"
             )
         );
     }
@@ -215,40 +231,123 @@ function updateGameArea() {
     personaje.speedX = 0;
     personaje.speedY = 0;
     if (
-        (gameArea.keys && gameArea.keys['ArrowLeft']) ||
-        (gameArea.keys && gameArea.keys['a'])
+        (gameArea.keys && gameArea.keys["ArrowLeft"]) ||
+        (gameArea.keys && gameArea.keys["a"])
     ) {
-        personaje.speedX = -dist;
+        personaje.speedX = (-dist - dificultad);
     }
 
     if (
-        (gameArea.keys && gameArea.keys['ArrowRight']) ||
-        (gameArea.keys && gameArea.keys['d'])
+        (gameArea.keys && gameArea.keys["ArrowRight"]) ||
+        (gameArea.keys && gameArea.keys["d"])
     ) {
-        personaje.speedX = dist;
+        personaje.speedX = (dist + dificultad);
     }
     if (
-        (gameArea.keys && gameArea.keys['ArrowUp']) ||
-        (gameArea.keys && gameArea.keys['w'])
+        (gameArea.keys && gameArea.keys["ArrowUp"]) ||
+        (gameArea.keys && gameArea.keys["w"])
     ) {
-        personaje.speedY = -dist;
+        personaje.speedY = (-dist - dificultad);
     }
     if (
-        (gameArea.keys && gameArea.keys['ArrowDown']) ||
-        (gameArea.keys && gameArea.keys['s'])
+        (gameArea.keys && gameArea.keys["ArrowDown"]) ||
+        (gameArea.keys && gameArea.keys["s"])
     ) {
-        personaje.speedY = dist;
+        personaje.speedY = (dist + dificultad);
     }
 
     personaje.newPos();
     personaje.update();
+
+    //----------------------------------------------------------------------Generación buffers
+    if (!bufferCond) {
+        bufferCond = 1;
+        console.log("netra en condicion");
+        setTimeout(bufferCreation, 5000);
+    } else {
+        bufferCreation();
+    }
+
+    function bufferCreation(randomN) {
+        if (gameArea.frameNo == 1 || everyinterval(850)) {
+            console.log(buffers);
+            x = gameArea.canvas.width;
+            y = Math.random() * (gameArea.canvas.height - 50);
+            bufferN = Math.round(Math.random() * 5);
+            buffers.push(
+                new component(
+                    50,
+                    50,
+                    `./images/juego2/buffer${bufferN}.svg`,
+                    x,
+                    y,
+                    "obstacle",
+                    bufferN
+                )
+            );
+        }
+    }
+
+    for (i = 0; i < buffers.length; i += 1) {
+        buffers[i].x += -1;
+        buffers[i].update();
+    }
+
+    for (i = 0; i < buffers.length; i += 1) {
+        switch (buffers[i].bufferNum) {
+            case 0:
+                if (personaje.collision(buffers[i])) { //buff velocidad
+                    if (dist == 1.5) {
+                        speedModifier(2.5);
+                        console.log("speedmodifier " + dist);
+                    }
+                    break;
+                }
+                case 1:
+                    if (personaje.collision(buffers[i])) { //buff puntuación
+                        if (score == 1) {
+                            scoreModifier(4);
+                            console.log("scoremodifier " + score);
+                        }
+                        break;
+                    }
+                 case 2:
+                        if (personaje.collision(buffers[i])) { //buff tamaño
+                            if (sizeChange == 1) {
+                                sizeModifier(1 / 1.5);
+                            }
+                            break;
+                        }
+                        case 3:
+                            if (personaje.collision(buffers[i])) { //debuff velocidad
+                                if (dist == 1.5) {
+                                    speedModifier(1 / 2.5);
+                                }
+                                break;
+                            }
+                            case 4:
+                                if (personaje.collision(buffers[i])) { //debuff puntuación
+                                    if (score == 1) {
+                                        scoreModifier(0.5);
+                                    }
+                                    break;
+                                }
+                                case 5:
+                                    if (personaje.collision(buffers[i])) { //debuff tamaño
+                                        if (sizeChange == 1) {
+                                            sizeModifier(1.5);
+                                        }
+                                        break;
+                                    }
+
+        }
+    }
+    //console.log("velocidad "+dist+"; multiplicador "+score+"; tamaño"+sizeChange);
 }
 
 //---------------------------------------------------------------Cronómetro puntuación
 function iniciarcronometro() {
-    hora = setInterval(cronometro, (50*score));
-    
-
+    hora = setInterval(cronometro, (200 * score));
 }
 
 function pararcronometro() {
@@ -259,28 +358,26 @@ function pararcronometro() {
 function resetcronometro() {
     clearInterval(hora);
     puntos = 0;
-    document.querySelector('#cronoText').innerHTML = 'Puntos: ';
-    document.querySelector('#puntos').innerHTML = puntos;
+    document.querySelector("#cronoText").innerHTML = "Puntos: ";
+    document.querySelector("#puntos").innerHTML = puntos;
 }
 
 function cronometro() {
     puntos++;
-    document.querySelector('#puntos').innerHTML = puntos;
+    document.querySelector("#puntos").innerHTML = puntos;
 }
 
 //--------------------------------------------------------------------Leaderboard
 function checkleaderboard() {
-    console.log(puntuacion);
-    console.log(leaderscore);
     let checking = 0;
     if (window.localStorage.length) {
-        leaderplayer = JSON.parse(localStorage.getItem('jugadores'));
-        leaderscore = JSON.parse(localStorage.getItem('puntuaciones'));
+        leaderplayer = JSON.parse(localStorage.getItem("jugadores"));
+        leaderscore = JSON.parse(localStorage.getItem("puntuaciones"));
     } else {
-        leaderscore = ['', '', '', '', ''];
-        leaderplayer = ['', '', '', '', ''];
+        leaderscore = ["", "", "", "", ""];
+        leaderplayer = ["", "", "", "", ""];
     }
-    console.log(leaderscore);
+
     for (let i = 0; i < 5; i++) {
         if (leaderscore[i] < puntuacion) {
             checking = 1;
@@ -293,46 +390,44 @@ function checkleaderboard() {
     }
 }
 
-let leaderboard = document.querySelector('#leaderboard');
+let leaderboard = document.querySelector("#leaderboard");
 
 function nameWinner() {
-    document.querySelector('#botoninicio').style.display = 'none';
-    let winnerInput = document.createElement('INPUT');
-    winnerInput.setAttribute('type', 'text');
-    winnerInput.setAttribute('id', 'winnerInput');
-    let winnerSubmit = document.createElement('INPUT');
-    winnerSubmit.setAttribute('type', 'submit');
-    winnerSubmit.setAttribute('id', 'winnerSubmit');
-    winnerSubmit.setAttribute('value', 'Incluye tu nombre');
+    document.querySelector("#botoninicio").style.display = "none";
+    let winnerInput = document.createElement("INPUT");
+    winnerInput.setAttribute("type", "text");
+    winnerInput.setAttribute("id", "winnerInput");
+    let winnerSubmit = document.createElement("INPUT");
+    winnerSubmit.setAttribute("type", "submit");
+    winnerSubmit.setAttribute("id", "winnerSubmit");
+    winnerSubmit.setAttribute("value", "Incluye tu nombre");
     leaderboard.appendChild(winnerInput);
     leaderboard.appendChild(winnerSubmit);
-    winnerSubmit.addEventListener('click', updatearleaderboard);
-    console.log('entra en crea input');
+    winnerSubmit.addEventListener("click", updatearleaderboard);
 }
 
 function displayLeaderboard() {
-    document.querySelector('#botoninicio').style.display = 'block';
-    console.log('entra en displayLeaderboard');
-    let winnerInput = document.querySelector('#winnerInput');
-    let winnerSubmit = document.querySelector('#winnerSubmit');
+    document.querySelector("#botoninicio").style.display = "block";
+
+    let winnerInput = document.querySelector("#winnerInput");
+    let winnerSubmit = document.querySelector("#winnerSubmit");
     if (winnerInput && winnerSubmit) {
-        console.log('borra inputs');
         leaderboard.removeChild(winnerInput);
         leaderboard.removeChild(winnerSubmit);
     }
 
-    let leadList = document.createElement('ol');
-    leadList.setAttribute('id', 'leadList');
+    let leadList = document.createElement("ol");
+    leadList.setAttribute("id", "leadList");
     for (let i = 0; i < 5; i++) {
-        if (leaderscore[i] != '') {
-            let leadPlayer = document.createElement('li');
-            let rowName = document.createElement('span');
+        if (leaderscore[i] != "") {
+            let leadPlayer = document.createElement("li");
+            let rowName = document.createElement("span");
             let spanName = document.createTextNode(leaderplayer[i]);
-            rowName.setAttribute('id', 'rowName');
+            rowName.setAttribute("id", "rowName");
             rowName.appendChild(spanName);
-            let rowScore = document.createElement('span');
+            let rowScore = document.createElement("span");
             let spanScore = document.createTextNode(leaderscore[i]);
-            rowScore.setAttribute('id', 'rowScore');
+            rowScore.setAttribute("id", "rowScore");
             rowScore.appendChild(spanScore);
             leadPlayer.appendChild(rowName);
             leadPlayer.appendChild(rowScore);
@@ -343,7 +438,7 @@ function displayLeaderboard() {
 }
 
 function updatearleaderboard() {
-    let playername = document.querySelector('#winnerInput').value; 
+    let playername = document.querySelector("#winnerInput").value;
     let newlead = 0;
     let holderplayerin;
     let holderplayerout;
@@ -365,38 +460,58 @@ function updatearleaderboard() {
             leaderscore[i] = holderscoreout;
         }
     }
-    localStorage.setItem('puntuaciones', JSON.stringify(leaderscore));
-    localStorage.setItem('jugadores', JSON.stringify(leaderplayer));
+    localStorage.setItem("puntuaciones", JSON.stringify(leaderscore));
+    localStorage.setItem("jugadores", JSON.stringify(leaderplayer));
     showleaderboard();
     displayLeaderboard();
 }
 
 function showleaderboard() {
-    leaderplayer = JSON.parse(localStorage.getItem('jugadores'));
-    leaderscore = JSON.parse(localStorage.getItem('puntuaciones'));
+    leaderplayer = JSON.parse(localStorage.getItem("jugadores"));
+    leaderscore = JSON.parse(localStorage.getItem("puntuaciones"));
 }
 
 //-------------------------------------------------------Funciones powerups
 //Buffer y debuffer velocidad
-function speedModifier(speedModifier){ //si es buffer le pasamos un valor >1 y si es debuffer <1
-    registrodist=dist;
-    dist=(dist*speedModifier);
-    setTimeout(resetSpeed,2000,registrodist);
-
+function speedModifier(speedModifier) {
+    //si es buffer le pasamos un valor >1 y si es debuffer <1
+    registrodist = dist;
+    dist = dist + speedModifier;
+    setTimeout(resetSpeed, 4000, registrodist);
 }
-function resetSpeed(distoriginal){
-    dist=distoriginal;
+
+function resetSpeed(distoriginal) {
+    dist = distoriginal;
 }
 
 //Buffer y debuffer puntuación
-function scoreModifier(scoreModifier){ //si es buffer le pasamos un valor >1 y si es debuffer <1
-    score=(score/scoreModifier);
-    setTimeout(resetScore,2000);
-
+function scoreModifier(scoreModifier) {
+    //si es buffer le pasamos un valor >1 y si es debuffer <1
+    score = score / scoreModifier;
+    clearInterval(hora);
+    iniciarcronometro();
+    setTimeout(resetScore, 4000);
 }
-function resetScore(){
-    score=1;
+
+function resetScore() {
+    score = 1;
+    clearInterval(hora);
+    iniciarcronometro();
 }
 
-document.querySelector('#botoninicio').addEventListener('click', startGame);
+//Buffer y debuffer tamaño
+function sizeModifier(sizeModifier) {
+    //si es buffer le pasamos un valor <1 y si es debuffer >1
+    sizeChange = sizeChange * sizeModifier;
+    personaje.width = personaje.width * sizeChange;
+    personaje.height = personaje.height * sizeChange;
+    setTimeout(resetSize, 4000);
+}
 
+function resetSize() {
+    sizeChange = 1;
+    personaje.width = 50;
+    personaje.height = 50;
+}
+
+document.querySelector("#botoninicio").addEventListener("click", startGame);

@@ -191,13 +191,13 @@ function updateGameArea() {
     // ---------------------------------------------------------------------Generacion de obstaculos
     if (gameArea.frameNo == 1 || everyinterval(velocidad * 20)) {
         x = gameArea.canvas.width;
-        imageN = Math.round(Math.random() * 2 + 1);
+        imageN = Math.round(Math.random() * 2);
         y = Math.random() * (gameArea.canvas.height - 50);
         obstacles.push(
             new component(
                 50,
                 50,
-                `./images/juego2/obstacle${imageN}.png`,
+                `./images/juego2/obstacle${imageN}.svg`,
                 // `./images/juego2/obstacle3.png`,
                 x,
                 y,
@@ -258,12 +258,12 @@ function updateGameArea() {
         bufferCreation();
     }
 
-    function bufferCreation() {
+    function bufferCreation(randomN) {
         if (gameArea.frameNo == 1 || everyinterval(850)) {
             console.log(buffers);
             x = gameArea.canvas.width;
             y = Math.random() * (gameArea.canvas.height - 50);
-            bufferN = Math.round(Math.random() * 2);
+            bufferN = Math.round(Math.random() * 5);
             buffers.push(
                 new component(
                     50,
@@ -300,6 +300,27 @@ function updateGameArea() {
                     break;
                 }
             case 2:
+                if (personaje.collision(buffers[i])) {
+                    if (dist == 1.5) {
+                        speedModifier(1.5);
+                    }
+                    break;
+                }
+            case 3:
+                if (personaje.collision(buffers[i])) {
+                    if (dist == 1.5) {
+                        speedModifier(1.5);
+                    }
+                    break;
+                }
+            case 4:
+                if (personaje.collision(buffers[i])) {
+                    if (dist == 1.5) {
+                        speedModifier(1.5);
+                    }
+                    break;
+                }
+            case 5:
                 if (personaje.collision(buffers[i])) {
                     if (dist == 1.5) {
                         speedModifier(1.5);

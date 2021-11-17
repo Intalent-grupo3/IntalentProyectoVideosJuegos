@@ -2,19 +2,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@400;600;800&display=swap');
 @import url('./style.css');
 
-* {
-    margin: 0;
-    padding: 0;
-}
-
-.container {
+.container-canva {
     height: 490px;
     width: 640px;
     position: relative;
     margin: 0 auto;
+    margin-bottom: 2rem;
 }
 
-.container .juego2 {
+.container-canva .juego2 {
     background-image: url('../images/juego2/ba.webp');
     background-size: cover;
     padding-left: 0;
@@ -26,36 +22,36 @@
     width: 640px;
 }
 
-.container #menu {
+.container-canva #menu {
     position: absolute;
     width: 150px;
     bottom: 15%;
     left: calc(50% - 75px);
 }
-.container #imagenBox {
+.container-canva #imagenBox {
     position: absolute;
     width: 100%;
     height: 100%;
 }
-.container #imagenBox .imagen {
-    width: 70%;
-    margin: 20% auto;
+.container-canva #imagenBox .imagen {
+    width: 50%;
+    margin: 0% auto;
 }
 
-.container #menu #botoninicio,
-.container #leaderboard #winnerSubmit {
+.container-canva #menu #botoninicio,
+.container-canva #leaderboard #winnerSubmit {
     color: var(--color-purple);
     background-color: var(--color-yellow);
     border: 2px solid var(--color-yellow);
 }
 
-.container #menu #botoninicio:hover,
-.container #leaderboard #winnerSubmit:hover {
+.container-canva #menu #botoninicio:hover,
+.container-canva #leaderboard #winnerSubmit:hover {
     background-color: var(--color-yellow);
     color: var(--color-purple);
 }
 
-.container #menu #botoninicio {
+.container-canva #menu #botoninicio {
     margin: 0 auto;
     width: 100%;
 
@@ -67,7 +63,7 @@
     font-size: 1.2em;
 }
 
-.container #leaderboard {
+.container-canva #leaderboard {
     position: absolute;
     top: 30%;
     display: flex;
@@ -75,8 +71,8 @@
     width: 100%;
 }
 
-.container #leaderboard #winnerInput,
-.container #leaderboard #winnerSubmit {
+.container-canva #leaderboard #winnerInput,
+.container-canva #leaderboard #winnerSubmit {
     display: block;
     width: 50%;
     padding: 0.8em;
@@ -88,7 +84,7 @@
     text-align: center;
 }
 
-.container #leaderboard #leadList {
+.container-canva #leaderboard #leadList {
     color: var(--color-yellow);
     width: 50%;
     margin: 0 auto;
@@ -98,14 +94,14 @@
     font-family: var(--font-title);
 }
 
-.container #leaderboard #leadList li {
+.container-canva #leaderboard #leadList li {
     display: flex;
     width: 100%;
     justify-content: space-between;
     margin: 0.2em;
 }
 
-.container #leaderboard #leadList span {
+.container-canva #leaderboard #leadList span {
     font-family: var(--font-title);
 }
 
@@ -117,27 +113,30 @@
     padding-right: 2em;
 }
 
-.container #leaderboard #leadList li:first-child {
+.container-canva #leaderboard #leadList li:first-child {
     font-size: 1.3em;
     background-color: var(--color-purple);
     padding: 0.3em;
 }
 
-.container #cronometro {
+.container-canva #cronometro {
     position: absolute;
     width: 100%;
     text-align: center;
     text-transform: uppercase;
 }
 
-.container #cronometro span {
+.container-canva #cronometro span {
     font-family: var(--font-title);
     font-weight: 700;
     color: var(--color-yellow);
 }
 
-.container #cronometro #puntos {
+.container-canva #cronometro #puntos {
     display: inline-block;
     width: 60px;
     text-align: center;
+}
+.texto-juego {
+    margin: 2em;
 }

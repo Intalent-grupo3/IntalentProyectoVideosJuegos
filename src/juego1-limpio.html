@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego Keyboard</title>
+    <link rel="icon" type="image/svg" href="images/favicon.svg" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/v4-shims.css" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/juego1.css" />
+</head>
+
+<body>
+    <header class="">
+        <h1> Juego de Keyboard</h1>
+    </header>
+    <div class=intro>
+        <div class="row mt-5">
+            <div class="container col-md-8">
+                <div class="instrucciones">
+                    <h2>Instrucciones🤔</h2>
+                    <p>Escribe las palabras que te indican lo más rápido posible, mientras más palabras consigas, tu
+                        puntuación irá aumentando
+                        hasta la estratosfera.
+                    </p>
+                </div>
+                <div class="menu-dificultad">
+                    <h3>Puedes escoger tu nivel de dificultad</h3>
+                    <button id="easy">Fácil modo Lechón 🐷🌿</button>
+                    <button id="medium">Medio modo kung fu Panda 🐼🎋</button>
+                    <button id="hard">Dificil modo Danger 😱🔥</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="containerJuego">
+        <div class="Enunciado">
+            <div><span id="palabra-enunciado"></span></div>
+        </div>
+        <div class="Vidas">
+            <div><p>4</p><span id="icono-vidas"></span></div>
+        </div>
+        <div class="Temporizador">
+            <span id="temporizador"></span>
+        </div>
+        <div class="Input">
+            <p class="intro">Escribe la palabra dentro del campo. Dispones de <span class="text-success" id="segundos"><br></span> segundos.</p>
+            <p id="palabra-actual"></p>
+            <p id="message"></p>
+            <input type="text" class="form-control form-control-lg" placeholder="Escribe..." id="palabra-input" autofocus>
+        </div>
+        <div id="score" class="score">
+            <div class="col-md-6">
+                <p>Puntuación: <span id="score"></span></p>
+            </div>
+            <div class="col-md-6">
+                <p>Puntuación Máxima: <span id="high-score"></span></p>
+            </div>
+        </div>
+    </div>
+    <script src="./js/recogida-input.js"></script>
+</body>
+
+</html>

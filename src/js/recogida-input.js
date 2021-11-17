@@ -141,3 +141,4 @@ function statusJugador() {
 facilBtn.addEventListener('click', seleccionarNivel);
 medioBtn.addEventListener('click', seleccionarNivel);
 dificilBtn.addEventListener('click', seleccionarNivel);
+

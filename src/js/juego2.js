@@ -16,6 +16,7 @@ let sizeChange;
 let playerWidth;
 let playerHeigth;
 let dificultad;
+let difobstaculos;
 let bufferCond = 0;
 // -----------------------------------------------------------------------Inicio del juego
 function startGame() {
@@ -26,6 +27,7 @@ function startGame() {
     playerHeigth = 50;
     playerWidth = 50;
     dificultad = 0;
+    difobstaculos=0;
     gameArea.start();
     personaje = new component(
         playerWidth,
@@ -124,21 +126,30 @@ function component(width, height, color, x, y, type, bufferNum) {
         this.x += this.speedX;
         this.y += this.speedY;
         //--------------------------------------------------Modificación doficultad juego con el avance
-        if (puntos >= 400) {
+        if (puntos >= 300) {
             velocidad = 6;
             dificultad = 0.1;
+            difobstaculos=0.1;
         }
-        if (puntos >= 800) {
+        if (puntos >= 600) {
             velocidad = 4.5;
-            (dist = 1), 7;
+            dificultad = 0.2;
+            difobstaculos=0.2;
+        }
+        if (puntos >= 900) {
+            velocidad = 3;
+            dificultad = 0.3;
+            difobstaculos=0.3;
         }
         if (puntos >= 1200) {
-            velocidad = 3;
-            dist = 1.8;
-        }
-        if (puntos >= 1600) {
             velocidad = 1.5;
-            dist = 1.9;
+            dificultad = 0.4;
+            difobstaculos=0.4;
+        }
+        if (puntos >= 1500) {
+            velocidad = 0.75;
+            dificultad = 0.5;
+            difobstaculos=0.5;
         }
         //------------------------------------------------------------------------------
         if (this.type == 'player') {
@@ -223,7 +234,7 @@ function updateGameArea() {
     }
     // ---------------------------------------------------------------------Movimiento de obstaculos
     for (i = 0; i < obstacles.length; i += 1) {
-        obstacles[i].x += -1;
+        obstacles[i].x += (-1-difobstaculos);
         obstacles[i].update();
     }
     // ---------------------------------------------------------------------Movimiento de personaje

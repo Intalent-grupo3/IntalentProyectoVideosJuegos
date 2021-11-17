@@ -115,7 +115,7 @@ temporizador()
 
 function statusJugador() {
     if (!seguirJugando && segundos === 0) {
-        message.innerHTML = 'Haz perdido! 😞😞😞';
+        message.innerHTML = 'Has perdido! 😞😞😞';
         score = -1;
     }
 }

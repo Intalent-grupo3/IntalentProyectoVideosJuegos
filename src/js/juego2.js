@@ -12,7 +12,7 @@ let velocidad;
 let dist;
 let registrodist;
 let score = 1;
-
+let bufferCond = 0;
 // -----------------------------------------------------------------------Inicio del juego
 function startGame() {
     velocidad = 10;
@@ -47,6 +47,7 @@ let gameArea = {
     canvas: document.querySelector('#juego2'),
     // -------------------------------------------------------------------Estructura del lienzo
     start: function () {
+        console.log(buffers);
         this.canvas.width = 640;
         this.canvas.height = 490;
         this.context = this.canvas.getContext('2d');
@@ -67,22 +68,25 @@ let gameArea = {
     },
     // ---------------------------------------------------------------------FIN (resetea el interval)
     end: function () {
+        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
         clearInterval(this.interval);
         pararcronometro();
         obstacles = [];
         buffers = [];
+        bufferCond = 0;
         checkleaderboard();
         document.querySelector('#botoninicio').value = 'reiniciar';
         document.querySelector('#menu').style.display = 'block';
     },
 };
 // --------------------------------------------------------------------------Declaración de componente
-function component(width, height, color, x, y, type) {
+function component(width, height, color, x, y, type, bufferNum) {
     this.width = width;
     this.height = height;
     this.x = x;
     this.y = y;
     this.type = type;
+    this.bufferNum = bufferNum;
     if (type == 'player' || type == 'obstacle' || type == 'background') {
         this.image = new Image();
         this.image.src = color;
@@ -246,25 +250,29 @@ function updateGameArea() {
     personaje.update();
 
     //----------------------------------------------------------------------Generación buffers
-
-    // if (!buffers[0]) {
-    //     setTimeout(bufferCreation, 2000);
-    // } else {
-    bufferCreation();
-    // }
+    if (!bufferCond) {
+        bufferCond = 1;
+        console.log('netra en condicion');
+        setTimeout(bufferCreation, 5000);
+    } else {
+        bufferCreation();
+    }
 
     function bufferCreation() {
         if (gameArea.frameNo == 1 || everyinterval(850)) {
+            console.log(buffers);
             x = gameArea.canvas.width;
             y = Math.random() * (gameArea.canvas.height - 50);
+            bufferN = Math.round(Math.random() * 2);
             buffers.push(
                 new component(
                     50,
                     50,
-                    `./images/juego2/buffer.svg`,
+                    `./images/juego2/buffer${bufferN}.svg`,
                     x,
                     y,
-                    'obstacle'
+                    'obstacle',
+                    bufferN
                 )
             );
         }
@@ -276,12 +284,28 @@ function updateGameArea() {
     }
 
     for (i = 0; i < buffers.length; i += 1) {
-        if (personaje.collision(buffers[i])) {
-            if (dist == 1.5) {
-                speedModifier(1.5);
-            }
-
-            return;
+        switch (buffers[i].bufferNum) {
+            case 0:
+                if (personaje.collision(buffers[i])) {
+                    if (dist == 1.5) {
+                        speedModifier(1.5);
+                    }
+                    break;
+                }
+            case 1:
+                if (personaje.collision(buffers[i])) {
+                    if (dist == 1.5) {
+                        speedModifier(1.5);
+                    }
+                    break;
+                }
+            case 2:
+                if (personaje.collision(buffers[i])) {
+                    if (dist == 1.5) {
+                        speedModifier(1.5);
+                    }
+                    break;
+                }
         }
     }
 }

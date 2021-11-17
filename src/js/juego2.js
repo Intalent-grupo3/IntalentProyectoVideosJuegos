@@ -56,7 +56,7 @@ let gameArea = {
     canvas: document.querySelector("#juego2"),
     // -------------------------------------------------------------------Estructura del lienzo
     start: function () {
-        console.log(buffers);
+        //console.log(buffers);
         this.canvas.width = 640;
         this.canvas.height = 490;
         this.context = this.canvas.getContext("2d");
@@ -262,7 +262,7 @@ function updateGameArea() {
     //----------------------------------------------------------------------Generación buffers
     if (!bufferCond) {
         bufferCond = 1;
-        console.log("netra en condicion");
+        //console.log("netra en condicion");
         setTimeout(bufferCreation, 5000);
     } else {
         bufferCreation();
@@ -270,7 +270,7 @@ function updateGameArea() {
 
     function bufferCreation(randomN) {
         if (gameArea.frameNo == 1 || everyinterval(850)) {
-            console.log(buffers);
+            //console.log(buffers);
             x = gameArea.canvas.width;
             y = Math.random() * (gameArea.canvas.height - 50);
             bufferN = Math.round(Math.random() * 5);
@@ -299,7 +299,8 @@ function updateGameArea() {
                 if (personaje.collision(buffers[i])) { //buff velocidad
                     if (dist == 1.5) {
                         speedModifier(2.5);
-                        console.log("speedmodifier " + dist);
+                        //console.log("speedmodifier " + dist);
+                        
                     }
                     break;
                 }
@@ -307,7 +308,7 @@ function updateGameArea() {
                     if (personaje.collision(buffers[i])) { //buff puntuación
                         if (score == 1) {
                             scoreModifier(4);
-                            console.log("scoremodifier " + score);
+                            //console.log("scoremodifier " + score);
                         }
                         break;
                     }
@@ -315,13 +316,15 @@ function updateGameArea() {
                         if (personaje.collision(buffers[i])) { //buff tamaño
                             if (sizeChange == 1) {
                                 sizeModifier(1 / 1.5);
+                                //console.log("sizemodifier " + sizeChange);
                             }
                             break;
                         }
                         case 3:
                             if (personaje.collision(buffers[i])) { //debuff velocidad
                                 if (dist == 1.5) {
-                                    speedModifier(1 / 2.5);
+                                    speedModifier(-1 / 2.5);
+                                    //console.log("speedmodifier "+ dist)
                                 }
                                 break;
                             }
@@ -329,6 +332,7 @@ function updateGameArea() {
                                 if (personaje.collision(buffers[i])) { //debuff puntuación
                                     if (score == 1) {
                                         scoreModifier(0.5);
+                                        //console.log("scoremodifier " + score);
                                     }
                                     break;
                                 }
@@ -336,6 +340,7 @@ function updateGameArea() {
                                     if (personaje.collision(buffers[i])) { //debuff tamaño
                                         if (sizeChange == 1) {
                                             sizeModifier(1.5);
+                                            // console.log("sizemodifier " + sizeChange);
                                         }
                                         break;
                                     }

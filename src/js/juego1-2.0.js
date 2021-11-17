@@ -106,7 +106,7 @@ function tiempoActual() {
 //--------------------------------------------------------------------Leaderboard
 
 function checkLeaderboard() {
-    if (window.localStorage.length) {
+    if (localStorage.getItem('puntosKeyboard')) {
         leaderscore = JSON.parse(localStorage.getItem('puntosKeyboard'));
     } else {
         leaderscore = ['', '', '', '', ''];
@@ -137,6 +137,11 @@ function updateLeaderboard() {
 
 function displayLeaderboard() {
     let leadList = document.createElement('ol');
+    leadList.setAttribute('id', 'leadList');
+    let listElement = document.querySelector('#leadList');
+    if (listElement) {
+        leaderboard.removeChild(listElement);
+    }
     leadList.setAttribute('id', 'leadList');
     for (let i = 0; i < 5; i++) {
         if (leaderscore[i] != '') {

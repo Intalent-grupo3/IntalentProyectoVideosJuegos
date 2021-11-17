@@ -36,11 +36,7 @@ function tiempoActual() {
 }
 
 
-function temporizador(a) {
-    tiempo = a;
-    setInterval(tiempoActual, 1000);
-}
 
 module.exports = {
-    palabrasCorrectas, statusJugador, tiempoActual, temporizador
+    palabrasCorrectas, statusJugador, tiempoActual,
 }

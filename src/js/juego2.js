@@ -9,6 +9,8 @@ let leaderscore = ['', '', '', '', ''];
 let leaderplayer = ['', '', '', '', ''];
 let velocidad;
 let dist;
+let registrodist;
+let score=1;
 
 // -----------------------------------------------------------------------Inicio del juego
 function startGame() {
@@ -106,19 +108,24 @@ function component(width, height, color, x, y, type) {
     this.newPos = function () {
         this.x += this.speedX;
         this.y += this.speedY;
-        
+        //--------------------------------------------------Modificación doficultad juego con el avance
         if (puntos>=400){
             velocidad=6;
             dist=1.6;
         }
         if (puntos>=800){
-            velocidad=3;
+            velocidad=4.5;
             dist=1,7;
         }
-        if (puntos>=12600){
-            velocidad=1.5;
+        if (puntos>=1200){
+            velocidad=3;
             dist=1.8;
         }
+        if (puntos>=1600){
+            velocidad=1.5;
+            dist=1.9;
+        }
+        //------------------------------------------------------------------------------
         if (this.type == 'player') {
             if (this.x > 590) {
                 this.x = 590;
@@ -239,7 +246,7 @@ function updateGameArea() {
 
 //---------------------------------------------------------------Cronómetro puntuación
 function iniciarcronometro() {
-    hora = setInterval(cronometro, 50);
+    hora = setInterval(cronometro, (50*score));
     
 
 }
@@ -269,7 +276,6 @@ function checkleaderboard() {
     if (window.localStorage.length) {
         leaderplayer = JSON.parse(localStorage.getItem('jugadores'));
         leaderscore = JSON.parse(localStorage.getItem('puntuaciones'));
-        console.log(leaderscore);
     } else {
         leaderscore = ['', '', '', '', ''];
         leaderplayer = ['', '', '', '', ''];
@@ -277,7 +283,6 @@ function checkleaderboard() {
     console.log(leaderscore);
     for (let i = 0; i < 5; i++) {
         if (leaderscore[i] < puntuacion) {
-            //sacar el menú de meter nombre y enviar highscore
             checking = 1;
         }
     }
@@ -338,7 +343,7 @@ function displayLeaderboard() {
 }
 
 function updatearleaderboard() {
-    let playername = document.querySelector('#winnerInput').value; //Aquí va el value del input del name del jugador
+    let playername = document.querySelector('#winnerInput').value; 
     let newlead = 0;
     let holderplayerin;
     let holderplayerout;
@@ -369,8 +374,29 @@ function updatearleaderboard() {
 function showleaderboard() {
     leaderplayer = JSON.parse(localStorage.getItem('jugadores'));
     leaderscore = JSON.parse(localStorage.getItem('puntuaciones'));
-    console.log(leaderscore);
-    //poner que te saque los elementos de la leaderboard ordenados
 }
+
+//-------------------------------------------------------Funciones powerups
+//Buffer y debuffer velocidad
+function speedModifier(speedModifier){ //si es buffer le pasamos un valor >1 y si es debuffer <1
+    registrodist=dist;
+    dist=(dist*speedModifier);
+    setTimeout(resetSpeed,2000,registrodist);
+
+}
+function resetSpeed(distoriginal){
+    dist=distoriginal;
+}
+
+//Buffer y debuffer puntuación
+function scoreModifier(scoreModifier){ //si es buffer le pasamos un valor >1 y si es debuffer <1
+    score=(score/scoreModifier);
+    setTimeout(resetScore,2000);
+
+}
+function resetScore(){
+    score=1;
+}
+
 document.querySelector('#botoninicio').addEventListener('click', startGame);
-//document.querySelector("#submitjugador").addEventListener("click", actualizarleaderboard)
+
